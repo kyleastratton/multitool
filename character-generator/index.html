@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regex String Generator</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <nav>
+        <a href="#" class="logo">Multitool Hub</a>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Tools</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h2>Regex String Generator</h2>
+        <label for="charCount">Number of Letters:</label>
+        <input type="number" id="charCount" min="0" value="5">
+        <label for="numCount">Number of Digits:</label>
+        <input type="number" id="numCount" min="0" value="3">
+        <label for="order">Order:</label>
+        <select id="order">
+            <option value="charFirst">Letters First</option>
+            <option value="numFirst">Numbers First</option>
+        </select>
+        <button onclick="generateString()">Generate</button>
+        <div id="output" onclick="copyToClipboard()" title="Click to copy"></div>
+    </div>
+
+    <script>
+        function generateString() {
+            const charCount = parseInt(document.getElementById("charCount").value) || 0;
+            const numCount = parseInt(document.getElementById("numCount").value) || 0;
+            const order = document.getElementById("order").value;
+            
+            const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            const numbers = "0123456789";
+            
+            let charPart = "";
+            let numPart = "";
+            
+            for (let i = 0; i < charCount; i++) {
+                charPart += letters.charAt(Math.floor(Math.random() * letters.length));
+            }
+            for (let i = 0; i < numCount; i++) {
+                numPart += numbers.charAt(Math.floor(Math.random() * numbers.length));
+            }
+            
+            let result = order === "charFirst" ? charPart + numPart : numPart + charPart;
+            const outputElement = document.getElementById("output");
+            outputElement.innerText = result;
+            outputElement.setAttribute("data-copy", result);
+        }
+
+        function copyToClipboard() {
+            const textToCopy = document.getElementById("output").getAttribute("data-copy");
+            if (textToCopy) {
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    alert("Copied to clipboard: " + textToCopy);
+                }).catch(err => {
+                    console.error("Failed to copy: ", err);
+                });
+            }
+        }
+    </script>
+</body>
+</html>

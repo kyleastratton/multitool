@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pascal Case Converter</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <nav>
+        <a href="#" class="logo">Multitool Hub</a>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Tools</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h2>Pascal Case Converter</h2>
+        <input type="text" id="textInput" placeholder="Enter your text here">
+        <button onclick="convertToPascalCase()">Convert</button>
+        <div id="result"></div>
+    <div class="center">
+        <button id="copyButton" onclick="copyToClipboard()">Copy</button>
+    </div>
+    </div>
+
+    <script>
+        function convertToPascalCase() {
+            let inputText = document.getElementById("textInput").value;
+            let pascalCaseText = inputText
+                .toLowerCase()
+                .split(/[^a-zA-Z0-9]+/)
+                .filter(word => word.length > 0)
+                .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                .join("");
+            
+            let formattedText = pascalCaseText.replace(/([A-Z])/g, ' $1').trim();
+            
+            document.getElementById("result").textContent = formattedText;
+            document.getElementById("copyButton").style.display = "block";
+        }
+
+        function copyToClipboard() {
+            let text = document.getElementById("result").textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Copied to clipboard!");
+            });
+        }
+    </script>
+</body>
+</html>
