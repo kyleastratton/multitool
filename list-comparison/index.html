@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Text Print</title>
+    <title>List Comparator</title>
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -16,11 +16,51 @@
           <li><a href="#">Contact</a></li>
         </ul>
     </nav>
+    
     <div class="container">
-        <textarea id="txt"></textarea>
-        <button onclick="copyToClipboard('txt')">Copy to clipboard</button>
+        <h2>List Comparator</h2>
+        <label for="list1">List 1 (comma-separated):</label>
+        <textarea id="list1" rows="4"></textarea>
+
+        <label for="list2">List 2 (comma-separated):</label>
+        <textarea id="list2" rows="4"></textarea>
+
+        <label for="comparisonType">Show:</label>
+        <select id="comparisonType">
+            <option value="differences">Differences</option>
+            <option value="matches">Matches</option>
+        </select>
+
+        <button onclick="compareLists()">Compare</button>
+
+        <div id="result"></div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        function parseList(input) {
+            return input.split(/\s*,\s*/).filter(item => item.trim() !== "");
+        }
+
+        function compareLists() {
+            let list1 = parseList(document.getElementById("list1").value);
+            let list2 = parseList(document.getElementById("list2").value);
+            let comparisonType = document.getElementById("comparisonType").value;
+            let resultDiv = document.getElementById("result");
+            
+            let set1 = new Set(list1);
+            let set2 = new Set(list2);
+            let result;
+            
+            if (comparisonType === "differences") {
+                let diff1 = list1.filter(item => !set2.has(item));
+                let diff2 = list2.filter(item => !set1.has(item));
+                result = [...new Set([...diff1, ...diff2])];
+            } else {
+                result = list1.filter(item => set2.has(item));
+            }
+            
+            resultDiv.innerHTML = "<strong>Result:</strong> " + (result.length ? result.join(", ") : "No results found");
+        }
+    </script>
 </body>
 </html>
