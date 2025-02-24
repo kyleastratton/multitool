@@ -7,15 +7,32 @@
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-    <nav>
-        <a href="#" class="logo">Multitool Hub</a>
-        <ul>
-          <li><a href="../index.html">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Tools</a></li>
-          <li><a href="#">Contact</a></li>
+    <nav class="navbar">
+        <div class="logo">Multitool</div>
+        <button class="menu-toggle" aria-label="Toggle Menu">&#9776;</button>
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li class="dropdown">
+                <a href="#">Services ▼</a>
+                <ul class="dropdown-content">
+                    <hr>
+                    <li><a href="../character-generator/index.html">Character Generator</a></li>
+                    <hr>
+                    <li><a href="../list-comparison/index.html">List Comparison</a></li>
+                    <hr>
+                    <li><a href="../pascal-case-converter/index.html">Case Converter</a></li>
+                    <hr>
+                    <li><a href="./index.html">Random Picker</a></li>
+                    <hr>
+                    <li><a href="../regex-generator/index.html">Regex String Generator</a></li>
+                    <hr>
+                </ul>
+            </li>
+            <li><a href="#">Contact</a></li>
         </ul>
     </nav>
+
     <div class="container">
         <h2>Random Item Picker</h2>
         <input type="text" id="itemInput" placeholder="Enter items separated by commas">

@@ -7,13 +7,29 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <nav>
-    <a href="#" class="logo">Multitool Hub</a>
-    <ul>
-      <li><a href="./index.html">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Tools</a></li>
-      <li><a href="#">Contact</a></li>
+  <nav class="navbar">
+    <div class="logo">Multitool</div>
+    <button class="menu-toggle" aria-label="Toggle Menu">&#9776;</button>
+    <ul class="nav-links">
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li class="dropdown">
+            <a href="#">Services ▼</a>
+            <ul class="dropdown-content">
+                <hr>
+                <li><a href="./character-generator/index.html">Character Generator</a></li>
+                <hr>
+                <li><a href="./list-comparison/index.html">List Comparison</a></li>
+                <hr>
+                <li><a href="./pascal-case-converter/index.html">Case Converter</a></li>
+                <hr>
+                <li><a href="./random-picker/index.html">Random Picker</a></li>
+                <hr>
+                <li><a href="./regex-generator/index.html">Regex String Generator</a></li>
+                <hr>
+            </ul>
+        </li>
+        <li><a href="#">Contact</a></li>
     </ul>
   </nav>
 
@@ -38,8 +54,8 @@
         <a href="./random-picker/index.html">Open Tool</a>
       </div>
       <div class="card">
-        <h2>List Comparison</h2>
-        <p>Print long generated messages to screen</p>
+        <h2>List Comparator</h2>
+        <p>Compre two lists and return differences or commonalities</p>
         <a href="./list-comparison/index.html">Open Tool</a>
       </div>
       <div class="card">
@@ -48,5 +64,14 @@
         <a href="./regex-generator/index.html">Open Tool</a>
       </div>
   </section>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+            const menuToggle = document.querySelector(".menu-toggle");
+            const navLinks = document.querySelector(".nav-links");
+            menuToggle.addEventListener("click", () => {
+                navLinks.classList.toggle("active");
+            });
+        });
+  </script>
 </body>
 </html>
