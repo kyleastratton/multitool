@@ -45,6 +45,8 @@
         <div id="result" onclick="copyToClipboard()"></div>
     </div>
 
+    <div id="snackbar" class="snackbar">Text copied to clipboard!</div>
+
     <script>
         function pickRandomItem() {
             let input = document.getElementById("itemInput").value;
@@ -63,9 +65,19 @@
             let text = document.getElementById("result").innerText;
             if (text) {
                 navigator.clipboard.writeText(text).then(() => {
-                    alert("Copied to clipboard: " + text);
+                    showSnackbar();
                 });
             }
+        }
+
+        function showSnackbar() {
+            const snackbar = document.getElementById("snackbar");
+            snackbar.classList.add("show");
+
+            // Hide snackbar after 3 seconds
+            setTimeout(() => {
+                snackbar.classList.remove("show");
+            }, 3000);
         }
     </script>
 </body>

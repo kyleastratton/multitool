@@ -240,6 +240,26 @@ textarea {
     cursor: pointer;
 }
 
+.snackbar {
+    visibility: hidden;
+    min-width: 250px;
+    background-color: #4CAF50;
+    color: #fff;
+    text-align: center;
+    padding: 12px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 8px;
+    opacity: 0;
+    transition: opacity 0.5s, visibility 0.5s;
+}
+
+.snackbar.show {
+    visibility: visible;
+    opacity: 1;
+}
+
 @media (max-width: 600px) {
     h1 {
         font-size: 1.6rem;

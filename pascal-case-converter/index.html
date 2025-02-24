@@ -44,6 +44,8 @@
         <div id="result" onclick="copyToClipboard()"></div>
     </div>
 
+    <div id="snackbar" class="snackbar">Text copied to clipboard!</div>
+
     <script>
         function convertToPascalCase() {
             let inputText = document.getElementById("textInput").value;
@@ -67,11 +69,21 @@
             const textToCopy = document.getElementById("result").getAttribute("data-copy");
             if (textToCopy) {
                 navigator.clipboard.writeText(textToCopy).then(() => {
-                    alert("Copied to clipboard: " + textToCopy);
+                    showSnackbar();
                 }).catch(err => {
                     console.error("Failed to copy: ", err);
                 });
             }
+        }
+
+        function showSnackbar() {
+            const snackbar = document.getElementById("snackbar");
+            snackbar.classList.add("show");
+
+            // Hide snackbar after 3 seconds
+            setTimeout(() => {
+                snackbar.classList.remove("show");
+            }, 3000);
         }
     </script>
 </body>
