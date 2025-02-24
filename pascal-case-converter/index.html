@@ -38,9 +38,6 @@
         <input type="text" id="textInput" placeholder="Enter your text here">
         <button onclick="convertToPascalCase()">Convert</button>
         <div id="result" onclick="copyToClipboard()"></div>
-    <!-- <div class="center">
-        <button id="copyButton" onclick="copyToClipboard()">Copy</button>
-    </div> -->
     </div>
 
     <script>
@@ -61,13 +58,6 @@
             outputElement.innerText = result;
             outputElement.setAttribute("data-copy", result);
         }
-
-        // function copyToClipboard() {
-        //     let text = document.getElementById("result").textContent;
-        //     navigator.clipboard.writeText(text).then(() => {
-        //         alert("Copied to clipboard!");
-        //     });
-        // }
 
         function copyToClipboard() {
             const textToCopy = document.getElementById("result").getAttribute("data-copy");

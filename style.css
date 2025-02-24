@@ -7,12 +7,10 @@
 
 body {
     background-color: #f4f4f9;
-    /* padding-top: 70px; Account for fixed navbar */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     background-color: #f2f2f2;
     margin: 0;
 }
@@ -27,7 +25,8 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    position: fixed;
+    margin-bottom: 4rem;
+    /* position: fixed; */
 }
 
 .nav-links {
@@ -83,15 +82,18 @@ hr {
     display: block;
 }
 
-header {
+header, label {
     text-align: center;
-    margin-bottom: 40px;
-    width: 100vw;
+    display: block;
+    width: 100%;
 }
 
 h1 {
     font-size: 2rem;
     color: #333;
+}
+
+h1, h2, h3 {
     margin-bottom: 1rem;
 }
 
@@ -157,14 +159,13 @@ h1 {
 input, button {
     width: 90%;
     padding: 10px;
-    /* margin: 10px 0; */
     border-radius: 5px;
     border: 1px solid #ccc;
     font-size: 16px;
+    margin-bottom: 1rem;
   }
 
 button {
-    /* margin-left: 10px; */
     cursor: pointer;
     background-color: #4f46e5;
     color: white;
@@ -176,9 +177,9 @@ button:hover {
 
 textarea, select, button {
     width: 90%;
-    margin-top: 10px;
     padding: 10px;
     font-size: 16px;
+    margin-bottom: 1rem;
 }
 
 textarea {
@@ -196,6 +197,7 @@ textarea {
     margin-top: 20px;
     font-size: 20px;
     font-weight: bold;
+    margin-bottom: 1rem;
 }
 
 .center {
@@ -226,10 +228,6 @@ textarea {
     margin-bottom: 5px;
 }
 
-h3 {
-    margin: 0.2rem;
-}
-
 #result {
     margin-top: 20px;
     font-size: 24px;
@@ -252,6 +250,10 @@ h3 {
 }
 
 @media (max-width: 768px) {
+    .narbar {
+        position: relative;
+    }
+
     .nav-links {
         display: none;
         flex-direction: column;
@@ -269,6 +271,7 @@ h3 {
 
     .menu-toggle {
         display: block;
+        width: 20%;
     }
 
     .dropdown-content {
@@ -304,8 +307,3 @@ h3 {
         padding: 8px 16px;
     }
 }
-
-/* #result {
-    margin-top: 20px;
-    font-weight: bold;
-} */
