@@ -123,6 +123,7 @@ h1, h2, h3 {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
 }
 
 .card:hover {
@@ -191,6 +192,10 @@ textarea {
     border-radius: 4px;
     background-color: #f8f8f8;
     font-size: 16px;
+}
+
+.description {
+    height: 2rem;
 }
 
 #result {
