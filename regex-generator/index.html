@@ -44,81 +44,9 @@
     <h3>Number of strings to generate</h3>
     <input type="number" id="countInput" placeholder="Number of strings to generate" min="1" value="1" />
     <button onclick="generateStrings()">Generate Strings</button>
-    <div class="output" id="output"></div>
+    <div class="result" id="result"></div>
   </div>
 
-  <script src="../script.js">
-    function expandCharSet(charSet) {
-      const expanded = [];
-      let i = 0;
-      while (i < charSet.length) {
-        if (i + 2 < charSet.length && charSet[i + 1] === '-') {
-          const start = charSet.charCodeAt(i);
-          const end = charSet.charCodeAt(i + 2);
-
-          if (start <= end) {
-            for (let code = start; code <= end; code++) {
-              expanded.push(String.fromCharCode(code));
-            }
-          }
-          i += 3; // Skip processed range (e.g., 'a-z')
-        } else {
-          expanded.push(charSet[i]);
-          i++;
-        }
-      }
-      return expanded;
-    }
-
-    function randomCharFromSet(charSet) {
-      const chars = expandCharSet(charSet);
-      return chars.length ? chars[Math.floor(Math.random() * chars.length)] : '';
-    }
-
-    function generateFromSimpleRegex(regex) {
-      let result = '';
-      const regexPattern = /\\?\[(.*?)](?:\{(\d+)})?/g;
-      let match;
-      let lastIndex = 0;
-
-      while ((match = regexPattern.exec(regex)) !== null) {
-        result += regex.substring(lastIndex, match.index); // Add literal text
-        const charSet = match[1];
-        const repeat = match[2] ? parseInt(match[2], 10) : 1;
-
-        for (let i = 0; i < repeat; i++) {
-          result += randomCharFromSet(charSet);
-        }
-
-        lastIndex = regexPattern.lastIndex;
-      }
-
-      result += regex.substring(lastIndex); // Add remaining literal text
-      return result;
-    }
-
-    function generateStrings() {
-      const regexInput = document.getElementById('regexInput').value.trim();
-      const count = parseInt(document.getElementById('countInput').value, 10) || 1;
-      const outputDiv = document.getElementById('output');
-      outputDiv.innerHTML = '';
-
-      if (!regexInput) {
-        outputDiv.textContent = 'Please enter a regex pattern.';
-        return;
-      }
-
-      try {
-        for (let i = 0; i < count; i++) {
-          const generated = generateFromSimpleRegex(regexInput);
-          const line = document.createElement('div');
-          line.textContent = `Generated ${i + 1}: ${generated}`;
-          outputDiv.appendChild(line);
-        }
-      } catch (error) {
-        outputDiv.textContent = 'Error: Invalid regex or unsupported pattern.';
-      }
-    }
-  </script>
+  <script src="../script.js"></script>
 </body>
 </html>

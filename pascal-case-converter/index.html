@@ -46,45 +46,6 @@
 
     <div id="snackbar" class="snackbar">Text copied to clipboard!</div>
 
-    <script src="../script.js">
-        function convertToPascalCase() {
-            let inputText = document.getElementById("textInput").value;
-            let pascalCaseText = inputText
-                .toLowerCase()
-                .split(/[^a-zA-Z0-9]+/)
-                .filter(word => word.length > 0)
-                .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-                .join("");
-            
-            let formattedText = pascalCaseText.replace(/([A-Z])/g, ' $1').trim();
-            
-            document.getElementById("result").textContent = formattedText;
-            let result = formattedText;
-            const outputElement = document.getElementById("result");
-            outputElement.innerText = result;
-            outputElement.setAttribute("data-copy", result);
-        }
-
-        function copyToClipboard() {
-            const textToCopy = document.getElementById("result").getAttribute("data-copy");
-            if (textToCopy) {
-                navigator.clipboard.writeText(textToCopy).then(() => {
-                    showSnackbar();
-                }).catch(err => {
-                    console.error("Failed to copy: ", err);
-                });
-            }
-        }
-
-        function showSnackbar() {
-            const snackbar = document.getElementById("snackbar");
-            snackbar.classList.add("show");
-
-            // Hide snackbar after 3 seconds
-            setTimeout(() => {
-                snackbar.classList.remove("show");
-            }, 3000);
-        }
-    </script>
+    <script src="../script.js"></script>
 </body>
 </html>

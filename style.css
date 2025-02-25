@@ -212,6 +212,7 @@ textarea {
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 1rem;
+    color: #1E88E5;
 }
 
 .center {
@@ -221,24 +222,17 @@ textarea {
     padding: 1rem;
 }
 
-#output {
-    font-size: 1.5em;
-    margin-top: 20px;
-    color: blue;
-    cursor: pointer;
-}
-
-.output {
+.result {
     font-weight: bold;
     font-size: 16px;
     color: #333;
     margin-top: 15px;
-    text-align: left;
+    text-align: center;
     max-height: 300px;
     overflow-y: auto;
 }
 
-.output div {
+.result div {
     margin-bottom: 5px;
 }
 

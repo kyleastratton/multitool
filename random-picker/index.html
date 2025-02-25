@@ -47,38 +47,6 @@
 
     <div id="snackbar" class="snackbar">Text copied to clipboard!</div>
 
-    <script src="../script.js">
-        function pickRandomItem() {
-            let input = document.getElementById("itemInput").value;
-            let items = input.split(",").map(item => item.trim()).filter(item => item !== "");
-            
-            if (items.length === 0) {
-                document.getElementById("result").innerText = "Please enter some items.";
-                return;
-            }
-            
-            let randomIndex = Math.floor(Math.random() * items.length);
-            document.getElementById("result").innerText = items[randomIndex];
-        }
-
-        function copyToClipboard() {
-            let text = document.getElementById("result").innerText;
-            if (text) {
-                navigator.clipboard.writeText(text).then(() => {
-                    showSnackbar();
-                });
-            }
-        }
-
-        function showSnackbar() {
-            const snackbar = document.getElementById("snackbar");
-            snackbar.classList.add("show");
-
-            // Hide snackbar after 3 seconds
-            setTimeout(() => {
-                snackbar.classList.remove("show");
-            }, 3000);
-        }
-    </script>
+    <script src="../script.js"></script>
 </body>
 </html>

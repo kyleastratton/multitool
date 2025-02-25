@@ -56,31 +56,6 @@
         <div id="result"></div>
     </div>
 
-    <script src="../script.js">
-        function parseList(input) {
-            return input.split(/\s*,\s*/).filter(item => item.trim() !== "");
-        }
-
-        function compareLists() {
-            let list1 = parseList(document.getElementById("list1").value);
-            let list2 = parseList(document.getElementById("list2").value);
-            let comparisonType = document.getElementById("comparisonType").value;
-            let resultDiv = document.getElementById("result");
-            
-            let set1 = new Set(list1);
-            let set2 = new Set(list2);
-            let result;
-            
-            if (comparisonType === "differences") {
-                let diff1 = list1.filter(item => !set2.has(item));
-                let diff2 = list2.filter(item => !set1.has(item));
-                result = [...new Set([...diff1, ...diff2])];
-            } else {
-                result = list1.filter(item => set2.has(item));
-            }
-            
-            resultDiv.innerHTML = "<strong>Result:</strong> " + (result.length ? result.join(", ") : "No results found");
-        }
-    </script>
+    <script src="../script.js"></script>
 </body>
 </html>

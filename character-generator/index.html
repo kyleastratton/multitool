@@ -38,7 +38,7 @@
     </nav>
 
     <div class="container">
-        <h2>Regex String Generator</h2>
+        <h2>String Generator</h2>
         <label for="charCount">Number of Letters:</label>
         <input type="number" id="charCount" min="0" value="5">
         <label for="numCount">Number of Digits:</label>
@@ -49,56 +49,11 @@
             <option value="numFirst">Numbers First</option>
         </select>
         <button onclick="generateString()">Generate</button>
-        <div id="output" onclick="copyToClipboard()" title="Click to copy"></div>
+        <div id="result" onclick="copyToClipboard()" title="Click to copy"></div>
     </div>
 
     <div id="snackbar" class="snackbar">Text copied to clipboard!</div>
 
-    <script src="../script.js">
-        function generateString() {
-            const charCount = parseInt(document.getElementById("charCount").value) || 0;
-            const numCount = parseInt(document.getElementById("numCount").value) || 0;
-            const order = document.getElementById("order").value;
-            
-            const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            const numbers = "0123456789";
-            
-            let charPart = "";
-            let numPart = "";
-            
-            for (let i = 0; i < charCount; i++) {
-                charPart += letters.charAt(Math.floor(Math.random() * letters.length));
-            }
-            for (let i = 0; i < numCount; i++) {
-                numPart += numbers.charAt(Math.floor(Math.random() * numbers.length));
-            }
-            
-            let result = order === "charFirst" ? charPart + numPart : numPart + charPart;
-            const outputElement = document.getElementById("output");
-            outputElement.innerText = result;
-            outputElement.setAttribute("data-copy", result);
-        }
-
-        function copyToClipboard() {
-            const textToCopy = document.getElementById("output").getAttribute("data-copy");
-            if (textToCopy) {
-                navigator.clipboard.writeText(textToCopy).then(() => {
-                    showSnackbar();
-                }).catch(err => {
-                    console.error("Failed to copy: ", err);
-                });
-            }
-        }
-
-        function showSnackbar() {
-            const snackbar = document.getElementById("snackbar");
-            snackbar.classList.add("show");
-
-            // Hide snackbar after 3 seconds
-            setTimeout(() => {
-                snackbar.classList.remove("show");
-            }, 3000);
-        }
-    </script>
+    <script src="../script.js"></script>
 </body>
 </html>
