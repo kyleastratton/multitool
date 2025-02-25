@@ -25,8 +25,6 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    margin-bottom: 4rem;
-    /* position: fixed; */
 }
 
 .nav-links {
@@ -87,6 +85,10 @@ hr {
     display: block;
 }
 
+.welcome {
+    margin: 1.5rem 0;
+}
+
 header, label {
     text-align: center;
     display: block;
@@ -119,6 +121,7 @@ h1, h2, h3 {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    margin-bottom: 2rem;
 }
 
 .card {
