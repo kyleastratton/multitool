@@ -50,6 +50,10 @@ body {
     cursor: pointer;
 }
 
+.navbar ul li {
+    list-style-type: none;
+}
+
 .dropdown {
     position: relative;
 }
