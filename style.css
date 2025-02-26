@@ -15,6 +15,11 @@ body {
     margin: 0;
 }
 
+.logo {
+    /* font-weight: bolder; */
+    /* text-decoration: underline; */
+}
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -274,6 +279,7 @@ textarea {
 
     nav .logo {
         font-size: 1.2rem;
+        font-weight: bolder;
     }
 }
 
