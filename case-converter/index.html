@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Regex String Generator</title>
+    <title>Case Converter</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="apple-touch-icon" sizes="180x180" href="../favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon_io/favicon-32x32.png">
@@ -25,11 +25,11 @@
                 <a href="#">Services <i class="fa fa-caret-down"></i></a>
                 <ul class="dropdown-content">
                     <hr>
-                    <li><a href="./index.html">Character Generator</a></li>
+                    <li><a href="../character-generator/index.html">Character Generator</a></li>
                     <hr>
                     <li><a href="../list-comparison/index.html">List Comparison</a></li>
                     <hr>
-                    <li><a href="../case-converter/index.html">Case Converter</a></li>
+                    <li><a href="./index.html">Case Converter</a></li>
                     <hr>
                     <li><a href="../random-picker/index.html">Random Picker</a></li>
                     <hr>
@@ -42,18 +42,26 @@
     </nav>
 
     <div class="container">
-        <h2>String Generator</h2>
-        <label for="charCount">Number of Letters:</label>
-        <input type="number" id="charCount" min="0" value="5">
-        <label for="numCount">Number of Digits:</label>
-        <input type="number" id="numCount" min="0" value="3">
-        <label for="order">Order:</label>
-        <select id="order">
-            <option value="charFirst">Letters First</option>
-            <option value="numFirst">Numbers First</option>
+        <h2>Text Case Converter</h2>
+        <h3>Text to convert</h3>
+        <input type="text" id="textInput" placeholder="Enter text here">
+        <h3>Casing</h3>
+        <select id="caseSelector">
+            <option value="sentence">Sentence case</option>
+            <option value="uppercase">Uppercase</option>
+            <option value="lowercase">Lowercase</option>
+            <option value="alternating">Alternating Case</option>
+            <option value="inverse">Inverse Case</option>
+            <option value="snake">Snake Case</option>
+            <option value="kebab">Kebab Case</option>
+            <option value="camel">Camel Case</option>
+            <option value="pascal">Pascal Case</option>
+            <option value="screaming_snake">Screaming Snake Case</option>
+            <option value="screaming_kebab">Screaming Kebab Case</option>
+            <option value="train">Train Case</option>
         </select>
-        <button onclick="generateString()">Generate</button>
-        <div id="result" onclick="copyToClipboard()" title="Click to copy"></div>
+        <button onclick="convertText()">Convert</button>
+        <p id="result" onclick="copyToClipboard()"></p>
     </div>
 
     <div id="snackbar" class="snackbar">Text copied to clipboard!</div>

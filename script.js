@@ -33,22 +33,73 @@ function compareLists() {
     (result.length ? result.join(", ") : "No results found");
 }
 
-function convertToPascalCase() {
-  let inputText = document.getElementById("textInput").value;
-  let pascalCaseText = inputText
-    .toLowerCase()
-    .split(/[^a-zA-Z0-9]+/)
-    .filter((word) => word.length > 0)
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join("");
+function convertText() {
+  const text = document.getElementById("textInput").value;
+  const caseType = document.getElementById("caseSelector").value;
+  let convertedText = "";
 
-  let formattedText = pascalCaseText.replace(/([A-Z])/g, " $1").trim();
+  switch (caseType) {
+    case "sentence":
+      convertedText =
+        text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+      break;
+    case "uppercase":
+      convertedText = text.toUpperCase();
+      break;
+    case "lowercase":
+      convertedText = text.toLowerCase();
+      break;
+    case "alternating":
+      convertedText = text
+        .split("")
+        .map((char, i) =>
+          i % 2 === 0 ? char.toLowerCase() : char.toUpperCase()
+        )
+        .join("");
+      break;
+    case "inverse":
+      convertedText = text
+        .split("")
+        .map((char) =>
+          char === char.toLowerCase() ? char.toUpperCase() : char.toLowerCase()
+        )
+        .join("");
+      break;
+    case "snake":
+      convertedText = text.toLowerCase().replace(/\s+/g, "_");
+      break;
+    case "kebab":
+      convertedText = text.toLowerCase().replace(/\s+/g, "-");
+      break;
+    case "camel":
+      convertedText = text
+        .toLowerCase()
+        .replace(/(?:\s+|^)(\w)/g, (match, p1, offset) =>
+          offset === 0 ? p1.toLowerCase() : p1.toUpperCase()
+        );
+      break;
+    case "pascal":
+      convertedText = text
+        .toLowerCase()
+        .replace(/(?:\s+|^)(\w)/g, (match, p1) => p1.toUpperCase());
+      break;
+    case "screaming_snake":
+      convertedText = text.toUpperCase().replace(/\s+/g, "_");
+      break;
+    case "screaming_kebab":
+      convertedText = text.toUpperCase().replace(/\s+/g, "-");
+      break;
+    case "train":
+      convertedText = text
+        .toLowerCase()
+        .replace(/(?:\s+|^)(\w)/g, (match, p1) => p1.toUpperCase())
+        .replace(/\s+/g, "-");
+      break;
+    default:
+      convertedText = text;
+  }
 
-  document.getElementById("result").textContent = formattedText;
-  let result = formattedText;
-  const outputElement = document.getElementById("result");
-  outputElement.innerText = result;
-  outputElement.setAttribute("data-copy", result);
+  document.getElementById("result").textContent = convertedText;
 }
 
 function copyToClipboard() {
@@ -101,32 +152,6 @@ function generateString() {
   outputElement.setAttribute("data-copy", result);
 }
 
-// function copyToClipboard() {
-//   const textToCopy = document
-//     .getElementById("output")
-//     .getAttribute("data-copy");
-//   if (textToCopy) {
-//     navigator.clipboard
-//       .writeText(textToCopy)
-//       .then(() => {
-//         showSnackbar();
-//       })
-//       .catch((err) => {
-//         console.error("Failed to copy: ", err);
-//       });
-//   }
-// }
-
-// function showSnackbar() {
-//   const snackbar = document.getElementById("snackbar");
-//   snackbar.classList.add("show");
-
-//   // Hide snackbar after 3 seconds
-//   setTimeout(() => {
-//     snackbar.classList.remove("show");
-//   }, 3000);
-// }
-
 function pickRandomItem() {
   let input = document.getElementById("itemInput").value;
   let items = input
@@ -142,25 +167,6 @@ function pickRandomItem() {
   let randomIndex = Math.floor(Math.random() * items.length);
   document.getElementById("result").innerText = items[randomIndex];
 }
-
-// function copyToClipboard() {
-//   let text = document.getElementById("result").innerText;
-//   if (text) {
-//     navigator.clipboard.writeText(text).then(() => {
-//       showSnackbar();
-//     });
-//   }
-// }
-
-// function showSnackbar() {
-//     const snackbar = document.getElementById("snackbar");
-//     snackbar.classList.add("show");
-
-//     // Hide snackbar after 3 seconds
-//     setTimeout(() => {
-//         snackbar.classList.remove("show");
-//     }, 3000);
-// }
 
 function expandCharSet(charSet) {
   const expanded = [];
