@@ -100,11 +100,12 @@ function convertText() {
   }
 
   document.getElementById("result").textContent = convertedText;
+  document.getElementById("result").setAttribute("data-copy", convertedText);
 }
 
-function copyToClipboard() {
+function copyToClipboard(selectorId) {
   const textToCopy = document
-    .getElementById("result")
+    .getElementById(selectorId)
     .getAttribute("data-copy");
   if (textToCopy) {
     navigator.clipboard
@@ -186,6 +187,7 @@ function pickRandomItem() {
 
   let randomIndex = Math.floor(Math.random() * items.length);
   document.getElementById("result").innerText = items[randomIndex];
+  document.getElementById("result").setAttribute("data-copy", randomIndex);
 }
 
 function expandCharSet(charSet) {
@@ -801,8 +803,9 @@ function generateName(selectorId) {
   let generatedFirstName = firstName[getFirstName];
   let getSurname = Math.floor(Math.random() * surname.length);
   let generatedSurname = surname[getSurname];
-  document.getElementById(selectorId).innerText =
-    generatedFirstName + " " + generatedSurname;
+  let result = generatedFirstName + " " + generatedSurname;
+  document.getElementById(selectorId).innerText = result;
+  document.getElementById(selectorId).setAttribute("data-copy", result);
 }
 
 // Matter number logic
@@ -823,6 +826,7 @@ function generateMatterNumber(selectorId, nameId) {
   let result1 = result.toUpperCase();
   let result2 = result1 + clientNumber + "-" + fileNumber;
   document.getElementById(selectorId).innerText = result2;
+  document.getElementById(selectorId).setAttribute("data-copy", result2);
 }
 
 // Address logic
@@ -996,6 +1000,7 @@ function generateAddress(selectorId) {
     fullPostcode;
 
   document.getElementById(selectorId).innerText = address;
+  document.getElementById(selectorId).setAttribute("data-copy", address);
 }
 
 // Telephone number logic
@@ -1003,6 +1008,9 @@ function generateAddress(selectorId) {
 function generateTelephoneNumber(selectorId) {
   const telephoneNumber = "01632 960 " + generateNumber(3);
   document.getElementById(selectorId).innerText = telephoneNumber;
+  document
+    .getElementById(selectorId)
+    .setAttribute("data-copy", telephoneNumber);
 }
 
 // Mobile number logic
@@ -1010,6 +1018,7 @@ function generateTelephoneNumber(selectorId) {
 function generateMobileNumber(selectorId) {
   const mobileNumber = "0770 090 0" + generateNumber(3);
   document.getElementById(selectorId).innerText = mobileNumber;
+  document.getElementById(selectorId).setAttribute("data-copy", mobileNumber);
 }
 
 // Sort code logic
@@ -1022,6 +1031,7 @@ function generateSortCode(selectorId) {
   let sortcode2 = generateNumber(6);
   let sortcode3 = formatSortCode(sortcode2);
   document.getElementById(selectorId).innerText = sortcode3;
+  document.getElementById(selectorId).setAttribute("data-copy", sortcode3);
 }
 
 // Account number logic
@@ -1029,6 +1039,7 @@ function generateSortCode(selectorId) {
 function generateAccountNumber(selectorId) {
   const accountnumber1 = generateNumber(4);
   const accountnumber2 = generateNumber(4);
-  document.getElementById(selectorId).innerText =
-    accountnumber1 + " " + accountnumber2;
+  let result = accountnumber1 + " " + accountnumber2;
+  document.getElementById(selectorId).innerText = result;
+  document.getElementById(selectorId).setAttribute("data-copy", result);
 }
