@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Generator</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="../favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicon_io/favicon-16x16.png">
+  <link rel="manifest" href="./favicon_io/site.webmanifest">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Anonymous Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&family=Sono:wght@200..800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar">
+    <!-- <div class="logo">Multitool</div> -->
+     <div class="logo">
+      <img src="../favicon_io/favicon-32x32.png">
+     </div>
+    <button class="menu-toggle" aria-label="Toggle Menu">&#9776;</button>
+    <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li class="dropdown">
+            <!-- <a href="#">Services ▼</a> -->
+            <a href="#">Services <i class="fa fa-caret-down"></i></a>
+            <ul class="dropdown-content">
+                <hr>
+                <li><a href="./data-generator/index.html">Data Generator</a></li>
+                <hr>
+                <li><a href="../character-generator/index.html">Character Generator</a></li>
+                <hr>
+                <li><a href="../list-comparison/index.html">List Comparison</a></li>
+                <hr>
+                <li><a href="../case-converter/index.html">Case Converter</a></li>
+                <hr>
+                <li><a href="../random-picker/index.html">Random Picker</a></li>
+                <hr>
+                <li><a href="../regex-generator/index.html">Regex String Generator</a></li>
+                <hr>
+            </ul>
+        </li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="card-container margin-top-double">
+    <div class="card">
+        <h2>Name</h2>
+        <p class="generator-text" id="name" onclick="copyToClipboard()">John Doe</p>
+        <button onclick="generateName('name')">Generate</button>
+      </div>
+      <div class="card">
+        <h2>Matter Number</h2>
+        <p class="generator-text" id="matterNumber" onclick="copyToClipboard()">DOE01-01</p>
+        <button onclick="generateMatterNumber('matterNumber', 'name')">Generate</button>
+      </div>
+      <div class="card">
+        <h2>Address</h2>
+        <p class="generator-text" id="address" onclick="copyToClipboard()">123 Main Street, London, AB12 3BC</p>
+        <button onclick="generateAddress('address')">Generate</button>
+      </div>
+      <div class="card">
+        <h2>Telephone Number</h2>
+        <p class="generator-text" id="telephoneNumber" onclick="copyToClipboard()">01632 960 000</p>
+        <button onclick="generateTelephoneNumber('telephoneNumber')">Generate</button>
+      </div>
+      <div class="card">
+        <h2>Mobile Number</h2>
+        <p class="generator-text" id="mobileNumber" onclick="copyToClipboard()">0770 900 000</p>
+        <button onclick="generateMobileNumber('mobileNumber')">Generate</button>
+      </div>
+      <div class="card">
+        <h2>Sort Code</h2>
+        <p class="generator-text" id="sortCode" onclick="copyToClipboard()">01-21-31</p>
+        <button onclick="generateSortCode('sortCode')">Generate</button>
+      </div>
+      <div class="card">
+        <h2>Account Number</h2>
+        <p class="generator-text" id="accountNumber" onclick="copyToClipboard()">1234 5678</p>
+        <button onclick="generateAccountNumber('accountNumber')">Generate</button>
+      </div>
+  </section>
+  <script src="../script.js"></script>
+</body>
+</html>

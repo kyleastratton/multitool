@@ -85,8 +85,12 @@ hr {
     display: block;
 }
 
-.welcome {
-    margin: 1.5rem 0;
+.margin-top {
+    margin-top: 2rem;
+}
+
+.margin-top-double {
+    margin-top: 4rem;
 }
 
 header, label {
@@ -100,8 +104,12 @@ h1 {
     color: #333;
 }
 
-h1, h2, h3 {
+h1, h3 {
     margin-bottom: 1rem;
+}
+
+h2 {
+    margin-bottom: 2rem;
 }
 
 .container {
@@ -110,7 +118,7 @@ h1, h2, h3 {
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 400px;
+    max-width: 600px;
     text-align: center;
     margin-top: 4rem;
   }
@@ -119,8 +127,8 @@ h1, h2, h3 {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 1600px;
+    /* margin: 0 auto; */
     padding: 0 20px;
     margin-bottom: 2rem;
 }
@@ -138,12 +146,6 @@ h1, h2, h3 {
 .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-.card h2 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-    color: #222;
 }
 
 .card p {
@@ -166,6 +168,15 @@ h1, h2, h3 {
     background-color: #0b599e;
 }
 
+.generator-text {
+    text-align: center;
+    font-family: "Anonymous Pro", serif;
+    font-weight: 600;
+    font-style: normal;
+    color: #1E88E5;
+    height: 2rem;
+}
+
 input, button {
     width: 90%;
     padding: 10px;
@@ -173,7 +184,7 @@ input, button {
     border: 1px solid #ccc;
     font-size: 16px;
     margin-bottom: 1rem;
-  }
+}
 
 button {
     cursor: pointer;
@@ -201,10 +212,6 @@ textarea {
     border-radius: 4px;
     background-color: #f8f8f8;
     font-size: 16px;
-}
-
-.title {
-    height: 3rem;
 }
 
 .description {
