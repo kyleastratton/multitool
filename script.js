@@ -185,9 +185,9 @@ function pickRandomItem() {
     return;
   }
 
-  let randomIndex = Math.floor(Math.random() * items.length);
-  document.getElementById("result").innerText = items[randomIndex];
-  document.getElementById("result").setAttribute("data-copy", randomIndex);
+  let result = Math.floor(Math.random() * items.length);
+  document.getElementById("result").innerText = items[result];
+  document.getElementById("result").setAttribute("data-copy", result);
 }
 
 function expandCharSet(charSet) {
@@ -822,11 +822,11 @@ function generateMatterNumber(selectorId, nameId) {
   if (fileNumber < 10) {
     fileNumber = fileNumber.toString().padStart(2, "0");
   }
-  let result = surname.substring(0, 3);
-  let result1 = result.toUpperCase();
-  let result2 = result1 + clientNumber + "-" + fileNumber;
-  document.getElementById(selectorId).innerText = result2;
-  document.getElementById(selectorId).setAttribute("data-copy", result2);
+  let part1 = surname.substring(0, 3);
+  let part1Formatted = part1.toUpperCase();
+  let result = part1Formatted + clientNumber + "-" + fileNumber;
+  document.getElementById(selectorId).innerText = result;
+  document.getElementById(selectorId).setAttribute("data-copy", result);
 }
 
 // Address logic
@@ -988,7 +988,7 @@ function generateAddress(selectorId) {
     generatedPostcode3 +
     generatedPostcode4;
 
-  const address =
+  const result =
     generatedNumber +
     " " +
     streetPrefix[generatedStreetPrefix] +
@@ -999,26 +999,24 @@ function generateAddress(selectorId) {
     ", " +
     fullPostcode;
 
-  document.getElementById(selectorId).innerText = address;
-  document.getElementById(selectorId).setAttribute("data-copy", address);
+  document.getElementById(selectorId).innerText = result;
+  document.getElementById(selectorId).setAttribute("data-copy", result);
 }
 
 // Telephone number logic
 
 function generateTelephoneNumber(selectorId) {
-  const telephoneNumber = "01632 960 " + generateNumber(3);
-  document.getElementById(selectorId).innerText = telephoneNumber;
-  document
-    .getElementById(selectorId)
-    .setAttribute("data-copy", telephoneNumber);
+  const result = "01632 960 " + generateNumber(3);
+  document.getElementById(selectorId).innerText = result;
+  document.getElementById(selectorId).setAttribute("data-copy", result);
 }
 
 // Mobile number logic
 
 function generateMobileNumber(selectorId) {
-  const mobileNumber = "0770 090 0" + generateNumber(3);
-  document.getElementById(selectorId).innerText = mobileNumber;
-  document.getElementById(selectorId).setAttribute("data-copy", mobileNumber);
+  const result = "0770 090 0" + generateNumber(3);
+  document.getElementById(selectorId).innerText = result;
+  document.getElementById(selectorId).setAttribute("data-copy", result);
 }
 
 // Sort code logic
@@ -1029,9 +1027,9 @@ function formatSortCode(str) {
 
 function generateSortCode(selectorId) {
   let sortcode2 = generateNumber(6);
-  let sortcode3 = formatSortCode(sortcode2);
-  document.getElementById(selectorId).innerText = sortcode3;
-  document.getElementById(selectorId).setAttribute("data-copy", sortcode3);
+  let result = formatSortCode(sortcode2);
+  document.getElementById(selectorId).innerText = result;
+  document.getElementById(selectorId).setAttribute("data-copy", result);
 }
 
 // Account number logic
@@ -1040,6 +1038,25 @@ function generateAccountNumber(selectorId) {
   const accountnumber1 = generateNumber(4);
   const accountnumber2 = generateNumber(4);
   let result = accountnumber1 + " " + accountnumber2;
+  document.getElementById(selectorId).innerText = result;
+  document.getElementById(selectorId).setAttribute("data-copy", result);
+}
+
+// Amount logic
+
+function getAmount(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+function numberWithCommas(x) {
+  var parts = x.toString().split(".");
+  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return parts.join(".");
+}
+
+function generateAmount(selectorId) {
+  let number = parseFloat(getAmount(0, 250000).toFixed(2));
+  let result = numberWithCommas(number);
   document.getElementById(selectorId).innerText = result;
   document.getElementById(selectorId).setAttribute("data-copy", result);
 }
