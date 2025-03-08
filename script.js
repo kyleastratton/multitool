@@ -6,6 +6,23 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+let lastTouchTime = 0;
+document.addEventListener(
+  "touchstart",
+  function (event) {
+    const currentTime = new Date().getTime();
+    const timeDifference = currentTime - lastTouchTime;
+
+    if (timeDifference < 100) {
+      // If second tap occurs within 300ms, prevent default zoom behavior
+      event.preventDefault();
+    }
+
+    lastTouchTime = currentTime;
+  },
+  { passive: false }
+); // passive: false ensures preventDefault() works
+
 function parseList(input) {
   return input.split(/\s*,\s*/).filter((item) => item.trim() !== "");
 }

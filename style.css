@@ -6,25 +6,26 @@
 }
 
 body {
-    background-color: #f4f4f9;
+    background-color: #0F172A;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #f2f2f2;
     margin: 0;
+    color: #d5dce3;
 }
 
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #1E88E5;
+    background-color: #1E293B;
     padding: 1rem;
-    color: white;
+    color: #d5dce3;
     top: 0;
     left: 0;
     width: 100%;
+    border: 1px solid #000;
 }
 
 .nav-links {
@@ -36,7 +37,7 @@ body {
 }
 
 .nav-links a {
-    color: white;
+    color: #d5dce3;
     text-decoration: none;
 }
 
@@ -45,7 +46,7 @@ body {
     background: none;
     border: none;
     font-size: 1.5rem;
-    color: white;
+    color: #d5dce3;
     cursor: pointer;
 }
 
@@ -60,21 +61,24 @@ body {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #1E88E5;
+    background-color: #1E293B;
     box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
     min-width: 150px;
     top: 100%;
     left: 0;
+    text-align: center;
 }
 
 .dropdown-content a {
     display: block;
     padding: 10px;
-    color: white;
+    color: #d5dce3;
 }
 
 hr {
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid #d5dce3;
+    width: 70%;
+    margin: auto;
 }
 
 .dropdown-content a:hover {
@@ -101,7 +105,6 @@ header, label {
 
 h1 {
     font-size: 2rem;
-    color: #333;
 }
 
 h1, h3 {
@@ -113,9 +116,10 @@ h2 {
 }
 
 .container {
-    background-color: #fff;
+    background-color: #1E293B;
     padding: 20px;
     border-radius: 10px;
+    border: 1px solid #000;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 600px;
@@ -134,7 +138,7 @@ h2 {
 }
 
 .card {
-    background-color: #fff;
+    background-color: #1E293B;
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -150,7 +154,6 @@ h2 {
 
 .card p {
     font-size: 0.95rem;
-    color: #555;
     margin-bottom: 15px;
 }
 
@@ -173,17 +176,27 @@ h2 {
     font-family: "Anonymous Pro", serif;
     font-weight: 600;
     font-style: normal;
-    color: #1E88E5;
+    /* color: #1E88E5; */
     height: 2rem;
+}
+
+label {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
 }
 
 input, button {
     width: 90%;
     padding: 10px;
     border-radius: 5px;
-    border: 1px solid #ccc;
     font-size: 16px;
     margin-bottom: 1rem;
+    border: solid 1px #000;
+}
+
+input, select, textarea {
+    background-color: #0F172A;
+    color: #d5dce3;
 }
 
 button {
@@ -208,9 +221,9 @@ textarea {
     height: 150px;
     padding: 12px 20px;
     box-sizing: border-box;
-    border: 2px solid #ccc;
+    border: 2px solid #000;
     border-radius: 4px;
-    background-color: #f8f8f8;
+    /* background-color: #f8f8f8; */
     font-size: 16px;
 }
 
@@ -223,7 +236,7 @@ textarea {
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 1rem;
-    color: #1E88E5;
+    color: #d5dce3;
 }
 
 .center {
@@ -300,7 +313,7 @@ textarea {
         position: absolute;
         top: 60px;
         left: 0;
-        background-color: #1E88E5;
+        background-color: #1E293B;
         width: 100%;
         padding: 1rem;
     }
