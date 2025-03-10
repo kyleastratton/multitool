@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Due Date Calculator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/later/1.2.0/later.min.js"></script>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="../favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="../favicon_io/site.webmanifest">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #0F172A;
+            color: #d5dce3;
+        }
+        .container {
+            background-color: #1E293B;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 2px 10px #0F172A;
+            border: 1px solid #000;
+        }
+        h1 {
+            color: #d5dce3;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        input {
+            background-color: #0F172A;
+            color: #d5dce3
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #0F172A;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        input, select, button {
+            box-sizing: border-box;
+        }
+        input[type="datetime-local"] {
+            width: 100%;
+            background-color: #0F172A;
+            color: #d5dce3;
+            border: 1px solid #000; 
+            padding: 10px;
+            font-size: 16px;
+            box-sizing: border-box;
+            
+            /* Override iOS styles */
+            -webkit-appearance: none; /* Removes iOS default styling */
+            appearance: none;
+            text-align: left; /* Prevents unwanted text alignment */
+        }
+        input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+            filter: invert(1); /* Makes the calendar icon visible in dark mode */
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .result-container {
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #0F172A;
+            min-height: 3.2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            border: 1px solid #000;
+            display: none;
+        }
+        .test-container {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #1E293B;
+            border-radius: 8px;
+        }
+        #test-results {
+            display: none;
+        }
+    </style> -->
+</head>
+<body>
+    <nav class="navbar">
+        <!-- <div class="logo">Multitool</div> -->
+        <div class="logo">
+          <img src="../favicon_io/favicon-32x32.png">
+        </div>
+        <button class="menu-toggle" aria-label="Toggle Menu">&#9776;</button>
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li class="dropdown">
+              <a href="#">Services <i class="fa fa-caret-down"></i></a>
+                <ul class="dropdown-content">
+                  <li><a href="./data-generator/index.html">Data Generator</a></li>
+                  <hr>
+                  <li><a href="../character-generator/index.html">Character Generator</a></li>
+                  <hr>
+                  <li><a href="../list-comparison/index.html">List Comparison</a></li>
+                  <hr>
+                  <li><a href="../case-converter/index.html">Case Converter</a></li>
+                  <hr>
+                  <li><a href="../random-picker/index.html">Random Picker</a></li>
+                  <hr>
+                  <li><a href="./index.html">Regex String Generator</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <h1>Due Date Calculator</h1>
+        <div class="form-group">
+            <label for="cronExpression">Cron Expression</label>
+            <input type="text" id="cronExpression" placeholder="e.g. 0 30 17 * * *">
+        </div>
+        <div class="form-group">
+            <label for="threshold">Threshold (minutes)</label>
+            <input type="number" id="threshold" placeholder="e.g. 60">
+        </div>
+        <div class="form-group">
+            <label for="creationDateTime">Creation Date</label>
+            <input type="datetime-local" id="creationDateTime">
+        </div>
+        <button onclick="calculateDueDate(document.getElementById('creationDateTime').innerText.toString())">Calculate Due Date</button>
+        <div class="result-container" id="result-container">
+            <p id="result"></p>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Test Cases</h2>
+        <button onclick="runTests()">Run Test Cases</button>
+        <div id="test-results"></div>
+    </div>
+
+    <script>
+        document.getElementById('creationDateTime').value = new Date().toISOString().slice(0, 16);
+
+        function formatDateWithDay(date) {
+            const options = { weekday: 'short', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+            return date.toLocaleString('en-GB', options);
+        }
+
+        function adjustForLateCreation(date) {
+            let adjustedDate = new Date(date);
+            let day = adjustedDate.getDay();
+            let hours = adjustedDate.getHours();
+            
+            if (day === 6) { 
+                adjustedDate.setDate(adjustedDate.getDate() + 2);
+                adjustedDate.setHours(9, 0, 0, 0);
+            } else if (day === 0) { 
+                adjustedDate.setDate(adjustedDate.getDate() + 1);
+                adjustedDate.setHours(9, 0, 0, 0);
+            } else if (day >= 1 && day <= 5 && hours >= 16) { 
+                adjustedDate.setDate(adjustedDate.getDate() + (day === 5 ? 3 : 1));
+                adjustedDate.setHours(9, 0, 0, 0);
+            }
+            return adjustedDate;
+        }
+
+        function calculateDueDate(creationDateInput = null) {
+            let creationDate = creationDateInput || new Date(document.getElementById('creationDateTime').value);
+            let cronExpression = document.getElementById('cronExpression').value;
+            let threshold = parseInt(document.getElementById('threshold').value, 10) || 0;
+
+            if (!cronExpression) {
+                document.getElementById('result').innerText = 'Please enter a cron expression!';
+                document.getElementById('result-container').style.display = 'none';
+                return;
+            }
+
+            let adjustedDate = adjustForLateCreation(creationDate);
+            let schedule = later.parse.cron(cronExpression, true);
+            let thresholdEndDate = new Date(adjustedDate.getTime() + threshold * 60000);
+            // Get when the threshold period ends
+            let nextRun = later.schedule(schedule).next(1, thresholdEndDate);
+            let thresholdBoundary = new Date(adjustedDate.getTime() + threshold * 60000);
+            let withinThreshold = thresholdBoundary > nextRun;
+            let maxFuture = new Date();
+            maxFuture.setFullYear(maxFuture.getFullYear() + 1); // Prevents infinite jumps
+            if (nextRun > maxFuture) nextRun = later.schedule(schedule).next(1);
+            if (withinThreshold) {
+                let nextRunArr = later.schedule(schedule).next(2, nextRun);
+                if (nextRunArr.length >= 2) {
+                    nextRun = nextRunArr[1];
+                }
+            }
+
+
+            let formattedDueDate = formatDateWithDay(nextRun);
+
+            // If called from the button (no parameter), update UI
+            if (!creationDateInput) {
+                document.getElementById('result').innerText = `Due Date: ${formattedDueDate}`;
+                document.getElementById('result-container').style.display = 'block';
+            }
+
+            return formattedDueDate;
+        }
+
+
+        function runTests() {
+            let testDates = [
+                new Date(),
+                "Monday 07:02",
+                "Monday 11:42",
+                "Monday 16:15",
+                "Monday 19:27",
+                "Friday 07:02",
+                "Friday 16:30",
+                "Friday 18:02",
+                "Saturday 10:00",
+                "Sunday 10:00"
+            ];
+
+            let now = new Date();
+            let baseDate = new Date(now.setHours(0, 0, 0, 0));
+            
+            let testDateObjects = testDates.map((desc, index) => {
+                if (index === 0) return new Date(); 
+
+                let parts = desc.split(" ");
+                let dayName = parts[0];
+                let timeParts = parts[1].split(":");
+                let hours = parseInt(timeParts[0], 10);
+                let minutes = parseInt(timeParts[1], 10);
+
+                let dayMapping = {
+                    "Sunday": 0, "Monday": 1, "Tuesday": 2, "Wednesday": 3,
+                    "Thursday": 4, "Friday": 5, "Saturday": 6
+                };
+                let targetDay = dayMapping[dayName];
+                
+                let daysToAdd = (targetDay - baseDate.getDay() + 7) % 7;
+                let newDate = new Date(baseDate);
+                newDate.setDate(baseDate.getDate() + daysToAdd);
+                newDate.setHours(hours, minutes, 0, 0);
+                return newDate;
+            });
+
+            let resultsContainer = document.getElementById('test-results');
+            resultsContainer.innerHTML = "<h3>Test Results</h3>";
+            resultsContainer.style.display = 'block';
+
+            testDateObjects.forEach((testDate, index) => {
+                let dueDate = calculateDueDate(testDate);
+                resultsContainer.innerHTML += `<p>Test Case ${index + 1}: Created at ${formatDateWithDay(testDate)} → Due Date: ${dueDate}</p>`;
+            });
+        }
+    </script>
+</body>
+</html>
+
