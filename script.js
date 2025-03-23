@@ -1738,3 +1738,39 @@ function generateAmount(selectorId) {
   document.getElementById(selectorId).innerText = result;
   document.getElementById(selectorId).setAttribute("data-copy", result);
 }
+
+// Percentage logic
+
+function calculatePercentageOfValue() {
+  const value = parseFloat(document.getElementById('value1').value);
+  const percentage = parseFloat(document.getElementById('percentage1').value);
+  if (isNaN(value) || isNaN(percentage)) {
+      document.getElementById('result1').textContent = 'Please enter valid numbers.';
+      return;
+  }
+  const result = (percentage / 100) * value;
+  document.getElementById('result1').textContent = `${percentage}% of ${value} is ${result}.`;
+}
+
+function calculateValuePlusPercentage() {
+  const value = parseFloat(document.getElementById('value2').value);
+  const percentage = parseFloat(document.getElementById('percentage2').value);
+  if (isNaN(value) || isNaN(percentage)) {
+      document.getElementById('result2').textContent = 'Please enter valid numbers.';
+      return;
+  }
+  const result = value + (percentage / 100) * value;
+  document.getElementById('result2').textContent = `${value} plus ${percentage}% is ${result}.`;
+}
+
+function calculateValueMinusPercentage() {
+  const value = parseFloat(document.getElementById('value2').value);
+  const percentage = parseFloat(document.getElementById('percentage2').value);
+  if (isNaN(value) || isNaN(percentage)) {
+      document.getElementById('result2').textContent = 'Please enter valid numbers.';
+      return;
+  }
+  const result = value - (percentage / 100) * value;
+  document.getElementById('result2').textContent = `${value} minus ${percentage}% is ${result}.`;
+}
+
