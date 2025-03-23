@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamertag Generator</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="../favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="../favicon_io/site.webmanifest">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+        }
+        .button {
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            background: blue;
+            color: white;
+            border-radius: 5px;
+        }
+        .list-container {
+            text-align: left;
+            margin-top: 20px;
+        }
+    </style> -->
+</head>
+<body>
+    <nav class="navbar">
+        <!-- <div class="logo">Multitool</div> -->
+        <div class="logo">
+            <img src="../favicon_io/favicon-32x32.png">
+        </div>
+        <button class="menu-toggle" aria-label="Toggle Menu">&#9776;</button>
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li class="dropdown">
+                <a href="#">Services <i class="fa fa-caret-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="./data-generator/index.html">Data Generator</a></li>
+                    <hr>
+                    <li><a href="../character-generator/index.html">Character Generator</a></li>
+                    <hr>
+                    <li><a href="../list-comparison/index.html">List Comparison</a></li>
+                    <hr>
+                    <li><a href="./index.html">Case Converter</a></li>
+                    <hr>
+                    <li><a href="../random-picker/index.html">Random Picker</a></li>
+                    <hr>
+                    <li><a href="../regex-generator/index.html">Regex String Generator</a></li>
+                    <hr>
+                    <li><a href="../percentage-calculator/">Percentage Calculator</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Gamertag Generator</h1>
+        <button class="button" onclick="generateGamertag()">Generate Gamertag</button>
+        <p id="generatedName"></p>
+        <button class="button" onclick="saveFavorite()">Save to Favorites</button>
+        
+        <div class="list-container">
+            <h3>Previous Names</h3>
+            <ul id="previousNames"></ul>
+            <h3>Favorites</h3>
+            <ul id="favoriteNames"></ul>
+        </div>
+    </div>
+    
+    <script>
+        const adjectives = ["Swift", "Brave", "Dark", "Fierce", "Mighty", "Stealthy", "Crazy", "Epic"];
+        const nouns = ["Warrior", "Dragon", "Hunter", "Shadow", "Phantom", "Rogue", "Knight", "Sniper"];
+        
+        function generateGamertag() {
+            const adj = adjectives[Math.floor(Math.random() * adjectives.length)];
+            const noun = nouns[Math.floor(Math.random() * nouns.length)];
+            const number = Math.floor(Math.random() * 1000);
+            const gamertag = `${adj}${noun}${number}`;
+            
+            document.getElementById("generatedName").textContent = gamertag;
+            addToPrevious(gamertag);
+        }
+        
+        function addToPrevious(name) {
+            const list = document.getElementById("previousNames");
+            const item = document.createElement("li");
+            item.textContent = name;
+            list.appendChild(item);
+        }
+        
+        function saveFavorite() {
+            const name = document.getElementById("generatedName").textContent;
+            if (!name) return;
+            const list = document.getElementById("favoriteNames");
+            const item = document.createElement("li");
+            item.textContent = name;
+            list.appendChild(item);
+        }
+    </script>
+</body>
+</html>
