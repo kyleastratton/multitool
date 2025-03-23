@@ -70,17 +70,21 @@
     <div class="container">
         <h1>Gamertag Generator</h1>
         <button class="button" onclick="generateGamertag()">Generate Gamertag</button>
-        <p id="generatedName"></p>
-        <button class="button" onclick="saveFavorite()">Save to Favorites</button>
-        
-        <div class="list-container">
+        <p id="generatedName">exampleUsername123</p>
+        <i class="fa-solid fa-star margin" onclick="saveFavorite()"></i>
+        <!-- <button class="button" onclick="saveFavorite()">Save to Favorites</button> -->
+    </div>
+
+    <div class="container">
+        <div class="list-container"></div>
             <h3>Previous Names</h3>
-            <ul id="previousNames"></ul>
+            <ul id="previousNames" class="margin-bottom"></ul>
             <h3>Favorites</h3>
-            <ul id="favoriteNames"></ul>
+            <ul id="favoriteNames" class="margin-bottom"></ul>
         </div>
     </div>
     
+    <script src="https://kit.fontawesome.com/c14a1ffeb9.js" crossorigin="anonymous"></script>
     <script>
         const adjectives = ["Swift", "Brave", "Dark", "Fierce", "Mighty", "Stealthy", "Crazy", "Epic"];
         const nouns = ["Warrior", "Dragon", "Hunter", "Shadow", "Phantom", "Rogue", "Knight", "Sniper"];
