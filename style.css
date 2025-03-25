@@ -205,12 +205,20 @@ label {
     font-size: 1.2rem;
 }
 
-input, button {
+input {
     width: 90%;
     padding: 10px;
     border-radius: 5px;
     font-size: 16px;
-    /* margin: 1rem; */
+    margin: 1rem;
+    border: solid 1px #000;
+}
+
+button {
+    width: 90%;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
     border: solid 1px #000;
 }
 

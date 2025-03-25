@@ -50,12 +50,21 @@ function compareLists() {
     (result.length ? result.join(", ") : "No results found");
 }
 
+function toTitleCase(str) {
+  return str.toLowerCase().replace(/\b\w/g, function (char) {
+    return char.toUpperCase();
+  });
+}
+
 function convertText() {
   const text = document.getElementById("textInput").value;
   const caseType = document.getElementById("caseSelector").value;
   let convertedText = "";
 
   switch (caseType) {
+    case "title_case":
+      convertedText = toTitleCase(text);
+      break;
     case "sentence":
       convertedText =
         text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
@@ -462,7 +471,7 @@ function generateName(selectorId) {
     "Wayne",
     "Zachary",
     "Zane",
-    "Zack",
+    "Zack"
   ];
 
   let femaleNames = [
@@ -697,7 +706,7 @@ function generateName(selectorId) {
     "Zoe",
     "Zoey",
     "Zara",
-    "Zahra",
+    "Zahra"
   ];
 
   let surname = [
@@ -1473,7 +1482,7 @@ function generateName(selectorId) {
     "Yates",
     "Young",
     "Zane",
-    "Ziegler",
+    "Ziegler"
   ];
 
   const firstName = maleNames.concat(femaleNames);
@@ -1695,9 +1704,16 @@ const townsAndPostcodes = [
 ];
 
 const streetNames = [
-  "High Street", "Station Road", "Main Street", "Park Avenue",
-  "Church Lane", "Victoria Road", "Queensway", "London Road",
-  "King Street", "New Road"
+  "High Street",
+  "Station Road",
+  "Main Street",
+  "Park Avenue",
+  "Church Lane",
+  "Victoria Road",
+  "Queensway",
+  "London Road",
+  "King Street",
+  "New Road"
 ];
 
 function getRandomItem(arr) {
@@ -1711,18 +1727,17 @@ function generateAddress(selectorId) {
 
   let formattedStreet;
 
-    if (Math.random() < 0.25) {
-        const unitNumber = Math.floor(Math.random() * 5) + 1; 
-        formattedStreet = `${unitNumber}/${houseNumber} ${street}`;
-    } else {
-        formattedStreet = `${houseNumber} ${street}`;
-    }
+  if (Math.random() < 0.25) {
+    const unitNumber = Math.floor(Math.random() * 5) + 1;
+    formattedStreet = `${unitNumber}/${houseNumber} ${street}`;
+  } else {
+    formattedStreet = `${houseNumber} ${street}`;
+  }
 
   const result = `${formattedStreet}, ${town}, ${postcode}`;
   document.getElementById(selectorId).innerText = result;
   document.getElementById(selectorId).setAttribute("data-copy", result);
 }
-
 
 // Telephone number logic
 
@@ -1785,35 +1800,43 @@ function generateAmount(selectorId) {
 // Percentage logic
 
 function calculatePercentageOfValue() {
-  const value = parseFloat(document.getElementById('value1').value);
-  const percentage = parseFloat(document.getElementById('percentage1').value);
+  const value = parseFloat(document.getElementById("value1").value);
+  const percentage = parseFloat(document.getElementById("percentage1").value);
   if (isNaN(value) || isNaN(percentage)) {
-      document.getElementById('result1').textContent = 'Please enter valid numbers.';
-      return;
+    document.getElementById("result1").textContent =
+      "Please enter valid numbers.";
+    return;
   }
   const result = (percentage / 100) * value;
-  document.getElementById('result1').textContent = `${percentage}% of ${value} is ${result}.`;
+  document.getElementById(
+    "result1"
+  ).textContent = `${percentage}% of ${value} is ${result}.`;
 }
 
 function calculateValuePlusPercentage() {
-  const value = parseFloat(document.getElementById('value2').value);
-  const percentage = parseFloat(document.getElementById('percentage2').value);
+  const value = parseFloat(document.getElementById("value2").value);
+  const percentage = parseFloat(document.getElementById("percentage2").value);
   if (isNaN(value) || isNaN(percentage)) {
-      document.getElementById('result2').textContent = 'Please enter valid numbers.';
-      return;
+    document.getElementById("result2").textContent =
+      "Please enter valid numbers.";
+    return;
   }
   const result = value + (percentage / 100) * value;
-  document.getElementById('result2').textContent = `${value} plus ${percentage}% is ${result}.`;
+  document.getElementById(
+    "result2"
+  ).textContent = `${value} plus ${percentage}% is ${result}.`;
 }
 
 function calculateValueMinusPercentage() {
-  const value = parseFloat(document.getElementById('value2').value);
-  const percentage = parseFloat(document.getElementById('percentage2').value);
+  const value = parseFloat(document.getElementById("value2").value);
+  const percentage = parseFloat(document.getElementById("percentage2").value);
   if (isNaN(value) || isNaN(percentage)) {
-      document.getElementById('result2').textContent = 'Please enter valid numbers.';
-      return;
+    document.getElementById("result2").textContent =
+      "Please enter valid numbers.";
+    return;
   }
   const result = value - (percentage / 100) * value;
-  document.getElementById('result2').textContent = `${value} minus ${percentage}% is ${result}.`;
+  document.getElementById(
+    "result2"
+  ).textContent = `${value} minus ${percentage}% is ${result}.`;
 }
-

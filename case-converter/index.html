@@ -49,18 +49,19 @@
         <input type="text" id="textInput" placeholder="Enter text here">
         <h3>Casing</h3>
         <select id="caseSelector">
-            <option value="sentence">Sentence case</option>
-            <option value="uppercase">Uppercase</option>
-            <option value="lowercase">Lowercase</option>
-            <option value="alternating">Alternating Case</option>
-            <option value="inverse">Inverse Case</option>
-            <option value="snake">Snake Case</option>
-            <option value="kebab">Kebab Case</option>
-            <option value="camel">Camel Case</option>
-            <option value="pascal">Pascal Case</option>
-            <option value="screaming_snake">Screaming Snake Case</option>
-            <option value="screaming_kebab">Screaming Kebab Case</option>
-            <option value="train">Train Case</option>
+            <option value="title_case">Title Case (Hello World)</option>
+            <option value="sentence">Sentence Case (Hello world)</option>
+            <option value="uppercase">Uppercase (HELLO WORLD)</option>
+            <option value="lowercase">Lowercase (hello world)</option>
+            <option value="alternating">Alternating Case (hElLo wOrLd)</option>
+            <option value="inverse">Inverse Case (hELLO wORLD)</option>
+            <option value="snake">Snake Case (hello_world)</option>
+            <option value="kebab">Kebab Case (hello-world)</option>
+            <option value="camel">Camel Case (helloWorld)</option>
+            <option value="pascal">Pascal Case (HelloWorld)</option>
+            <option value="screaming_snake">Screaming Snake Case (HELLO_WORLD)</option>
+            <option value="screaming_kebab">Screaming Kebab Case (HELLO-WORLD)</option>
+            <option value="train">Train Case (HelloWorld)</option>
         </select>
         <button onclick="convertText()">Convert</button>
         <p id="result" onclick="copyToClipboard('result')"></p>
