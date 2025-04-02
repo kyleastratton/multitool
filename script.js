@@ -48,7 +48,6 @@ function compareLists() {
   let list1 = parseList(document.getElementById("list1").value);
   let list2 = parseList(document.getElementById("list2").value);
   let comparisonType = document.getElementById("comparisonType").value;
-  let resultDiv = document.getElementById("result");
 
   let set1 = new Set(list1);
   let set2 = new Set(list2);
@@ -62,9 +61,21 @@ function compareLists() {
     result = list1.filter((item) => set2.has(item));
   }
 
-  resultDiv.innerHTML =
-    "<strong>Result:</strong> " +
-    (result.length ? result.join(", ") : "No results found");
+  if (list1.length === 0) {
+    updateResult(
+      "result",
+      "Error: Please make sure a list has been added to List 1 and List 2.",
+      true
+    );
+    return;
+  }
+
+  if (result.length === 0) {
+    updateResult("result", "Error: No results found.", true);
+    return;
+  }
+
+  updateResult("result", `Result: ${result.join(", ")}`);
 }
 
 function toTitleCase(str) {
@@ -142,7 +153,8 @@ function convertText() {
       convertedText = text;
   }
 
-  document.getElementById("result").textContent = convertedText;
+  // document.getElementById("result").textContent = convertedText;
+  updateResult("result", `${convertedText}`);
   document.getElementById("result").setAttribute("data-copy", convertedText);
 }
 
@@ -212,7 +224,7 @@ function generateString() {
 
   let result = order === "charFirst" ? charPart + numPart : numPart + charPart;
   const outputElement = document.getElementById("result");
-  outputElement.innerText = result;
+  updateResult("result", result);
   outputElement.setAttribute("data-copy", result);
 }
 
@@ -224,12 +236,12 @@ function pickRandomItem() {
     .filter((item) => item !== "");
 
   if (items.length === 0) {
-    document.getElementById("result").innerText = "Please enter some items.";
+    updateResult("result", "Error: Please enter some items.", true);
     return;
   }
 
   let result = Math.floor(Math.random() * items.length);
-  document.getElementById("result").innerText = items[result];
+  updateResult("result", `${items[result]}`);
   document.getElementById("result").setAttribute("data-copy", result);
 }
 
@@ -285,23 +297,26 @@ function generateFromSimpleRegex(regex) {
 function generateStrings() {
   const regexInput = document.getElementById("regexInput").value.trim();
   const count = parseInt(document.getElementById("countInput").value, 10) || 1;
-  const outputDiv = document.getElementById("result");
-  outputDiv.innerHTML = "";
 
   if (!regexInput) {
-    outputDiv.textContent = "Please enter a regex pattern.";
+    updateResult("result", "Error: Please enter a regex pattern.", true);
     return;
   }
 
   try {
     for (let i = 0; i < count; i++) {
       const generated = generateFromSimpleRegex(regexInput);
-      const line = document.createElement("div");
-      line.textContent = `Generated ${i + 1}: ${generated}`;
-      outputDiv.appendChild(line);
+      result = `${i + 1}: ${generated}`;
+      updateResult("result", `Result: ${result}`);
+      document.getElementById("result").setAttribute("data-copy", result);
     }
   } catch (error) {
-    outputDiv.textContent = "Error: Invalid regex or unsupported pattern.";
+    // outputDiv.textContent = "Error: Invalid regex or unsupported pattern.";
+    updateResult(
+      "result",
+      "Error: Invalid regex or unsupported pattern.",
+      true
+    );
   }
 }
 
@@ -1820,7 +1835,11 @@ function calculatePercentageOfValue() {
   const value = parseFloat(document.getElementById("value1").value);
   const percentage = parseFloat(document.getElementById("percentage1").value);
   if (isNaN(value) || isNaN(percentage)) {
-    updateResult("result1", "Error: Please enter valid numbers.", true);
+    updateResult(
+      "result1",
+      "Error: Value or Percentage cannot be 0 or null.",
+      true
+    );
     return;
   }
   const result = (percentage / 100) * value;
@@ -1831,7 +1850,11 @@ function calculateValuePlusPercentage() {
   const value = parseFloat(document.getElementById("value2").value);
   const percentage = parseFloat(document.getElementById("percentage2").value);
   if (isNaN(value) || isNaN(percentage)) {
-    updateResult("result2", "Error: Please enter valid numbers.", true);
+    updateResult(
+      "result2",
+      "Error: Value or Percentage cannot be 0 or null.",
+      true
+    );
     return;
   }
   const result = value + (percentage / 100) * value;
@@ -1842,7 +1865,11 @@ function calculateValueMinusPercentage() {
   const value = parseFloat(document.getElementById("value2").value);
   const percentage = parseFloat(document.getElementById("percentage2").value);
   if (isNaN(value) || isNaN(percentage)) {
-    updateResult("result2", "Error: Please enter valid numbers.", true);
+    updateResult(
+      "result2",
+      "Error: Value or Percentage cannot be 0 or null.",
+      true
+    );
     return;
   }
   const result = value - (percentage / 100) * value;
@@ -1855,12 +1882,12 @@ function calculatePercentageOf() {
   let b = parseFloat(document.getElementById("valueB").value);
 
   if (!a || a === 0) {
-    updateResult("result3", "Error: A cannot be 0.", true);
+    updateResult("result3", "Error: A cannot be 0 or null.", true);
     return;
   }
 
   if (!b || b === 0) {
-    updateResult("result3", "Error: B cannot be 0.", true);
+    updateResult("result3", "Error: B cannot be 0 or null.", true);
     return;
   }
 

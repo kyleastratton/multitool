@@ -27,7 +27,7 @@
         <li class="dropdown">
           <a href="#">Services <i class="fa fa-caret-down"></i></a>
             <ul class="dropdown-content">
-              <li><a href="./data-generator/index.html">Data Generator</a></li>
+              <li><a href="../data-generator/index.html">Data Generator</a></li>
               <hr>
               <li><a href="../character-generator/index.html">Character Generator</a></li>
               <hr>
@@ -53,8 +53,10 @@
     <h3>Number of strings to generate</h3>
     <input type="number" id="countInput" placeholder="Number of strings to generate" min="1" value="1" />
     <button onclick="generateStrings()">Generate Strings</button>
-    <div class="result" id="result"></div>
+    <div id="result" class="result-box" style="display: none;" onclick="copyToClipboard('result')"/>
   </div>
+
+  <div id="snackbar" class="snackbar">Text copied to clipboard!</div>
 
   <script src="../script.js"></script>
 </body>

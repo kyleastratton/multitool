@@ -27,7 +27,7 @@
             <li class="dropdown">
                 <a href="#">Services <i class="fa fa-caret-down"></i></a>
                 <ul class="dropdown-content">
-                    <li><a href="./data-generator/index.html">Data Generator</a></li>
+                    <li><a href="../data-generator/index.html">Data Generator</a></li>
                     <hr>
                     <li><a href="./index.html">Character Generator</a></li>
                     <hr>
@@ -58,7 +58,7 @@
             <option value="numFirst">Numbers First</option>
         </select>
         <button onclick="generateString()">Generate</button>
-        <div id="result" onclick="copyToClipboard('result')" title="Click to copy"></div>
+        <div id="result" class="result-box" style="display: none;" onclick="copyToClipboard('result')" title="Click to copy"/>
     </div>
 
     <div id="snackbar" class="snackbar">Text copied to clipboard!</div>
