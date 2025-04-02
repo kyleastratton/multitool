@@ -23,6 +23,23 @@ document.addEventListener(
   { passive: false }
 ); // passive: false ensures preventDefault() works
 
+// Render results logic
+
+function updateResult(resultId, value, isError = false) {
+  let resultBox = document.getElementById(resultId);
+
+  if (!resultBox) return; // Safety check
+
+  resultBox.textContent = value;
+  resultBox.style.display = "inline-block"; // Show result
+
+  // Reset error class first, then apply conditionally
+  resultBox.classList.remove("error");
+  if (isError) {
+    resultBox.classList.add("error");
+  }
+}
+
 function parseList(input) {
   return input.split(/\s*,\s*/).filter((item) => item.trim() !== "");
 }
@@ -1803,40 +1820,51 @@ function calculatePercentageOfValue() {
   const value = parseFloat(document.getElementById("value1").value);
   const percentage = parseFloat(document.getElementById("percentage1").value);
   if (isNaN(value) || isNaN(percentage)) {
-    document.getElementById("result1").textContent =
-      "Please enter valid numbers.";
+    updateResult("result1", "Error: Please enter valid numbers.", true);
     return;
   }
   const result = (percentage / 100) * value;
-  document.getElementById(
-    "result1"
-  ).textContent = `${percentage}% of ${value} is ${result}.`;
+  updateResult("result1", `${percentage}% of ${value} is ${result}.`);
 }
 
 function calculateValuePlusPercentage() {
   const value = parseFloat(document.getElementById("value2").value);
   const percentage = parseFloat(document.getElementById("percentage2").value);
   if (isNaN(value) || isNaN(percentage)) {
-    document.getElementById("result2").textContent =
-      "Please enter valid numbers.";
+    updateResult("result2", "Error: Please enter valid numbers.", true);
     return;
   }
   const result = value + (percentage / 100) * value;
-  document.getElementById(
-    "result2"
-  ).textContent = `${value} plus ${percentage}% is ${result}.`;
+  updateResult("result2", `${value} plus ${percentage}% is ${result}.`);
 }
 
 function calculateValueMinusPercentage() {
   const value = parseFloat(document.getElementById("value2").value);
   const percentage = parseFloat(document.getElementById("percentage2").value);
   if (isNaN(value) || isNaN(percentage)) {
-    document.getElementById("result2").textContent =
-      "Please enter valid numbers.";
+    updateResult("result2", "Error: Please enter valid numbers.", true);
     return;
   }
   const result = value - (percentage / 100) * value;
-  document.getElementById(
-    "result2"
-  ).textContent = `${value} minus ${percentage}% is ${result}.`;
+
+  updateResult("result2", `${value} minus ${percentage}% is ${result}.`);
+}
+
+function calculatePercentageOf() {
+  let a = parseFloat(document.getElementById("valueA").value);
+  let b = parseFloat(document.getElementById("valueB").value);
+
+  if (!a || a === 0) {
+    updateResult("result3", "Error: A cannot be 0.", true);
+    return;
+  }
+
+  if (!b || b === 0) {
+    updateResult("result3", "Error: B cannot be 0.", true);
+    return;
+  }
+
+  const percentage = (b / a) * 100;
+  const result = percentage.toFixed(2); // to 2 decimal places
+  updateResult("result3", `Result: ${result}%`);
 }

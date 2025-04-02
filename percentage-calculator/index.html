@@ -40,7 +40,7 @@
                         <hr>
                         <li><a href="../regex-generator/index.html">Regex String Generator</a></li>
                         <hr>
-                        <li><a href="../percentage-calculator/">Percentage Calculator</a></li>
+                        <li><a href="../percentage-calculator/index.html">Percentage Calculator</a></li>
                     </ul>
                 </li>
                 <li><a href="#">Contact</a></li>
@@ -55,7 +55,9 @@
             <label for="percentage1">Percentage (%)</label>
             <input type="number" id="percentage1" step="any">
             <button onclick="calculatePercentageOfValue()">Calculate</button>
-            <p id="result1"></p>
+            <div id="result1" class="result-box" style="display: none;">
+                <p id="result"></p>
+            </div>
         </section>
     </div>
     <div class="container">
@@ -67,8 +69,23 @@
             <input type="number" id="percentage2" step="any">
             <button onclick="calculateValuePlusPercentage()">Calculate Value + Percentage</button>
             <button onclick="calculateValueMinusPercentage()">Calculate Value - Percentage</button>
-            <p id="result2"></p>
+            <div id="result2" class="result-box" style="display: none;">
+                <p id="result"></p>
+            </div>
         </section>
+    </div>
+    <div class="container">
+        <h2>What Percent is B of A?</h2>
+        <label for="valueA">Enter A:</label>
+        <input type="number" id="valueA" placeholder="Enter A" />
+    
+        <label for="valueB">Enter B:</label>
+        <input type="number" id="valueB" placeholder="Enter B" />
+    
+        <button onclick="calculatePercentageOf()">Calculate</button>
+        <div id="result3" class="result-box" style="display: none;">
+            <p id="result"></p>
+        </div>
     </div>
     <script src="../script.js"></script>
 </body>

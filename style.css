@@ -88,7 +88,7 @@ body {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: var(--color-secondary);
+    background-color: var(--color-primary);
     box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
     min-width: 150px;
     top: 100%;
@@ -106,8 +106,8 @@ hr {
     border-bottom: 1px solid var(--color-text-light);
     width: 70%;
     margin: auto;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    /* margin-top: 2rem;
+    margin-bottom: 2rem; */
 }
 
 .dropdown-content a:hover {
@@ -318,6 +318,27 @@ textarea {
     font-size: 24px;
     font-weight: bold;
     cursor: pointer;
+}
+
+.result-box {
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    color: var(--color-snackbar-success);
+    background-color: var(--color-primary); 
+    border-left: solid 20px var(--color-snackbar-success);
+    border-radius: 5px;
+    display: inline-block;
+    min-width: 150px;
+    width: 90%;
+}
+
+.result-box.error {
+    background-color: var(--color-primary); 
+    border-left: solid 20px #dc3545;
+    color: #dc3545;
 }
 
 .snackbar {
