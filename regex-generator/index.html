@@ -15,36 +15,24 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
+  
   <nav class="navbar">
-    <!-- <div class="logo">Multitool</div> -->
-    <div class="logo">
-      <img src="../favicon_io/favicon-32x32.png">
+    <div class="navbar-left">
+      <a href="../index.html" class="logo">
+        <img src="../favicon_io/favicon-32x32.png">
+      </a>
+      <a href="../data-generator/index.html">Data Generator</a>
+      <a href="../character-generator/index.html">String Generator</a>
+      <a href="../list-comparison/index.html">List Comparison</a>
+      <a href="../case-converter/index.html">Case Converter</a>
+      <a href="../random-picker/index.html">Random Picker</a>
+      <a href="./index.html">Regex Generator</a>
+      <a href="../percentage-calculator/index.html">Percentage Calculator</a>
     </div>
-    <button class="menu-toggle" aria-label="Toggle Menu">&#9776;</button>
-    <ul class="nav-links">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li class="dropdown">
-          <a href="#">Services <i class="fa fa-caret-down"></i></a>
-            <ul class="dropdown-content">
-              <li><a href="../data-generator/index.html">Data Generator</a></li>
-              <hr>
-              <li><a href="../character-generator/index.html">Character Generator</a></li>
-              <hr>
-              <li><a href="../list-comparison/index.html">List Comparison</a></li>
-              <hr>
-              <li><a href="../case-converter/index.html">Case Converter</a></li>
-              <hr>
-              <li><a href="../random-picker/index.html">Random Picker</a></li>
-              <hr>
-              <li><a href="./index.html">Regex String Generator</a></li>
-              <hr>
-              <li><a href="../percentage-calculator/index.html">Percentage Calculator</a></li>
-            </ul>
-        </li>
-        <li><a href="#">Contact</a></li>
-    </ul>
-</nav>
+    <!-- <div class="navbar-right">
+      <button id="theme-toggle" class="theme-toggle" title="Toggle Light/Dark Mode">🌓</button>
+    </div> -->
+  </nav>
 
   <div class="container">
     <h1>Regex String Generator</h2>
@@ -52,7 +40,7 @@
     <input type="text" id="regexInput" placeholder="Enter regex (e.g., [0-9]{3})" />
     <h3>Number of strings to generate</h3>
     <input type="number" id="countInput" placeholder="Number of strings to generate" min="1" value="1" />
-    <button onclick="generateStrings()">Generate Strings</button>
+    <button class="button" onclick="generateStrings()">Generate Strings</button>
     <div id="result" class="result-box" style="display: none;" onclick="copyToClipboard('result')"/>
   </div>
 

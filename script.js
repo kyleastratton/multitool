@@ -1,9 +1,31 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const menuToggle = document.querySelector(".menu-toggle");
-  const navLinks = document.querySelector(".nav-links");
-  menuToggle.addEventListener("click", () => {
-    navLinks.classList.toggle("active");
-  });
+// document.addEventListener("DOMContentLoaded", () => {
+//   const menuToggle = document.querySelector(".menu-toggle");
+//   const navLinks = document.querySelector(".nav-links");
+//   menuToggle.addEventListener("click", () => {
+//     navLinks.classList.toggle("active");
+//   });
+// });
+
+const toggleButton = document.getElementById("theme-toggle");
+const body = document.body;
+
+function applyTheme(theme) {
+  if (theme === "light") {
+    body.classList.add("light-mode");
+    toggleButton.textContent = "🌙";
+  } else {
+    body.classList.remove("light-mode");
+    toggleButton.textContent = "🌓";
+  }
+  localStorage.setItem("theme", theme);
+}
+
+const savedTheme = localStorage.getItem("theme") || "dark";
+applyTheme(savedTheme);
+
+toggleButton.addEventListener("click", () => {
+  const isLight = body.classList.contains("light-mode");
+  applyTheme(isLight ? "dark" : "light");
 });
 
 let lastTouchTime = 0;
@@ -1548,211 +1570,37 @@ function generateMatterNumber(selectorId, nameId) {
   document.getElementById(selectorId).setAttribute("data-copy", result);
 }
 
-// Address logic
-
-// function getStreetPrefix(streetPrefix) {
-//   const streetPrefix1 = streetPrefix;
-//   return Math.floor(Math.random() * streetPrefix1.length);
-// }
-
-// function getStreetName(streetNames) {
-//   const streetNames1 = streetNames;
-//   return Math.floor(Math.random() * streetNames1.length);
-// }
-
-// function getTown(towns) {
-//   const towns1 = towns;
-//   return Math.floor(Math.random() * towns1.length);
-// }
-
-// function generateAddress(selectorId) {
-//   const uk_cities = [
-//     "Bath",
-//     "Birmingham",
-//     "Bradford",
-//     "Brighton & Hove",
-//     "Bristol",
-//     "Cambridge",
-//     "Canterbury",
-//     "Carlisle",
-//     "Chelmsford",
-//     "Chester",
-//     "Chichester",
-//     "Colchester",
-//     "Coventry",
-//     "Derby",
-//     "Doncaster",
-//     "Durham",
-//     "Ely",
-//     "Exeter",
-//     "Gloucester",
-//     "Hereford",
-//     "Kingston-upon-Hull",
-//     "Lancaster",
-//     "Leeds",
-//     "Leicester",
-//     "Lichfield",
-//     "Lincoln",
-//     "Liverpool",
-//     "London",
-//     "Manchester",
-//     "Milton Keynes",
-//     "Newcastle-upon-Tyne",
-//     "Norwich",
-//     "Nottingham",
-//     "Oxford",
-//     "Peterborough",
-//     "Plymouth",
-//     "Portsmouth",
-//     "Preston",
-//     "Ripon",
-//     "Salford",
-//     "Salisbury",
-//     "Sheffield",
-//     "Southampton",
-//     "Southend-on-Sea",
-//     "St Albans",
-//     "Stoke on Trent",
-//     "Sunderland",
-//     "Truro",
-//     "Wakefield",
-//     "Wells",
-//     "Westminster",
-//     "Winchester",
-//     "Wolverhampton",
-//     "Worcester",
-//     "York",
-//     "Armagh",
-//     "Bangor",
-//     "Belfast",
-//     "Lisburn",
-//     "Londonderry",
-//     "Newry",
-//     "Aberdeen",
-//     "Dundee",
-//     "Dunfermline",
-//     "Edinburgh",
-//     "Glasgow",
-//     "Inverness",
-//     "Perth",
-//     "Stirling",
-//     "Bangor",
-//     "Cardiff",
-//     "Newport",
-//     "St Asaph",
-//     "St Davids",
-//     "Swansea",
-//     "Wrexham",
-//   ];
-
-//   const streetNames = [
-//     "Road",
-//     "Lane",
-//     "Avenue",
-//     "Boulevard",
-//     "Street",
-//     "Grove",
-//     "Crescent",
-//   ];
-
-//   const streetPrefix = [
-//     "Oak",
-//     "Birch",
-//     "Willow",
-//     "Beech",
-//     "Spruce",
-//     "Walnut",
-//     "Cherry",
-//     "Maple",
-//     "Alder",
-//     "Ash",
-//     "Aspen",
-//     "Cedar",
-//     "Elm",
-//     "Hawthorn",
-//     "Hemlock",
-//     "Hornbeam",
-//     "Juniper",
-//     "Lime",
-//     "Pine",
-//     "Sycamore",
-//     "Whitebeam",
-//     "Yew",
-//     "High",
-//     "Church",
-//     "Park",
-//     "Main",
-//     "Queens",
-//     "Kings",
-//     "Grange",
-//     "New",
-//     "Mill",
-//     "North",
-//     "East",
-//     "South",
-//     "West",
-//   ];
-//   const generatedNumber = getRandomInt(1000);
-//   const generatedStreetPrefix = getStreetPrefix(streetPrefix);
-//   const generatedStreetName = getStreetName(streetNames);
-//   const generatedCity = getTown(uk_cities);
-//   const generatedPostcode1 = generateAlphabeticalString(2);
-//   const generatedPostcode2 = generateNumber(2);
-//   const generatedPostcode3 = generateNumber(1);
-//   const generatedPostcode4 = generateAlphabeticalString(2);
-//   const fullPostcode =
-//     generatedPostcode1 +
-//     generatedPostcode2 +
-//     " " +
-//     generatedPostcode3 +
-//     generatedPostcode4;
-
-//   const result =
-//     generatedNumber +
-//     " " +
-//     streetPrefix[generatedStreetPrefix] +
-//     " " +
-//     streetNames[generatedStreetName] +
-//     ", " +
-//     uk_cities[generatedCity] +
-//     ", " +
-//     fullPostcode;
-
-//   document.getElementById(selectorId).innerText = result;
-//   document.getElementById(selectorId).setAttribute("data-copy", result);
-// }
-
-const townsAndPostcodes = [
-  { town: "Manchester", postcode: "M1 1AE" },
-  { town: "Birmingham", postcode: "B1 1AA" },
-  { town: "Liverpool", postcode: "L1 1AF" },
-  { town: "Glasgow", postcode: "G1 1AL" },
-  { town: "London", postcode: "EC1A 1BB" },
-  { town: "Leeds", postcode: "LS1 1UR" },
-  { town: "Sheffield", postcode: "S1 2GU" },
-  { town: "Bristol", postcode: "BS1 2EP" },
-  { town: "Cardiff", postcode: "CF10 1DX" },
-  { town: "Edinburgh", postcode: "EH1 1BP" }
-];
-
-const streetNames = [
-  "High Street",
-  "Station Road",
-  "Main Street",
-  "Park Avenue",
-  "Church Lane",
-  "Victoria Road",
-  "Queensway",
-  "London Road",
-  "King Street",
-  "New Road"
-];
+// Address Logic
 
 function getRandomItem(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
 function generateAddress(selectorId) {
+  const streetNames = [
+    "High Street",
+    "Station Road",
+    "Main Street",
+    "Park Avenue",
+    "Church Lane",
+    "Victoria Road",
+    "Queensway",
+    "London Road",
+    "King Street",
+    "New Road"
+  ];
+  const townsAndPostcodes = [
+    { town: "Manchester", postcode: "M1 1AE" },
+    { town: "Birmingham", postcode: "B1 1AA" },
+    { town: "Liverpool", postcode: "L1 1AF" },
+    { town: "Glasgow", postcode: "G1 1AL" },
+    { town: "London", postcode: "EC1A 1BB" },
+    { town: "Leeds", postcode: "LS1 1UR" },
+    { town: "Sheffield", postcode: "S1 2GU" },
+    { town: "Bristol", postcode: "BS1 2EP" },
+    { town: "Cardiff", postcode: "CF10 1DX" },
+    { town: "Edinburgh", postcode: "EH1 1BP" }
+  ];
   const houseNumber = Math.floor(Math.random() * 200) + 1;
   const street = getRandomItem(streetNames);
   const { town, postcode } = getRandomItem(townsAndPostcodes);

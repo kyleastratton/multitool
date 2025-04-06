@@ -15,42 +15,30 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
+    
     <nav class="navbar">
-        <!-- <div class="logo">Multitool</div> -->
-        <div class="logo">
+        <div class="navbar-left">
+          <a href="../index.html" class="logo">
             <img src="../favicon_io/favicon-32x32.png">
+          </a>
+          <a href="../data-generator/index.html">Data Generator</a>
+          <a href="../character-generator/index.html">String Generator</a>
+          <a href="../list-comparison/index.html">List Comparison</a>
+          <a href="../case-converter/index.html">Case Converter</a>
+          <a href="./index.html">Random Picker</a>
+          <a href="../regex-generator/index.html">Regex Generator</a>
+          <a href="../percentage-calculator/index.html">Percentage Calculator</a>
         </div>
-        <button class="menu-toggle" aria-label="Toggle Menu">&#9776;</button>
-        <ul class="nav-links">
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li class="dropdown">
-                <a href="#">Services <i class="fa fa-caret-down"></i></a>
-                <ul class="dropdown-content">
-                    <li><a href="../data-generator/index.html">Data Generator</a></li>
-                    <hr>
-                    <li><a href="../character-generator/index.html">Character Generator</a></li>
-                    <hr>
-                    <li><a href="../list-comparison/index.html">List Comparison</a></li>
-                    <hr>
-                    <li><a href="../case-converter/index.html">Case Converter</a></li>
-                    <hr>
-                    <li><a href="./index.html">Random Picker</a></li>
-                    <hr>
-                    <li><a href="../regex-generator/index.html">Regex String Generator</a></li>
-                    <hr>
-                    <li><a href="../percentage-calculator/index.html">Percentage Calculator</a></li>
-                </ul>
-            </li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </nav>
+        <!-- <div class="navbar-right">
+          <button id="theme-toggle" class="theme-toggle" title="Toggle Light/Dark Mode">🌓</button>
+        </div> -->
+      </nav>
 
     <div class="container">
         <h2>Random Item Picker</h2>
         <input type="text" id="itemInput" placeholder="Enter items separated by commas">
         <br>
-        <button onclick="pickRandomItem()">Pick Random Item</button>
+        <button class="button" onclick="pickRandomItem()">Pick Random Item</button>
         <div id="result" class="result-box" style="display: none;" onclick="copyToClipboard('result')"/>
     </div>
 
