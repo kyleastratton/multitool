@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Regex String Generator</title>
     <link rel="stylesheet" href="../style.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="../favicon_io/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../favicon_io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../favicon_io/favicon-16x16.png">
-    <link rel="manifest" href="../favicon_io/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="../assets/favicon_io/site.webmanifest">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,41 +16,37 @@
 </head>
 <body>
    
-    <nav class="navbar">
-        <div class="navbar-left">
-          <a href="../index.html" class="logo">
-            <img src="../favicon_io/favicon-32x32.png">
-          </a>
-          <a href="../data-generator/index.html">Data Generator</a>
-          <a href="./index.html">String Generator</a>
-          <a href="../list-comparison/index.html">List Comparison</a>
-          <a href="../case-converter/index.html">Case Converter</a>
-          <a href="../random-picker/index.html">Random Picker</a>
-          <a href="../regex-generator/index.html">Regex Generator</a>
-          <a href="../percentage-calculator/index.html">Percentage Calculator</a>
-        </div>
-        <!-- <div class="navbar-right">
-          <button id="theme-toggle" class="theme-toggle" title="Toggle Light/Dark Mode">🌓</button>
-        </div> -->
-    </nav>
+  <nav class="topnav" id="myTopnav">
+    <a href="../index.html">Home</a>
+    <a href="../data-generator/index.html">Data Generator</a>
+    <a href="../case-converter/index.html">Case Converter</a>
+    <a href="./index.html" class="active">Character Generator</a>
+    <a href="../list-comparison/index.html">List Comparison</a>
+    <a href="../percentage-calculator/index.html">Percentage Calculator</a>
+    <a href="../random-picker/index.html">Random Picker</a>
+    <a href="../regex-generator/index.html">Regex Generator</a>
+    <a href="javascript:void(0);" class="icon" onclick="openMenu()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </nav>
 
-    <div class="container">
-        <h2>String Generator</h2>
-        <label for="charCount">Number of Letters</label>
-        <input type="number" id="charCount" min="0" value="5">
-        <label for="numCount">Number of Digits</label>
-        <input type="number" id="numCount" min="0" value="3">
-        <label for="order">Order:</label>
-        <select id="order">
-            <option value="charFirst">Letters First</option>
-            <option value="numFirst">Numbers First</option>
-        </select>
-        <button class="button" onclick="generateString()">Generate</button>
-        <div id="result" class="result-box" style="display: none;" onclick="copyToClipboard('result')" title="Click to copy"/>
-    </div>
+  <div class="container">
+    <h2>String Generator</h2>
+    <label for="charCount">Number of Letters</label>
+    <input type="number" id="charCount" min="0" value="5">
+    <label for="numCount">Number of Digits</label>
+    <input type="number" id="numCount" min="0" value="3">
+    <label for="order">Order:</label>
+    <select id="order">
+      <option value="charFirst">Letters First</option>
+      <option value="numFirst">Numbers First</option>
+    </select>
+    <button class="button" onclick="generateString()">Generate</button>
+    <div id="result" class="result-box" style="display: none;" onclick="copyToClipboard('result')" title="Click to copy"/>
+  </div>
 
-    <div id="snackbar" class="snackbar">Text copied to clipboard!</div>
+  <div id="snackbar" class="snackbar">Text copied to clipboard!</div>
 
-    <script src="../script.js"></script>
+  <script src="../script.js"></script>
 </body>
 </html>

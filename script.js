@@ -1,32 +1,42 @@
-// document.addEventListener("DOMContentLoaded", () => {
-//   const menuToggle = document.querySelector(".menu-toggle");
-//   const navLinks = document.querySelector(".nav-links");
-//   menuToggle.addEventListener("click", () => {
-//     navLinks.classList.toggle("active");
-//   });
+// const toggleButton = document.getElementById("theme-toggle");
+// const hamburgerBtn = document.getElementById("hamburger-btn");
+// const navLinks = document.getElementById("nav-links");
+// const body = document.body;
+
+// function applyTheme(theme) {
+//   if (theme === "light") {
+//     body.classList.add("light-mode");
+//     toggleButton.textContent = "🌙";
+//   } else {
+//     body.classList.remove("light-mode");
+//     toggleButton.textContent = "🌓";
+//   }
+//   localStorage.setItem("theme", theme);
+// }
+
+// Load theme on page load
+// const savedTheme = localStorage.getItem("theme") || "dark";
+// applyTheme(savedTheme);
+
+// Theme toggle
+// toggleButton.addEventListener("click", () => {
+//   const isLight = body.classList.contains("light-mode");
+//   applyTheme(isLight ? "dark" : "light");
 // });
 
-const toggleButton = document.getElementById("theme-toggle");
-const body = document.body;
+// Hamburger toggle
+// hamburgerBtn.addEventListener("click", () => {
+//   navLinks.classList.toggle("show");
+// });
 
-function applyTheme(theme) {
-  if (theme === "light") {
-    body.classList.add("light-mode");
-    toggleButton.textContent = "🌙";
+function openMenu() {
+  var nav = document.getElementById("myTopnav");
+  if (nav.className === "topnav") {
+    nav.className += " responsive";
   } else {
-    body.classList.remove("light-mode");
-    toggleButton.textContent = "🌓";
+    nav.className = "topnav";
   }
-  localStorage.setItem("theme", theme);
 }
-
-const savedTheme = localStorage.getItem("theme") || "dark";
-applyTheme(savedTheme);
-
-toggleButton.addEventListener("click", () => {
-  const isLight = body.classList.contains("light-mode");
-  applyTheme(isLight ? "dark" : "light");
-});
 
 let lastTouchTime = 0;
 document.addEventListener(
@@ -110,6 +120,11 @@ function convertText() {
   const text = document.getElementById("textInput").value;
   const caseType = document.getElementById("caseSelector").value;
   let convertedText = "";
+
+  if (text.length < 1) {
+    updateResult("result", "Error: Please enter text to convert.", true);
+    return;
+  }
 
   switch (caseType) {
     case "title_case":

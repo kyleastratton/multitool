@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>Data Generator</title>
   <link rel="stylesheet" href="../style.css">
-  <link rel="apple-touch-icon" sizes="180x180" href="../favicon_io/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="../favicon_io/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="../favicon_io/favicon-16x16.png">
-  <link rel="manifest" href="./favicon_io/site.webmanifest">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon_io/favicon-16x16.png">
+  <link rel="manifest" href="../assets/favicon_io/site.webmanifest">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Mono Font --->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,22 +21,18 @@
 </head>
 <body>
   
-  <nav class="navbar">
-    <div class="navbar-left">
-      <a href="../index.html" class="logo">
-        <img src="../favicon_io/favicon-32x32.png">
-      </a>
-      <a href="./index.html">Data Generator</a>
-      <a href="../character-generator/index.html">String Generator</a>
-      <a href="../list-comparison/index.html">List Comparison</a>
-      <a href="../case-converter/index.html">Case Converter</a>
-      <a href="../random-picker/index.html">Random Picker</a>
-      <a href="../regex-generator/index.html">Regex Generator</a>
-      <a href="../percentage-calculator/index.html">Percentage Calculator</a>
-    </div>
-    <!-- <div class="navbar-right">
-      <button id="theme-toggle" class="theme-toggle" title="Toggle Light/Dark Mode">🌓</button>
-    </div> -->
+  <nav class="topnav" id="myTopnav">
+    <a href="../index.html">Home</a>
+    <a href="./index.html" class="active">Data Generator</a>
+    <a href="../case-converter/index.html">Case Converter</a>
+    <a href="../character-generator/index.html">Character Generator</a>
+    <a href="../list-comparison/index.html">List Comparison</a>
+    <a href="../percentage-calculator/index.html">Percentage Calculator</a>
+    <a href="../random-picker/index.html">Random Picker</a>
+    <a href="../regex-generator/index.html">Regex Generator</a>
+    <a href="javascript:void(0);" class="icon" onclick="openMenu()">
+      <i class="fa fa-bars"></i>
+    </a>
   </nav>
 
   <section class="card-container margin-top-double">

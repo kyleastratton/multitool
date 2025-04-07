@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Percentage Calculator</title>
     <link rel="stylesheet" href="../style.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="../favicon_io/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../favicon_io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../favicon_io/favicon-16x16.png">
-    <link rel="manifest" href="../favicon_io/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="../assets/favicon_io/site.webmanifest">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,63 +16,59 @@
 </head>
 <body>
    
-    <nav class="navbar">
-        <div class="navbar-left">
-          <a href="../index.html" class="logo">
-            <img src="../favicon_io/favicon-32x32.png">
-          </a>
-          <a href="../data-generator/index.html">Data Generator</a>
-          <a href="../character-generator/index.html">String Generator</a>
-          <a href="../list-comparison/index.html">List Comparison</a>
-          <a href="../case-converter/index.html">Case Converter</a>
-          <a href="../random-picker/index.html">Random Picker</a>
-          <a href="../regex-generator/index.html">Regex Generator</a>
-          <a href="./index.html">Percentage Calculator</a>
-        </div>
-        <!-- <div class="navbar-right">
-          <button id="theme-toggle" class="theme-toggle" title="Toggle Light/Dark Mode">🌓</button>
-        </div> -->
-    </nav>
-    
-    <div class="container">
-        <section id="percentage-of-value">
-            <h2>Calculate Percentage of a Value</h2>
-            <label for="value1">Value</label>
-            <input type="number" id="value1" step="any">
-            <label for="percentage1">Percentage (%)</label>
-            <input type="number" id="percentage1" step="any">
-            <button class="button" onclick="calculatePercentageOfValue()">Calculate</button>
-            <div id="result1" class="result-box" style="display: none;">
-                <p id="result"></p>
-            </div>
-        </section>
+  <nav class="topnav" id="myTopnav">
+    <a href="../index.html">Home</a>
+    <a href="../data-generator/index.html">Data Generator</a>
+    <a href="../case-converter/index.html">Case Converter</a>
+    <a href="../character-generator/index.html">Character Generator</a>
+    <a href="../list-comparison/index.html">List Comparison</a>
+    <a href="./index.html" class="active">Percentage Calculator</a>
+    <a href="../random-picker/index.html">Random Picker</a>
+    <a href="../regex-generator/index.html">Regex Generator</a>
+    <a href="javascript:void(0);" class="icon" onclick="openMenu()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </nav>
+  
+  <div class="container">
+    <section id="percentage-of-value">
+      <h2>Calculate Percentage of a Value</h2>
+      <label for="value1">Value</label>
+      <input type="number" id="value1" step="any">
+      <label for="percentage1">Percentage (%)</label>
+      <input type="number" id="percentage1" step="any">
+      <button class="button" onclick="calculatePercentageOfValue()">Calculate</button>
+      <div id="result1" class="result-box" style="display: none;">
+          <p id="result"></p>
+      </div>
+    </section>
     </div>
     <div class="container">
-        <section id="value-plus-minus-percentage">
-            <h2>Calculate Value ± Percentage</h2>
-            <label for="value2">Value</label>
-            <input type="number" id="value2" step="any">
-            <label for="percentage2">Percentage (%)</label>
-            <input type="number" id="percentage2" step="any">
-            <button class="button" onclick="calculateValuePlusPercentage()">Calculate Value + Percentage</button>
-            <button class="button" onclick="calculateValueMinusPercentage()">Calculate Value - Percentage</button>
-            <div id="result2" class="result-box" style="display: none;">
-                <p id="result"></p>
-            </div>
-        </section>
-    </div>
-    <div class="container">
-        <h2>What Percent is B of A?</h2>
-        <label for="valueA">Enter A:</label>
-        <input type="number" id="valueA" placeholder="Enter A" />
-    
-        <label for="valueB">Enter B:</label>
-        <input type="number" id="valueB" placeholder="Enter B" />
-    
-        <button class="button" onclick="calculatePercentageOf()">Calculate</button>
-        <div id="result3" class="result-box" style="display: none;">
+      <section id="value-plus-minus-percentage">
+        <h2>Calculate Value ± Percentage</h2>
+        <label for="value2">Value</label>
+        <input type="number" id="value2" step="any">
+        <label for="percentage2">Percentage (%)</label>
+        <input type="number" id="percentage2" step="any">
+        <button class="button" onclick="calculateValuePlusPercentage()">Calculate Value + Percentage</button>
+        <button class="button" onclick="calculateValueMinusPercentage()">Calculate Value - Percentage</button>
+        <div id="result2" class="result-box" style="display: none;">
             <p id="result"></p>
         </div>
+      </section>
+    </div>
+    <div class="container">
+      <h2>What Percent is B of A?</h2>
+      <label for="valueA">Enter A:</label>
+      <input type="number" id="valueA" placeholder="Enter A" />
+  
+      <label for="valueB">Enter B:</label>
+      <input type="number" id="valueB" placeholder="Enter B" />
+  
+      <button class="button" onclick="calculatePercentageOf()">Calculate</button>
+      <div id="result3" class="result-box" style="display: none;">
+          <p id="result"></p>
+      </div>
     </div>
     <script src="../script.js"></script>
 </body>

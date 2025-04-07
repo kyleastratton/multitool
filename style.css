@@ -1,11 +1,13 @@
 :root {
     /* Color Palette */
-    --bg-color-dark: #0F172A;
-    --color-secondary: #1E293B;
-    --color-accent: #1E88E5;
+    --background: #121212;
+    --surface: #1E1E1E;
+    --primary: #BB86FC;
+    --hover: #D0A5FF;
     --color-text-light: #d5dce3;
     --color-text-dark: #333333;
     --color-success: #4CAF50;
+    --color-error: #CF6679;
   
     /* Typography */
     --font-family-base: "Roboto", sans-serif;
@@ -22,13 +24,6 @@
     --breakpoint-xl: 1200px;
 }
 
-.light-mode {
-    --bg-color-light: #f5f5f5;
-    --text-color: #1c1c1c;
-    --box-bg-color: #ffffff;
-    --accent-color: #0056b3;
-}
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -37,7 +32,7 @@
 }
 
 body {
-    background-color: var(--bg-color-dark);
+    background-color: var(--background);
     color: var(--color-text-light);
     display: flex;
     flex-direction: column;
@@ -47,41 +42,33 @@ body {
     padding-bottom: 2rem;
 }
 
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.75rem 1.5rem;
-    background-color: var(--color-secondary);
-    border-radius: 0px 0px 15px 15px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+.topnav {
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--surface);
 }
   
-.navbar a {
-    margin-right: 1rem;
+.topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
     text-decoration: none;
-    color: var(--text-color);
-    font-weight: 500;
+    font-size: 17px;
 }
-
-.navbar-right {
-    display: flex;
-    align-items: center;
+  
+.topnav a:hover {
+    background-color: var(--background);
+    color: var(--color-text-light);
 }
-
-.theme-toggle {
-    background: none;
-    border: none;
-    font-size: 1.25rem;
-    cursor: pointer;
-    color: var(--text-color);
+  
+.topnav a.active {
+    border-bottom: solid 3px var(--primary);
 }
-
-.theme-toggle:hover {
-    opacity: 0.8;
+  
+.topnav .icon {
+    display: none;
 }
 
 hr {
@@ -90,14 +77,6 @@ hr {
     margin: auto;
     /* margin-top: 2rem;
     margin-bottom: 2rem; */
-}
-
-.dropdown-content a:hover {
-    background-color: #0b599e;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
 }
 
 .margin {
@@ -145,7 +124,7 @@ ul {
 }
 
 .container {
-    background-color: var(--color-secondary);
+    background-color: var(--surface);
     padding: 20px;
     border-radius: 10px;
     border: 1px solid #000;
@@ -167,7 +146,7 @@ ul {
 }
 
 .card {
-    background-color: var(--color-secondary);
+    background-color: var(--surface);
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -189,7 +168,7 @@ ul {
 .card a {
     display: inline-block;
     padding: 10px 20px;
-    background-color: var(--color-accent);
+    background-color: var(--primary);
     color: #fff;
     border-radius: 8px;
     text-decoration: none;
@@ -197,13 +176,13 @@ ul {
 }
 
 .card a:hover {
-    background-color: #0b599e;
+    background-color: var(--hover);
 }
 
 .generator-text {
     text-align: center;
     font-family: "Inconsolata", monospace;
-    font-weight: 600;
+    font-weight: 800;
     font-style: normal;
     /* color: #1E88E5; */
     height: 2rem;
@@ -224,7 +203,7 @@ input {
 }
 
 input, select, textarea {
-    background-color: var(--bg-color-dark);
+    background-color: var(--background);
     color: var(--color-text-light);
 }
 
@@ -233,14 +212,14 @@ input, select, textarea {
     padding: 10px;
     border-radius: 5px;
     font-size: 16px;
-    border: solid 1px #000;
     cursor: pointer;
-    background-color: var(--color-accent);
+    background-color: var(--primary);
+    border: solid 1px var(--primary);
     color: white;
 }
 
 .button:hover {
-    background-color: #0b599e;
+    background-color: var(--hover);
 }
 
 .color-theme {
@@ -261,7 +240,6 @@ textarea {
     box-sizing: border-box;
     border: 2px solid #000;
     border-radius: 4px;
-    /* background-color: #f8f8f8; */
     font-size: 16px;
 }
 
@@ -269,14 +247,6 @@ textarea {
     height: 2rem;
     margin-bottom: 2rem;
 }
-
-/* #result {
-    margin-top: 20px;
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 1rem;
-    color: var(--color-text-light);
-} */
 
 .center {
     display: flex;
@@ -313,7 +283,7 @@ textarea {
     font-weight: bold;
     text-align: center;
     color: var(--color-success);
-    background-color: var(--bg-color-dark); 
+    background-color: var(--background); 
     border-left: solid 20px var(--color-success);
     border-radius: 5px;
     display: inline-block;
@@ -322,9 +292,9 @@ textarea {
 }
 
 .result-box.error {
-    background-color: var(--bg-color-dark); 
-    border-left: solid 20px #dc3545;
-    color: #dc3545;
+    background-color: var(--background); 
+    border-left: solid 20px var(--color-error);
+    color: var(--color-error);
 }
 
 .snackbar {
@@ -347,50 +317,32 @@ textarea {
     opacity: 1;
 }
 
-@media (max-width: 600px) {
-    h1 {
-        font-size: 1.6rem;
+@media screen and (max-width: 600px) {
+    .topnav a:not(:first-child) {
+        display: none;
     }
 
-    nav ul {
-        gap: 10px;
-    }
-
-    nav .logo {
-        font-size: 1.2rem;
-        font-weight: bolder;
+    .topnav a.icon {
+      float: right;
+      display: block;
     }
 }
 
-@media (max-width: 768px) {
-    .narbar {
+@media (max-width: 600px) {
+    .topnav.responsive {
         position: relative;
     }
-
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        background-color: var(--color-secondary);
-        width: 100%;
-        padding: 1rem;
+    
+    .topnav.responsive .icon {
+      position: absolute;
+      right: 0;
+      top: 0;
     }
 
-    .nav-links.active {
-        display: flex;
-    }
-
-    .menu-toggle {
-        display: block;
-        width: 20%;
-    }
-
-    .dropdown-content {
-        position: static;
-        background-color: transparent;
-        box-shadow: none;
+    .topnav.responsive a {
+      float: none;
+      display: block;
+      text-align: left;
     }
 
     h1 {
