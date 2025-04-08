@@ -57,24 +57,30 @@ document.addEventListener("DOMContentLoaded", () => {
   const toggleBtn = document.getElementById("dropdownToggle");
   const dropdown = document.getElementById("dropdownMenu");
 
-  toggleBtn.addEventListener("click", (e) => {
-    e.stopPropagation(); // Prevent event bubbling
-    dropdown.style.display =
-      dropdown.style.display === "block" ? "none" : "block";
-  });
+  // Only execute if both elements exist
+  if (toggleBtn && dropdown) {
+    toggleBtn.addEventListener("click", (e) => {
+      e.stopPropagation(); // Prevent event bubbling
+      dropdown.style.display =
+        dropdown.style.display === "block" ? "none" : "block";
+    });
 
-  // Hide dropdown when clicking outside
-  document.addEventListener("click", () => {
-    dropdown.style.display = "none";
-  });
-
-  // Optional: Select option and update toggle text
-  dropdown.querySelectorAll("li").forEach((item) => {
-    item.addEventListener("click", () => {
-      toggleBtn.textContent = item.textContent;
+    // Hide dropdown when clicking outside
+    document.addEventListener("click", () => {
       dropdown.style.display = "none";
     });
-  });
+
+    // Optional: Select option and update toggle text
+    const dropdownItems = dropdown.querySelectorAll("li");
+    if (dropdownItems.length > 0) {
+      dropdownItems.forEach((item) => {
+        item.addEventListener("click", () => {
+          toggleBtn.textContent = item.textContent;
+          dropdown.style.display = "none";
+        });
+      });
+    }
+  }
 });
 
 // Disable double touch zoom on mobile
