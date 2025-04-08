@@ -18,159 +18,162 @@
 <body>
     
     <nav class="topnav" id="myTopnav">
-        <a href="../index.html" class="active">Home</a>
-        <a href="../data-generator/index.html">Data Generator</a>
-        <a href="../case-converter/index.html">Case Converter</a>
-        <a href="../character-generator/index.html">Character Generator</a>
-        <a href="../list-comparison/index.html">List Comparison</a>
-        <a href="../percentage-calculator/index.html">Percentage Calculator</a>
-        <a href="../random-picker/index.html">Random Picker</a>
-        <a href="../regex-generator/index.html">Regex Generator</a>
-        <a href="javascript:void(0);" class="icon" onclick="openMenu()">
-          <i class="fa fa-bars"></i>
-        </a>
+      <a href="./index.html">
+        <img src="../assets/favicon_io/favicon-32x32.png" class="logo" alt="logo">
+      </a>
+      <a href="../index.html" class="active">Home</a>
+      <a href="../data-generator/index.html">Data Generator</a>
+      <a href="../case-converter/index.html">Case Converter</a>
+      <a href="../character-generator/index.html">Character Generator</a>
+      <a href="../list-comparison/index.html">List Comparison</a>
+      <a href="../percentage-calculator/index.html">Percentage Calculator</a>
+      <a href="../random-picker/index.html">Random Picker</a>
+      <a href="../regex-generator/index.html">Regex Generator</a>
+      <a href="javascript:void(0);" class="icon" onclick="openMenu()">
+        <i class="fa fa-bars"></i>
+      </a>
       </nav>
     
     <div class="container">
-        <h1>Due Date Calculator</h1>
-        <div class="form-group">
-            <label for="cronExpression">Cron Expression</label>
-            <input type="text" id="cronExpression" placeholder="e.g. 0 30 17 * * *">
-        </div>
-        <div class="form-group">
-            <label for="threshold">Threshold (minutes)</label>
-            <input type="number" id="threshold" placeholder="e.g. 60">
-        </div>
-        <div class="form-group">
-            <label for="creationDateTime">Creation Date</label>
-            <input type="datetime-local" id="creationDateTime">
-        </div>
-        <button onclick="calculateDueDate(document.getElementById('creationDateTime').innerText.toString())">Calculate Due Date</button>
-        <div class="result-container" id="result-container">
-            <p id="result"></p>
-        </div>
+      <h1>Due Date Calculator</h1>
+      <div class="form-group">
+        <label for="cronExpression">Cron Expression</label>
+        <input type="text" id="cronExpression" placeholder="e.g. 0 30 17 * * *">
+      </div>
+      <div class="form-group">
+        <label for="threshold">Threshold (minutes)</label>
+        <input type="number" id="threshold" placeholder="e.g. 60">
+      </div>
+      <div class="form-group">
+        <label for="creationDateTime">Creation Date</label>
+        <input type="datetime-local" id="creationDateTime">
+      </div>
+      <button onclick="calculateDueDate(document.getElementById('creationDateTime').innerText.toString())">Calculate Due Date</button>
+      <div class="result-container" id="result-container">
+        <p id="result"></p>
+      </div>
     </div>
 
     <div class="container">
-        <h2>Test Cases</h2>
-        <button onclick="runTests()">Run Test Cases</button>
-        <div id="test-results"></div>
+      <h2>Test Cases</h2>
+      <button onclick="runTests()">Run Test Cases</button>
+      <div id="test-results"></div>
     </div>
 
     <script>
         document.getElementById('creationDateTime').value = new Date().toISOString().slice(0, 16);
 
         function formatDateWithDay(date) {
-            const options = { weekday: 'short', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };
-            return date.toLocaleString('en-GB', options);
+          const options = { weekday: 'short', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+          return date.toLocaleString('en-GB', options);
         }
 
         function adjustForLateCreation(date) {
-            let adjustedDate = new Date(date);
-            let day = adjustedDate.getDay();
-            let hours = adjustedDate.getHours();
-            
-            if (day === 6) { 
-                adjustedDate.setDate(adjustedDate.getDate() + 2);
-                adjustedDate.setHours(9, 0, 0, 0);
-            } else if (day === 0) { 
-                adjustedDate.setDate(adjustedDate.getDate() + 1);
-                adjustedDate.setHours(9, 0, 0, 0);
-            } else if (day >= 1 && day <= 5 && hours >= 16) { 
-                adjustedDate.setDate(adjustedDate.getDate() + (day === 5 ? 3 : 1));
-                adjustedDate.setHours(9, 0, 0, 0);
-            }
-            return adjustedDate;
+          let adjustedDate = new Date(date);
+          let day = adjustedDate.getDay();
+          let hours = adjustedDate.getHours();
+          
+          if (day === 6) { 
+              adjustedDate.setDate(adjustedDate.getDate() + 2);
+              adjustedDate.setHours(9, 0, 0, 0);
+          } else if (day === 0) { 
+              adjustedDate.setDate(adjustedDate.getDate() + 1);
+              adjustedDate.setHours(9, 0, 0, 0);
+          } else if (day >= 1 && day <= 5 && hours >= 16) { 
+              adjustedDate.setDate(adjustedDate.getDate() + (day === 5 ? 3 : 1));
+              adjustedDate.setHours(9, 0, 0, 0);
+          }
+          return adjustedDate;
         }
 
         function calculateDueDate(creationDateInput = null) {
-            let creationDate = creationDateInput || new Date(document.getElementById('creationDateTime').value);
-            let cronExpression = document.getElementById('cronExpression').value;
-            let threshold = parseInt(document.getElementById('threshold').value, 10) || 0;
+          let creationDate = creationDateInput || new Date(document.getElementById('creationDateTime').value);
+          let cronExpression = document.getElementById('cronExpression').value;
+          let threshold = parseInt(document.getElementById('threshold').value, 10) || 0;
 
-            if (!cronExpression) {
-                document.getElementById('result').innerText = 'Please enter a cron expression!';
-                document.getElementById('result-container').style.display = 'none';
-                return;
+          if (!cronExpression) {
+            document.getElementById('result').innerText = 'Please enter a cron expression!';
+            document.getElementById('result-container').style.display = 'none';
+            return;
+          }
+
+          let adjustedDate = adjustForLateCreation(creationDate);
+          let schedule = later.parse.cron(cronExpression, true);
+          let thresholdEndDate = new Date(adjustedDate.getTime() + threshold * 60000);
+          // Get when the threshold period ends
+          let nextRun = later.schedule(schedule).next(1, thresholdEndDate);
+          let thresholdBoundary = new Date(adjustedDate.getTime() + threshold * 60000);
+          let withinThreshold = thresholdBoundary > nextRun;
+          let maxFuture = new Date();
+          maxFuture.setFullYear(maxFuture.getFullYear() + 1); // Prevents infinite jumps
+          if (nextRun > maxFuture) nextRun = later.schedule(schedule).next(1);
+          if (withinThreshold) {
+            let nextRunArr = later.schedule(schedule).next(2, nextRun);
+            if (nextRunArr.length >= 2) {
+              nextRun = nextRunArr[1];
             }
-
-            let adjustedDate = adjustForLateCreation(creationDate);
-            let schedule = later.parse.cron(cronExpression, true);
-            let thresholdEndDate = new Date(adjustedDate.getTime() + threshold * 60000);
-            // Get when the threshold period ends
-            let nextRun = later.schedule(schedule).next(1, thresholdEndDate);
-            let thresholdBoundary = new Date(adjustedDate.getTime() + threshold * 60000);
-            let withinThreshold = thresholdBoundary > nextRun;
-            let maxFuture = new Date();
-            maxFuture.setFullYear(maxFuture.getFullYear() + 1); // Prevents infinite jumps
-            if (nextRun > maxFuture) nextRun = later.schedule(schedule).next(1);
-            if (withinThreshold) {
-                let nextRunArr = later.schedule(schedule).next(2, nextRun);
-                if (nextRunArr.length >= 2) {
-                    nextRun = nextRunArr[1];
-                }
-            }
+          }
 
 
-            let formattedDueDate = formatDateWithDay(nextRun);
+          let formattedDueDate = formatDateWithDay(nextRun);
 
-            // If called from the button (no parameter), update UI
-            if (!creationDateInput) {
-                document.getElementById('result').innerText = `Due Date: ${formattedDueDate}`;
-                document.getElementById('result-container').style.display = 'block';
-            }
+          // If called from the button (no parameter), update UI
+          if (!creationDateInput) {
+            document.getElementById('result').innerText = `Due Date: ${formattedDueDate}`;
+            document.getElementById('result-container').style.display = 'block';
+          }
 
-            return formattedDueDate;
+          return formattedDueDate;
         }
 
 
         function runTests() {
-            let testDates = [
-                new Date(),
-                "Monday 07:02",
-                "Monday 11:42",
-                "Monday 16:15",
-                "Monday 19:27",
-                "Friday 07:02",
-                "Friday 16:30",
-                "Friday 18:02",
-                "Saturday 10:00",
-                "Sunday 10:00"
-            ];
+          let testDates = [
+              new Date(),
+            "Monday 07:02",
+            "Monday 11:42",
+            "Monday 16:15",
+            "Monday 19:27",
+            "Friday 07:02",
+            "Friday 16:30",
+            "Friday 18:02",
+            "Saturday 10:00",
+            "Sunday 10:00"
+          ];
 
-            let now = new Date();
-            let baseDate = new Date(now.setHours(0, 0, 0, 0));
+          let now = new Date();
+          let baseDate = new Date(now.setHours(0, 0, 0, 0));
+          
+          let testDateObjects = testDates.map((desc, index) => {
+            if (index === 0) return new Date(); 
+
+            let parts = desc.split(" ");
+            let dayName = parts[0];
+            let timeParts = parts[1].split(":");
+            let hours = parseInt(timeParts[0], 10);
+            let minutes = parseInt(timeParts[1], 10);
+
+            let dayMapping = {
+                "Sunday": 0, "Monday": 1, "Tuesday": 2, "Wednesday": 3,
+                "Thursday": 4, "Friday": 5, "Saturday": 6
+            };
+            let targetDay = dayMapping[dayName];
             
-            let testDateObjects = testDates.map((desc, index) => {
-                if (index === 0) return new Date(); 
+            let daysToAdd = (targetDay - baseDate.getDay() + 7) % 7;
+            let newDate = new Date(baseDate);
+            newDate.setDate(baseDate.getDate() + daysToAdd);
+            newDate.setHours(hours, minutes, 0, 0);
+            return newDate;
+          });
 
-                let parts = desc.split(" ");
-                let dayName = parts[0];
-                let timeParts = parts[1].split(":");
-                let hours = parseInt(timeParts[0], 10);
-                let minutes = parseInt(timeParts[1], 10);
+          let resultsContainer = document.getElementById('test-results');
+          resultsContainer.innerHTML = "<h3>Test Results</h3>";
+          resultsContainer.style.display = 'block';
 
-                let dayMapping = {
-                    "Sunday": 0, "Monday": 1, "Tuesday": 2, "Wednesday": 3,
-                    "Thursday": 4, "Friday": 5, "Saturday": 6
-                };
-                let targetDay = dayMapping[dayName];
-                
-                let daysToAdd = (targetDay - baseDate.getDay() + 7) % 7;
-                let newDate = new Date(baseDate);
-                newDate.setDate(baseDate.getDate() + daysToAdd);
-                newDate.setHours(hours, minutes, 0, 0);
-                return newDate;
-            });
-
-            let resultsContainer = document.getElementById('test-results');
-            resultsContainer.innerHTML = "<h3>Test Results</h3>";
-            resultsContainer.style.display = 'block';
-
-            testDateObjects.forEach((testDate, index) => {
-                let dueDate = calculateDueDate(testDate);
-                resultsContainer.innerHTML += `<p>Test Case ${index + 1}: Created at ${formatDateWithDay(testDate)} → Due Date: ${dueDate}</p>`;
-            });
+          testDateObjects.forEach((testDate, index) => {
+            let dueDate = calculateDueDate(testDate);
+            resultsContainer.innerHTML += `<p>Test Case ${index + 1}: Created at ${formatDateWithDay(testDate)} → Due Date: ${dueDate}</p>`;
+          });
         }
     </script>
 </body>

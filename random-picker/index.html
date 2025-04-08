@@ -17,6 +17,9 @@
 <body>
     
   <nav class="topnav" id="myTopnav">
+    <a href="./index.html">
+      <img src="../assets/favicon_io/favicon-32x32.png" class="logo" alt="logo">
+    </a>
     <a href="../index.html">Home</a>
     <a href="../data-generator/index.html">Data Generator</a>
     <a href="../case-converter/index.html">Case Converter</a>
@@ -30,16 +33,16 @@
     </a>
   </nav>
 
-    <div class="container">
-      <h2>Random Item Picker</h2>
-      <input type="text" id="itemInput" placeholder="Enter items separated by commas">
-      <br>
-      <button class="button" onclick="pickRandomItem()">Pick Random Item</button>
-      <div id="result" class="result-box" style="display: none;" onclick="copyToClipboard('result')"/>
-    </div>
+  <div class="container">
+    <h2>Random Item Picker</h2>
+    <input type="text" id="itemInput" placeholder="Enter items separated by commas">
+    <br>
+    <button class="button" onclick="pickRandomItem()">Pick Random Item</button>
+    <div id="result" class="result-box" style="display: none;" onclick="copyToClipboard('result')"/>
+  </div>
 
-    <div id="snackbar" class="snackbar">Text copied to clipboard!</div>
+  <div id="snackbar" class="snackbar">Text copied to clipboard!</div>
 
-    <script src="../script.js"></script>
+  <script src="../script.js"></script>
 </body>
 </html>
