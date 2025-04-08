@@ -16,49 +16,49 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    
-    <nav class="topnav" id="myTopnav">
-      <a href="./index.html">
-        <img src="../assets/favicon_io/favicon-32x32.png" class="logo" alt="logo">
-      </a>
-      <a href="../index.html" class="active">Home</a>
-      <a href="../data-generator/index.html">Data Generator</a>
-      <a href="../case-converter/index.html">Case Converter</a>
-      <a href="../character-generator/index.html">Character Generator</a>
-      <a href="../list-comparison/index.html">List Comparison</a>
-      <a href="../percentage-calculator/index.html">Percentage Calculator</a>
-      <a href="../random-picker/index.html">Random Picker</a>
-      <a href="../regex-generator/index.html">Regex Generator</a>
-      <a href="javascript:void(0);" class="icon" onclick="openMenu()">
-        <i class="fa fa-bars"></i>
-      </a>
-      </nav>
-    
-    <div class="container">
-      <h1>Due Date Calculator</h1>
-      <div class="form-group">
-        <label for="cronExpression">Cron Expression</label>
-        <input type="text" id="cronExpression" placeholder="e.g. 0 30 17 * * *">
-      </div>
-      <div class="form-group">
-        <label for="threshold">Threshold (minutes)</label>
-        <input type="number" id="threshold" placeholder="e.g. 60">
-      </div>
-      <div class="form-group">
-        <label for="creationDateTime">Creation Date</label>
-        <input type="datetime-local" id="creationDateTime">
-      </div>
-      <button onclick="calculateDueDate(document.getElementById('creationDateTime').innerText.toString())">Calculate Due Date</button>
-      <div class="result-container" id="result-container">
-        <p id="result"></p>
-      </div>
-    </div>
 
-    <div class="container">
-      <h2>Test Cases</h2>
-      <button onclick="runTests()">Run Test Cases</button>
-      <div id="test-results"></div>
+  <nav class="topnav" id="myTopnav">
+    <a href="./index.html">
+      <img src="../assets/favicon_io/favicon-32x32.png" class="logo" alt="logo">
+    </a>
+    <a href="../index.html" class="active">Home</a>
+    <a href="../data-generator/index.html">Data Generator</a>
+    <a href="../case-converter/index.html">Case Converter</a>
+    <a href="../character-generator/index.html">Character Generator</a>
+    <a href="../list-comparison/index.html">List Comparison</a>
+    <a href="../percentage-calculator/index.html">Percentage Calculator</a>
+    <a href="../random-picker/index.html">Random Picker</a>
+    <a href="../regex-generator/index.html">Regex Generator</a>
+    <a href="javascript:void(0);" class="icon" onclick="openMenu()">
+      <i class="fa fa-bars"></i>
+    </a>
+    </nav>
+  
+  <div class="container">
+    <h1>Due Date Calculator</h1>
+    <div class="form-group">
+      <label for="cronExpression">Cron Expression</label>
+      <input type="text" id="cronExpression" placeholder="e.g. 0 30 17 * * *">
     </div>
+    <div class="form-group">
+      <label for="threshold">Threshold (minutes)</label>
+      <input type="number" id="threshold" placeholder="e.g. 60">
+    </div>
+    <div class="form-group">
+      <label for="creationDateTime">Creation Date</label>
+      <input type="datetime-local" id="creationDateTime">
+    </div>
+    <button onclick="calculateDueDate(document.getElementById('creationDateTime').innerText.toString())">Calculate Due Date</button>
+    <div class="result-container" id="result-container">
+      <p id="result"></p>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>Test Cases</h2>
+    <button onclick="runTests()">Run Test Cases</button>
+    <div id="test-results"></div>
+  </div>
 
     <script>
         document.getElementById('creationDateTime').value = new Date().toISOString().slice(0, 16);

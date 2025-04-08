@@ -1,33 +1,46 @@
-// const toggleButton = document.getElementById("theme-toggle");
-// const hamburgerBtn = document.getElementById("hamburger-btn");
-// const navLinks = document.getElementById("nav-links");
-// const body = document.body;
+// Add footer to page
 
-// function applyTheme(theme) {
-//   if (theme === "light") {
-//     body.classList.add("light-mode");
-//     toggleButton.textContent = "🌙";
-//   } else {
-//     body.classList.remove("light-mode");
-//     toggleButton.textContent = "🌓";
-//   }
-//   localStorage.setItem("theme", theme);
-// }
+const footer = document.createElement("footer");
+footer.className = "footer";
+footer.innerHTML = `
+  <div class="footer-inner">
+    <p>&copy; 2025 Multitool by Kyle Stratton</p>
+    <nav>
+      <a href="https://github.com/kyleastratton/multitool" target="_blank">GitHub</a>
+      <a href="#">Privacy</a>
+      <a href="#">Contact</a>
+    </nav>
+  </div>
+`;
+document.body.appendChild(footer);
 
-// Load theme on page load
-// const savedTheme = localStorage.getItem("theme") || "dark";
-// applyTheme(savedTheme);
+function positionFooter() {
+  const body = document.body;
+  const html = document.documentElement;
+  const footer = document.querySelector("footer");
 
-// Theme toggle
-// toggleButton.addEventListener("click", () => {
-//   const isLight = body.classList.contains("light-mode");
-//   applyTheme(isLight ? "dark" : "light");
-// });
+  const height = Math.max(
+    body.scrollHeight,
+    body.offsetHeight,
+    html.clientHeight,
+    html.scrollHeight,
+    html.offsetHeight
+  );
 
-// Hamburger toggle
-// hamburgerBtn.addEventListener("click", () => {
-//   navLinks.classList.toggle("show");
-// });
+  if (height <= window.innerHeight) {
+    footer.style.position = "fixed";
+    footer.style.bottom = "0";
+    footer.style.width = "100%";
+  } else {
+    footer.style.position = "static";
+  }
+}
+
+// Run on page load and resize
+window.addEventListener("load", positionFooter);
+window.addEventListener("resize", positionFooter);
+
+// Nav menu
 
 function openMenu() {
   var nav = document.getElementById("myTopnav");
@@ -37,6 +50,34 @@ function openMenu() {
     nav.className = "topnav";
   }
 }
+
+// Dropdown menu
+
+document.addEventListener("DOMContentLoaded", () => {
+  const toggleBtn = document.getElementById("dropdownToggle");
+  const dropdown = document.getElementById("dropdownMenu");
+
+  toggleBtn.addEventListener("click", (e) => {
+    e.stopPropagation(); // Prevent event bubbling
+    dropdown.style.display =
+      dropdown.style.display === "block" ? "none" : "block";
+  });
+
+  // Hide dropdown when clicking outside
+  document.addEventListener("click", () => {
+    dropdown.style.display = "none";
+  });
+
+  // Optional: Select option and update toggle text
+  dropdown.querySelectorAll("li").forEach((item) => {
+    item.addEventListener("click", () => {
+      toggleBtn.textContent = item.textContent;
+      dropdown.style.display = "none";
+    });
+  });
+});
+
+// Disable double touch zoom on mobile
 
 let lastTouchTime = 0;
 document.addEventListener(
@@ -118,11 +159,16 @@ function toTitleCase(str) {
 
 function convertText() {
   const text = document.getElementById("textInput").value;
-  const caseType = document.getElementById("caseSelector").value;
+  const caseType = selectedCaseType;
   let convertedText = "";
 
   if (text.length < 1) {
     updateResult("result", "Error: Please enter text to convert.", true);
+    return;
+  }
+
+  if (!caseType) {
+    updateResult("result", "Error: Please select a casing option.", true);
     return;
   }
 
@@ -183,14 +229,14 @@ function convertText() {
     case "train":
       convertedText = text
         .toLowerCase()
-        .replace(/(?:\s+|^)(\w)/g, (match, p1) => p1.toUpperCase())
-        .replace(/\s+/g, "-");
+        .split(/\s+/)
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join("-");
       break;
     default:
       convertedText = text;
   }
 
-  // document.getElementById("result").textContent = convertedText;
   updateResult("result", `${convertedText}`);
   document.getElementById("result").setAttribute("data-copy", convertedText);
 }

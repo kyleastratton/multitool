@@ -1,9 +1,9 @@
 :root {
 /* Color Palette */
-  --background: #121212;
-  --surface: #1E1E1E;
-  --primary: #BB86FC;
-  --hover: #D0A5FF;
+  --background: #222529;
+  --surface: #2c3035;
+  --primary: #1051b3;
+  --hover: #0c397a;
   --color-text-light: #d5dce3;
   --color-text-dark: #333333;
   --color-success: #4CAF50;
@@ -39,9 +39,9 @@ body {
   justify-content: center;
   align-items: center;
   margin: 0;
-  padding-bottom: 2rem;
   max-width: 100vw;
   overflow-x: hidden;
+  height: 100%;
 }
 
 .logo {
@@ -187,6 +187,49 @@ ul {
 
 .card a:hover {
   background-color: var(--hover);
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.dropdown-toggle {
+  width: 100%;
+  padding: 10px;
+  background-color: #343a40;
+  color: #f8f9fa;
+  border: 1px solid #495057;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  z-index: 999;
+  width: 100%;
+  background-color: #343a40;
+  border: 1px solid #495057;
+  border-radius: 4px;
+  /* margin-top: 4px; */
+  padding: 0;
+  list-style: none;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.dropdown-menu li {
+  padding: 10px;
+  color: #f8f9fa;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-menu li:hover {
+  background-color: #495057;
 }
 
 .generator-text {
@@ -386,3 +429,46 @@ textarea {
     padding: 8px 16px;
   }
 }
+
+.footer {
+  background-color: var(--surface);
+  color: #d1d5db;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  padding: 1rem 2rem;
+  margin-top: 4rem;
+  border-top: 1px solid #1f2937;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  position: fixed;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: fit-content;
+  bottom: 0;
+}
+
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+}
+
+.footer-inner nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-inner a {
+  color: #60a5fa;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-inner a:hover {
+  color: #3b82f6;
+}
+

@@ -17,7 +17,7 @@
 <body>
 
   <nav class="topnav" id="myTopnav">
-    <a href="../index.html">
+    <a href="./index.html">
       <img src="../assets/favicon_io/favicon-32x32.png" class="logo" alt="logo">
     </a>
     <a href="../index.html">Home</a>
@@ -38,27 +38,46 @@
     <h3>Text to convert</h3>
     <input type="text" id="textInput" placeholder="Enter text here">
     <h3>Casing</h3>
-    <select id="caseSelector">
-      <option value="title_case">Title Case (Hello World)</option>
-      <option value="sentence">Sentence Case (Hello world)</option>
-      <option value="uppercase">Uppercase (HELLO WORLD)</option>
-      <option value="lowercase">Lowercase (hello world)</option>
-      <option value="alternating">Alternating Case (hElLo wOrLd)</option>
-      <option value="inverse">Inverse Case (hELLO wORLD)</option>
-      <option value="snake">Snake Case (hello_world)</option>
-      <option value="kebab">Kebab Case (hello-world)</option>
-      <option value="camel">Camel Case (helloWorld)</option>
-      <option value="pascal">Pascal Case (HelloWorld)</option>
-      <option value="screaming_snake">Screaming Snake Case (HELLO_WORLD)</option>
-      <option value="screaming_kebab">Screaming Kebab Case (HELLO-WORLD)</option>
-      <option value="train">Train Case (HelloWorld)</option>
-    </select>
+  <div class="dropdown">
+    <button class="dropdown-toggle" id="dropdownToggle">Select Casing</button>
+    <ul class="dropdown-menu" id="dropdownMenu">
+      <li data-value="title_case">Title Case</li>
+      <li data-value="sentence">Sentence case</li>
+      <li data-value="uppercase">UPPSERCASE</li>
+      <li data-value="lowercase">lowercase</li>
+      <li data-value="alternating">aLtErNaTiNg cAsE</li>
+      <li data-value="inverse">iNVERSE cASE</li>
+      <li data-value="snake">snake_case</li>
+      <li data-value="kebab">kebab-case</li>
+      <li data-value="camel">camelCase</li>
+      <li data-value="pascal">PascalCase</li>
+      <li data-value="screaming_snake">SCREAMING_SNAKE_CASE</li>
+      <li data-value="screaming_kebab">SCREAMING-KEBAB-CASE</li>
+      <li data-value="train">Train-Case</li>
+    </ul>
+  </div>
+
     <button class="button" onclick="convertText()">Convert</button>
     <div id="result" class="result-box" style="display: none;" onclick="copyToClipboard('result')"/>
   </div>
 
   <div id="snackbar" class="snackbar">Text copied to clipboard!</div>
 
+  <script>
+    let selectedCaseType = null;
+    document.addEventListener("DOMContentLoaded", () => {
+      const dropdown = document.getElementById("dropdownMenu");
+      const dropdownItems = document.querySelectorAll("#dropdownMenu li");
+
+      dropdownItems.forEach((item) => {
+        item.addEventListener("click", () => {
+          selectedCaseType = item.dataset.value;
+          document.getElementById("dropdownToggle").textContent = item.textContent;
+          dropdown.style.display = "none";
+        });
+      });
+    });
+  </script>
   <script src="../script.js"></script>
 </body>
 </html>
