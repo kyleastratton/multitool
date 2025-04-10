@@ -36,9 +36,9 @@
   <div class="container">
     <h1>Regex String Generator</h2>
     <h3>Regex Expression</h3>
-    <input type="text" id="regexInput" placeholder="Enter regex (e.g., [0-9]{3})" />
+    <input class="margin-bottom" type="text" id="regexInput" placeholder="Enter regex (e.g., [0-9]{3})" />
     <h3>Number of strings to generate</h3>
-    <input type="number" id="countInput" placeholder="Number of strings to generate" min="1" value="1" />
+    <input class="margin-bottom" type="number" id="countInput" placeholder="Number of strings to generate" min="1" value="1" />
     <button class="button" onclick="generateStrings()">Generate Strings</button>
     <div id="result" class="result-box" style="display: none;" onclick="copyToClipboard('result')"/>
   </div>

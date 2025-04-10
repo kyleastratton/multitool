@@ -36,10 +36,10 @@
   <div class="container">
     <h2>Text Case Converter</h2>
     <h3>Text to convert</h3>
-    <input type="text" id="textInput" placeholder="Enter text here">
+    <input class="margin-bottom" type="text" id="textInput" placeholder="Enter text here">
     <h3>Casing</h3>
   <div class="dropdown">
-    <button class="dropdown-toggle" id="dropdownToggle">Select Casing</button>
+    <button class="dropdown-toggle" id="dropdownToggle">Select Casing <span class="dropdown-arrow">▼</span></button>
     <ul class="dropdown-menu" id="dropdownMenu">
       <li data-value="title_case">Title Case</li>
       <li data-value="sentence">Sentence case</li>
@@ -56,6 +56,8 @@
       <li data-value="train">Train-Case</li>
     </ul>
   </div>
+
+  <p class="subtext">Casing will default to 'Title Case' if no option selected</p>
 
     <button class="button" onclick="convertText()">Convert</button>
     <div id="result" class="result-box" style="display: none;" onclick="copyToClipboard('result')"/>

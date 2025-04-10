@@ -38,15 +38,15 @@
     <h1>Due Date Calculator</h1>
     <div class="form-group">
       <label for="cronExpression">Cron Expression</label>
-      <input type="text" id="cronExpression" placeholder="e.g. 0 30 17 * * *">
+      <input class="margin-bottom" type="text" id="cronExpression" placeholder="e.g. 0 30 17 * * *">
     </div>
     <div class="form-group">
       <label for="threshold">Threshold (minutes)</label>
-      <input type="number" id="threshold" placeholder="e.g. 60">
+      <input class="margin-bottom" type="number" id="threshold" placeholder="e.g. 60">
     </div>
     <div class="form-group">
       <label for="creationDateTime">Creation Date</label>
-      <input type="datetime-local" id="creationDateTime">
+      <input class="margin-bottom" type="datetime-local" id="creationDateTime">
     </div>
     <button onclick="calculateDueDate(document.getElementById('creationDateTime').innerText.toString())">Calculate Due Date</button>
     <div class="result-container" id="result-container">

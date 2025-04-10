@@ -5,6 +5,7 @@
   --primary: #1051b3;
   --hover: #0c397a;
   --color-text-light: #d5dce3;
+  --color-subtext-light: #bec1c3;
   --color-text-dark: #333333;
   --color-success: #4CAF50;
   --color-error: #CF6679;
@@ -124,6 +125,12 @@ h2 {
   margin-bottom: 2rem;
 }
 
+.subtext {
+  font-size: 0.8em;
+  color: var(--color-subtext-light);
+  margin: 0.4rem 0 2rem 0;
+}
+
 ul {
   list-style: none;
 }
@@ -195,6 +202,9 @@ ul {
   display: inline-block;
   width: 90%;
   max-width: 90%;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  cursor: pointer;
+  border-radius: 6px;
 }
 
 .dropdown-toggle {
@@ -235,6 +245,12 @@ ul {
   background-color: #495057;
 }
 
+.dropdown-arrow {
+  margin-left: 8px;
+  font-size: 0.8em;
+  pointer-events: none;
+}
+
 .generator-text {
   text-align: center;
   font-family: "Inconsolata", monospace;
@@ -254,7 +270,6 @@ input {
   padding: 10px;
   border-radius: 5px;
   font-size: 16px;
-  margin: 1rem;
   border: solid 1px #000;
 }
 
@@ -286,7 +301,6 @@ textarea, select, button {
   width: 90%;
   padding: 10px;
   font-size: 16px;
-  margin-bottom: 1rem;
 }
 
 textarea {

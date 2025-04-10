@@ -174,7 +174,11 @@ function convertText() {
   }
 
   if (!caseType) {
-    updateResult("result", "Error: Please select a casing option.", true);
+    // updateResult("result", "Error: Please select a casing option.", true);
+    // Just use Title Case if no option selected
+    convertedText = toTitleCase(text);
+    updateResult("result", `${convertedText}`);
+    document.getElementById("result").setAttribute("data-copy", convertedText);
     return;
   }
 
