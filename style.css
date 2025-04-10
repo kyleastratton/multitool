@@ -54,6 +54,7 @@ body {
   width: 100%;
   overflow: hidden;
   background-color: var(--surface);
+  border-bottom: 1px solid #000;
 }
 
 .topnav a {
@@ -192,7 +193,8 @@ ul {
 .dropdown {
   position: relative;
   display: inline-block;
-  width: 100%;
+  width: 90%;
+  max-width: 90%;
 }
 
 .dropdown-toggle {
@@ -200,7 +202,8 @@ ul {
   padding: 10px;
   background-color: #343a40;
   color: #f8f9fa;
-  border: 1px solid #495057;
+  /* border: 1px solid #495057; */
+  border: solid 1px #000;
   border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
@@ -267,7 +270,7 @@ input, select, textarea {
   font-size: 16px;
   cursor: pointer;
   background-color: var(--primary);
-  border: solid 1px var(--primary);
+  border: solid 1px #000;
   color: white;
 }
 
@@ -447,6 +450,7 @@ textarea {
   width: 100%;
   height: fit-content;
   bottom: 0;
+  border-top: solid 1px #000;
 }
 
 .footer-inner {
