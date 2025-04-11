@@ -1,5 +1,4 @@
-// Add footer to page
-
+//! Add footer to page
 const footer = document.createElement("footer");
 footer.className = "footer";
 footer.innerHTML = `
@@ -41,7 +40,6 @@ window.addEventListener("load", positionFooter);
 window.addEventListener("resize", positionFooter);
 
 // Nav menu
-
 function openMenu() {
   var nav = document.getElementById("myTopnav");
   if (nav.className === "topnav") {
@@ -51,8 +49,8 @@ function openMenu() {
   }
 }
 
-// Dropdown menu
-
+//! Dropdown menu
+let selected = null;
 document.addEventListener("DOMContentLoaded", () => {
   const toggleBtn = document.getElementById("dropdownToggle");
   const dropdown = document.getElementById("dropdownMenu");
@@ -75,6 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (dropdownItems.length > 0) {
       dropdownItems.forEach((item) => {
         item.addEventListener("click", () => {
+          selected = item.dataset.value;
           toggleBtn.textContent = item.textContent;
           dropdown.style.display = "none";
         });
@@ -83,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// Disable double touch zoom on mobile
+//! Disable double touch zoom on mobile
 
 let lastTouchTime = 0;
 document.addEventListener(
@@ -126,7 +125,7 @@ function parseList(input) {
 function compareLists() {
   let list1 = parseList(document.getElementById("list1").value);
   let list2 = parseList(document.getElementById("list2").value);
-  let comparisonType = document.getElementById("comparisonType").value;
+  let comparisonType = selected;
 
   let set1 = new Set(list1);
   let set2 = new Set(list2);
@@ -165,7 +164,7 @@ function toTitleCase(str) {
 
 function convertText() {
   const text = document.getElementById("textInput").value;
-  const caseType = selectedCaseType;
+  const caseType = selected;
   let convertedText = "";
 
   if (text.length < 1) {
@@ -300,7 +299,6 @@ function generateNumber(length) {
 function generateString() {
   const charCount = parseInt(document.getElementById("charCount").value) || 0;
   const numCount = parseInt(document.getElementById("numCount").value) || 0;
-  const order = document.getElementById("order").value;
 
   const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const numbers = "0123456789";
@@ -315,7 +313,8 @@ function generateString() {
     numPart += numbers.charAt(Math.floor(Math.random() * numbers.length));
   }
 
-  let result = order === "charFirst" ? charPart + numPart : numPart + charPart;
+  let result =
+    selected === "numFirst" ? numPart + charPart : charPart + numPart;
   const outputElement = document.getElementById("result");
   updateResult("result", result);
   outputElement.setAttribute("data-copy", result);
@@ -596,7 +595,7 @@ function generateName(selectorId) {
     "Wayne",
     "Zachary",
     "Zane",
-    "Zack"
+    "Zack",
   ];
 
   let femaleNames = [
@@ -831,7 +830,7 @@ function generateName(selectorId) {
     "Zoe",
     "Zoey",
     "Zara",
-    "Zahra"
+    "Zahra",
   ];
 
   let surname = [
@@ -1607,7 +1606,7 @@ function generateName(selectorId) {
     "Yates",
     "Young",
     "Zane",
-    "Ziegler"
+    "Ziegler",
   ];
 
   const firstName = maleNames.concat(femaleNames);
@@ -1658,7 +1657,7 @@ function generateAddress(selectorId) {
     "Queensway",
     "London Road",
     "King Street",
-    "New Road"
+    "New Road",
   ];
   const townsAndPostcodes = [
     { town: "Manchester", postcode: "M1 1AE" },
@@ -1670,7 +1669,7 @@ function generateAddress(selectorId) {
     { town: "Sheffield", postcode: "S1 2GU" },
     { town: "Bristol", postcode: "BS1 2EP" },
     { town: "Cardiff", postcode: "CF10 1DX" },
-    { town: "Edinburgh", postcode: "EH1 1BP" }
+    { town: "Edinburgh", postcode: "EH1 1BP" },
   ];
   const houseNumber = Math.floor(Math.random() * 200) + 1;
   const street = getRandomItem(streetNames);

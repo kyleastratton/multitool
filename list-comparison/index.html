@@ -41,11 +41,20 @@
       <label for="list2">List 2</label>
       <textarea class="margin-bottom" id="list2" rows="4" placeholder="Please insert a list (comma-separated)..."></textarea>
 
-      <label for="comparisonType">Show</label>
+      <!-- <label for="comparisonType">Show</label>
       <select id="comparisonType">
         <option value="differences">Differences</option>
         <option value="matches">Matches</option>
-      </select>
+      </select> -->
+
+      <div class="dropdown">
+        <button class="dropdown-toggle" id="dropdownToggle">Select Comparison<span class="dropdown-arrow">▼</span></button>
+        <ul class="dropdown-menu" id="dropdownMenu">
+          <li data-value="differences">Differences</li>
+          <li data-value="matches">Matches</li>
+        </ul>
+      </div>
+      <p class="subtext">Comparison will default to differences if no option selected</p>
 
       <button class="button" onclick="compareLists()">Compare</button>
 

@@ -39,11 +39,19 @@
     <input class="margin-bottom" type="number" id="charCount" min="0" value="5">
     <label for="numCount">Number of Digits</label>
     <input class="margin-bottom" type="number" id="numCount" min="0" value="3">
-    <label for="order">Order</label>
-    <select id="order">
+    <!-- <label for="order">Order</label> -->
+    <!-- <select id="order">
       <option value="charFirst">Letters First</option>
       <option value="numFirst">Numbers First</option>
-    </select>
+    </select> -->
+    <div class="dropdown">
+      <button class="dropdown-toggle" id="dropdownToggle">Select Order<span class="dropdown-arrow">▼</span></button>
+      <ul class="dropdown-menu" id="dropdownMenu">
+        <li data-value="charFirst">Letters First</li>
+        <li data-value="numFirst">Numbers First</li>
+      </ul>
+    </div>
+    <p class="subtext">Order will default to letters first if no option selected</p>
     <button class="button" onclick="generateString()">Generate</button>
     <div id="result" class="result-box" style="display: none;" onclick="copyToClipboard('result')" title="Click to copy"/>
   </div>

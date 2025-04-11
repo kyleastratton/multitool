@@ -65,21 +65,7 @@
 
   <div id="snackbar" class="snackbar">Text copied to clipboard!</div>
 
-  <script>
-    let selectedCaseType = null;
-    document.addEventListener("DOMContentLoaded", () => {
-      const dropdown = document.getElementById("dropdownMenu");
-      const dropdownItems = document.querySelectorAll("#dropdownMenu li");
-
-      dropdownItems.forEach((item) => {
-        item.addEventListener("click", () => {
-          selectedCaseType = item.dataset.value;
-          document.getElementById("dropdownToggle").textContent = item.textContent;
-          dropdown.style.display = "none";
-        });
-      });
-    });
-  </script>
+  <script></script>
   <script src="../script.js"></script>
 </body>
 </html>
