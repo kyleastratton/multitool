@@ -1,9 +1,13 @@
 :root {
 /* Color Palette */
-  --background: #222529;
-  --surface: #2c3035;
-  --primary: #1051b3;
-  --hover: #0c397a;
+  /* --background: #222529; */
+  /* --surface: #2c3035; */
+  /* --primary: #1051b3; */
+  /* --hover: #0c397a; */
+  --background: #121419;
+  --surface: #1E2025;
+  --primary: #1D4ED8;
+  --hover: #1E40AF;
   --color-text-light: #d5dce3;
   --color-subtext-light: #bec1c3;
   --color-text-dark: #333333;
@@ -270,7 +274,14 @@ input {
   padding: 10px;
   border-radius: 5px;
   font-size: 16px;
-  border: solid 1px #000;
+  border: none;
+  box-shadow: none;
+}
+
+input:focus {
+  outline: none;
+  border: 1px solid #1E40AF;
+  box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.5);
 }
 
 input, select, textarea {
