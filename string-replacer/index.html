@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>Regex String Generator</title>
-  <link rel="stylesheet" href="../style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>String Replacer</title>
+  <link rel="stylesheet" href="../style.css" />
   <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon_io/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon_io/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon_io/favicon-16x16.png">
@@ -22,29 +22,35 @@
     </a>
     <a href="../index.html">Home</a>
     <a href="../data-generator/index.html">Data Generator</a>
-    <a href="../case-converter/index.html">Case Converter</a>
+    <a href="./index.html">Case Converter</a>
     <a href="../character-generator/index.html">Character Generator</a>
     <a href="../list-comparison/index.html">List Comparison</a>
-    <a href="../percentage.calulator/index.html">Percentage Calculator</a>
+    <a href="../percentage-calculator/index.html">Percentage Calculator</a>
     <a href="../random-picker/index.html">Random Picker</a>
-    <a href="./index.html" class="active">Regex Generator</a>
-    <a href="../string-replacer/index.html">String Replacer</a>
+    <a href="../regex-generator/index.html">Regex Generator</a>
+    <a href="./index.html" class="active">String Replacer</a>
     <a href="javascript:void(0);" class="icon" onclick="openMenu()">
       <i class="fa fa-bars"></i>
     </a>
   </nav>
 
   <div class="container">
-    <h1>Regex String Generator</h2>
-    <h3>Regex Expression</h3>
-    <input class="margin-bottom" type="text" id="regexInput" placeholder="Enter regex (e.g., [0-9]{3})" />
-    <h3>Number of strings to generate</h3>
-    <input class="margin-bottom" type="number" id="countInput" placeholder="Number of strings to generate" min="1" value="1" />
-    <button class="button" onclick="generateStrings()">Generate Strings</button>
+    <h1>String Replacer</h1>
+
+    <label for="stringInput">Input String:</label>
+    <textarea class="margin-bottom" id="stringInput" rows="4" placeholder="Enter your string here..."></textarea>
+
+    <label for="findValue">Find:</label>
+    <input class="margin-bottom" type="text" id="findValue" placeholder="Characters to find" placeholder="Please enter a value to find" />
+
+    <label for="replaceValue">Replace With:</label>
+    <input class="margin-bottom" type="text" id="replaceValue" placeholder="Replacement characters" placeholder="Please enter value to replace" />
+
+    <button class="button" id="replaceBtn" onclick="replaceString()">Replace</button>
+
+    <!-- <div class="result" id="resultBox"></div> -->
     <div id="result" class="result-box" style="display: none;" onclick="copyToClipboard('result')"/>
   </div>
-
-  <div id="snackbar" class="snackbar">Text copied to clipboard!</div>
 
   <script src="../script.js"></script>
 </body>

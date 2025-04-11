@@ -1813,3 +1813,29 @@ function calculatePercentageOf() {
   const result = percentage.toFixed(2); // to 2 decimal places
   updateResult("result3", `Result: ${result}%`);
 }
+
+//! String replacer logic
+function replaceString() {
+  const stringInput = document.getElementById("stringInput");
+  const findValue = document.getElementById("findValue");
+  const replaceValue = document.getElementById("replaceValue");
+  const replaceBtn = document.getElementById("replaceBtn");
+  const resultBox = document.getElementById("resultBox");
+
+  replaceBtn.addEventListener("click", () => {
+    const inputStr = stringInput.value;
+    const find = findValue.value;
+    const replace = replaceValue.value;
+
+    if (find === "") {
+      updateResult("result", "Error: Please enter a value to find.", true);
+      return;
+    }
+
+    const regex = new RegExp(find, "g"); // global replace
+    const replaced = inputStr.replace(regex, replace);
+    console.log(replaced);
+    updateResult("result", `${replaced}`);
+    document.getElementById("result").setAttribute("data-copy", replaced);
+  });
+}
