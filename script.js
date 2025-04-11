@@ -39,7 +39,7 @@ function positionFooter() {
 window.addEventListener("load", positionFooter);
 window.addEventListener("resize", positionFooter);
 
-// Nav menu
+//! Nav menu
 function openMenu() {
   var nav = document.getElementById("myTopnav");
   if (nav.className === "topnav") {
@@ -83,7 +83,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 //! Disable double touch zoom on mobile
-
 let lastTouchTime = 0;
 document.addEventListener(
   "touchstart",
@@ -101,8 +100,7 @@ document.addEventListener(
   { passive: false }
 ); // passive: false ensures preventDefault() works
 
-// Render results logic
-
+//! Render results logic
 function updateResult(resultId, value, isError = false) {
   let resultBox = document.getElementById(resultId);
 
@@ -416,8 +414,7 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
-// Name logic
-
+//! Name logic
 function generateName(selectorId) {
   let maleNames = [
     "Andrew",
@@ -1619,8 +1616,7 @@ function generateName(selectorId) {
   document.getElementById(selectorId).setAttribute("data-copy", result);
 }
 
-// Matter number logic
-
+//! Matter number logic
 function generateMatterNumber(selectorId, nameId) {
   let name = document.getElementById(nameId).innerText;
   let splitName = name.split(" ");
@@ -1640,8 +1636,7 @@ function generateMatterNumber(selectorId, nameId) {
   document.getElementById(selectorId).setAttribute("data-copy", result);
 }
 
-// Address Logic
-
+//! Address Logic
 function getRandomItem(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
@@ -1689,24 +1684,21 @@ function generateAddress(selectorId) {
   document.getElementById(selectorId).setAttribute("data-copy", result);
 }
 
-// Telephone number logic
-
+//! Telephone number logic
 function generateTelephoneNumber(selectorId) {
   const result = "01632 960 " + generateNumber(3);
   document.getElementById(selectorId).innerText = result;
   document.getElementById(selectorId).setAttribute("data-copy", result);
 }
 
-// Mobile number logic
-
+//! Mobile number logic
 function generateMobileNumber(selectorId) {
   const result = "0770 090 0" + generateNumber(3);
   document.getElementById(selectorId).innerText = result;
   document.getElementById(selectorId).setAttribute("data-copy", result);
 }
 
-// Sort code logic
-
+//! Sort code logic
 function formatSortCode(str) {
   return (String(str).match(/.{1,2}/g) || []).join("-");
 }
@@ -1718,8 +1710,7 @@ function generateSortCode(selectorId) {
   document.getElementById(selectorId).setAttribute("data-copy", result);
 }
 
-// Account number logic
-
+//! Account number logic
 function generateAccountNumber(selectorId) {
   const accountnumber1 = generateNumber(4);
   const accountnumber2 = generateNumber(4);
@@ -1728,8 +1719,7 @@ function generateAccountNumber(selectorId) {
   document.getElementById(selectorId).setAttribute("data-copy", result);
 }
 
-// Amount logic
-
+//! Amount logic
 function getAmount(min, max) {
   return Math.random() * (max - min) + min;
 }
@@ -1747,8 +1737,7 @@ function generateAmount(selectorId) {
   document.getElementById(selectorId).setAttribute("data-copy", result);
 }
 
-// Percentage logic
-
+//! Percentage logic
 function calculatePercentageOfValue() {
   const value = parseFloat(document.getElementById("value1").value);
   const percentage = parseFloat(document.getElementById("percentage1").value);
