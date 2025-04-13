@@ -7,7 +7,7 @@ const navbarHTML = `
         <a href="index.html" class="navbar-brand">Multitool</a>
         <ul class="navbar-links">
             <li><a href="index.html">Home</a></li>
-            <li><a href="services.html">Utilities</a></li>
+            <li><a href="services.html">Tools</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
@@ -54,7 +54,7 @@ const footerHTML = `
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
-                    <li><a href="services.html">Utilities</a></li>
+                    <li><a href="services.html">Tools</a></li>
                     <li><a href="blog.html">Blog</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
