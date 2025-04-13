@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>String Generator | Multitool</title>
+        <link rel="stylesheet" href="css/main.css" />
+        <link rel="stylesheet" href="css/footer.css" />
+    </head>
+    <body>
+        <!-- Navbar placeholder -->
+        <div id="navbar-container"></div>
+
+        <!-- Main content -->
+        <main>
+            <div class="display-container">
+                <div class="display-card">
+                    <h2 style="text-align: center">Regex String Generator</h2>
+                    <h3>Regex Expression</h3>
+                    <input
+                        class="input margin-bottom"
+                        type="text"
+                        id="regexInput"
+                        placeholder="Enter regex ([0-9]{3})"
+                    />
+                    <button class="btn btn-primary" onclick="generateStrings()">
+                        Generate Strings
+                    </button>
+                    <div
+                        id="result"
+                        class="result-box"
+                        style="display: none"
+                        onclick="copyToClipboard('result')"
+                    />
+                </div>
+            </div>
+
+            <div id="snackbar" class="snackbar">Text copied to clipboard!</div>
+        </main>
+
+        <!-- Footer placeholder -->
+        <div id="footer-container"></div>
+
+        <!-- Scripts -->
+        <script src="js/main.js"></script>
+        <script src="js/components.js"></script>
+    </body>
+</html>

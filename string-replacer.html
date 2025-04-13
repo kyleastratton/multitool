@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>String Replacer | Multitool</title>
+        <link rel="stylesheet" href="css/main.css" />
+        <link rel="stylesheet" href="css/footer.css" />
+    </head>
+    <body>
+        <!-- Navbar placeholder -->
+        <div id="navbar-container"></div>
+
+        <!-- Main content -->
+        <main>
+            <div class="display-container">
+                <div class="display-card">
+                    <h1>String Replacer</h1>
+
+                    <h2 for="stringInput">Input String</h2>
+                    <textarea
+                        class="textarea margin-bottom"
+                        id="stringInput"
+                        rows="4"
+                        placeholder="Enter your string here..."
+                    ></textarea>
+
+                    <h2 for="findValue">Find</h2>
+                    <input
+                        class="input margin-bottom"
+                        type="text"
+                        id="findValue"
+                        placeholder="Characters to find"
+                        placeholder="Please enter a value to find"
+                    />
+
+                    <h2 for="replaceValue">Replace With</h2>
+                    <input
+                        class="input margin-bottom"
+                        type="text"
+                        id="replaceValue"
+                        placeholder="Replacement characters"
+                        placeholder="Please enter value to replace"
+                    />
+
+                    <button
+                        class="btn btn-primary"
+                        id="replaceBtn"
+                        onclick="replaceString()"
+                    >
+                        Replace
+                    </button>
+
+                    <div
+                        id="result"
+                        class="result-box"
+                        style="display: none"
+                        onclick="copyToClipboard('result')"
+                    />
+                </div>
+            </div>
+
+            <div id="snackbar" class="snackbar">Text copied to clipboard!</div>
+        </main>
+
+        <!-- Footer placeholder -->
+        <div id="footer-container"></div>
+
+        <!-- Scripts -->
+        <script src="js/main.js"></script>
+        <script src="js/components.js"></script>
+    </body>
+</html>

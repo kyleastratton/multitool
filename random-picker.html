@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Random Picker | Multitool</title>
+        <link rel="stylesheet" href="css/main.css" />
+        <link rel="stylesheet" href="css/footer.css" />
+    </head>
+    <body>
+        <!-- Navbar placeholder -->
+        <div id="navbar-container"></div>
+
+        <!-- Main content -->
+        <main>
+            <div class="display-container">
+                <div class="display-card">
+                    <h2 style="text-align: center">Random Item Picker</h2>
+                    <input
+                        class="input"
+                        type="text"
+                        id="itemInput"
+                        placeholder="Please enter items separated by commas..."
+                    />
+                    <br />
+                    <button class="btn btn-primary" onclick="pickRandomItem()">
+                        Pick Random Item
+                    </button>
+                    <div
+                        id="result"
+                        class="result-box"
+                        style="display: none"
+                        onclick="copyToClipboard('result')"
+                    />
+                </div>
+            </div>
+
+            <div id="snackbar" class="snackbar">Text copied to clipboard!</div>
+        </main>
+
+        <!-- Footer placeholder -->
+        <div id="footer-container"></div>
+
+        <!-- Scripts -->
+        <script src="js/main.js"></script>
+        <script src="js/components.js"></script>
+    </body>
+</html>

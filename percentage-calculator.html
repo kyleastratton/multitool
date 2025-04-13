@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Percentage Calculator | Multitool</title>
+        <link rel="stylesheet" href="css/main.css" />
+        <link rel="stylesheet" href="css/footer.css" />
+    </head>
+    <body>
+        <!-- Navbar placeholder -->
+        <div id="navbar-container"></div>
+
+        <!-- Main content -->
+        <section class="features">
+            <div class="container">
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h2>Percentage of a Value</h2>
+                        <h3 for="value1">Value</h3>
+                        <input
+                            class="input margin-bottom"
+                            type="number"
+                            id="value1"
+                            step="any"
+                            placeholder="Enter value..."
+                        />
+                        <h3 for="percentage1">Percentage (%)</h3>
+                        <input
+                            class="input margin-bottom"
+                            type="number"
+                            id="percentage1"
+                            step="any"
+                            placeholder="Enter percentage to calculate..."
+                        />
+                        <button
+                            class="btn btn-primary"
+                            onclick="calculatePercentageOfValue()"
+                        >
+                            Calculate
+                        </button>
+                        <div
+                            id="result1"
+                            class="result-box"
+                            style="display: none"
+                        >
+                            <p id="result"></p>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <h2>Value ± Percentage</h2>
+                        <h3 for="value2">Value</h3>
+                        <input
+                            class="input margin-bottom"
+                            type="number"
+                            id="value2"
+                            step="any"
+                            placeholder="Enter value..."
+                        />
+                        <h3 for="percentage2">Percentage (%)</h3>
+                        <input
+                            class="input margin-bottom"
+                            type="number"
+                            id="percentage2"
+                            step="any"
+                            placeholder="Enter percentage to add/subtract..."
+                        />
+                        <button
+                            class="btn btn-primary margin-bottom"
+                            onclick="calculateValuePlusPercentage()"
+                        >
+                            Calculate Value + Percentage
+                        </button>
+                        <button
+                            class="btn btn-primary"
+                            onclick="calculateValueMinusPercentage()"
+                        >
+                            Calculate Value - Percentage
+                        </button>
+                        <div
+                            id="result1"
+                            class="result-box"
+                            style="display: none"
+                        >
+                            <p id="result"></p>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <h2>A is what percentage of B?</h2>
+                        <h3 for="valueA">Enter A</h3>
+                        <input
+                            class="input margin-bottom"
+                            type="number"
+                            id="valueA"
+                            placeholder="Enter value of A..."
+                        />
+
+                        <h3 for="valueB">Enter B</h3>
+                        <input
+                            class="input margin-bottom"
+                            type="number"
+                            id="valueB"
+                            placeholder="Enter value of B..."
+                        />
+
+                        <button
+                            class="btn btn-primary"
+                            onclick="calculatePercentageOf()"
+                        >
+                            Calculate
+                        </button>
+                        <div
+                            id="result3"
+                            class="result-box"
+                            style="display: none"
+                        >
+                            <p id="result"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="snackbar" class="snackbar">Text copied to clipboard!</div>
+        </section>
+
+        <!-- Footer placeholder -->
+        <div id="footer-container"></div>
+
+        <!-- Scripts -->
+        <script src="js/main.js"></script>
+        <script src="js/components.js"></script>
+    </body>
+</html>

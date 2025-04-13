@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Data Generator | Multitool</title>
+        <link rel="stylesheet" href="css/main.css" />
+        <link rel="stylesheet" href="css/footer.css" />
+    </head>
+    <body>
+        <!-- Navbar placeholder -->
+        <div id="navbar-container"></div>
+
+        <section class="features">
+            <div class="container">
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>Name</h3>
+                        <p
+                            class="result"
+                            id="name"
+                            onclick="copyToClipboard('name')"
+                        >
+                            John Doe
+                        </p>
+                        <button
+                            class="btn btn-primary"
+                            onclick="generateName('name')"
+                        >
+                            Generate
+                        </button>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>Matter Number</h3>
+                        <p
+                            class="result"
+                            id="matterNumber"
+                            onclick="copyToClipboard('matterNumber')"
+                        >
+                            DOE01-01
+                        </p>
+                        <button
+                            class="btn btn-primary"
+                            onclick="generateMatterNumber('matterNumber', 'name')"
+                        >
+                            Generate
+                        </button>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>Address</h3>
+                        <p
+                            class="result"
+                            id="address"
+                            onclick="copyToClipboard('address')"
+                        >
+                            123 Main Street, London, AB12 3BC
+                        </p>
+                        <button
+                            class="btn btn-primary"
+                            onclick="generateAddress('address')"
+                        >
+                            Generate
+                        </button>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>Telephone Number</h3>
+                        <p
+                            class="result"
+                            id="telephoneNumber"
+                            onclick="copyToClipboard('telephoneNumber')"
+                        >
+                            01632 960 000
+                        </p>
+                        <button
+                            class="btn btn-primary"
+                            onclick="generateTelephoneNumber('telephoneNumber')"
+                        >
+                            Generate
+                        </button>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>Mobile Number</h3>
+                        <p
+                            class="result"
+                            id="mobileNumber"
+                            onclick="copyToClipboard('mobileNumber')"
+                        >
+                            0770 900 000
+                        </p>
+                        <button
+                            class="btn btn-primary"
+                            onclick="generateMobileNumber('mobileNumber')"
+                        >
+                            Generate
+                        </button>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>Sort Code</h3>
+                        <p
+                            class="result"
+                            id="sortCode"
+                            onclick="copyToClipboard('sortCode')"
+                        >
+                            01-21-31
+                        </p>
+                        <button
+                            class="btn btn-primary"
+                            onclick="generateSortCode('sortCode')"
+                        >
+                            Generate
+                        </button>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>Account Number</h3>
+                        <p
+                            class="result"
+                            id="accountNumber"
+                            onclick="copyToClipboard('accountNumber')"
+                        >
+                            1234 5678
+                        </p>
+                        <button
+                            class="btn btn-primary"
+                            onclick="generateAccountNumber('accountNumber')"
+                        >
+                            Generate
+                        </button>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>Account Number</h3>
+                        <p
+                            class="result"
+                            id="accountNumber"
+                            onclick="copyToClipboard('accountNumber')"
+                        >
+                            1234 5678
+                        </p>
+                        <button
+                            class="btn btn-primary"
+                            onclick="generateAccountNumber('accountNumber')"
+                        >
+                            Generate
+                        </button>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>Amount</h3>
+                        <p
+                            class="result"
+                            id="amount"
+                            onclick="copyToClipboard('amount')"
+                        >
+                            1,234.56
+                        </p>
+                        <button
+                            class="btn btn-primary"
+                            onclick="generateAmount('amount')"
+                        >
+                            Generate
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer placeholder -->
+        <div id="footer-container"></div>
+
+        <!-- Scripts -->
+        <script src="js/main.js"></script>
+        <script src="js/components.js"></script>
+    </body>
+</html>

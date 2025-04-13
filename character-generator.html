@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Character Generator | Multitool</title>
+        <link rel="stylesheet" href="css/main.css" />
+        <link rel="stylesheet" href="css/footer.css" />
+    </head>
+    <body>
+        <!-- Navbar placeholder -->
+        <div id="navbar-container"></div>
+
+        <!-- Main content -->
+        <main>
+            <div class="display-container">
+                <div class="display-card">
+                    <h2>String Generator</h2>
+                    <h3 for="charCount">Number of Letters</h3>
+                    <input
+                        class="input margin-bottom"
+                        type="number"
+                        id="charCount"
+                        min="0"
+                        value="5"
+                    />
+                    <h3 for="numCount">Number of Digits</h3>
+                    <input
+                        class="input margin-bottom"
+                        type="number"
+                        id="numCount"
+                        min="0"
+                        value="3"
+                    />
+                    <div class="dropdown">
+                        <button class="dropdown-toggle" id="dropdownToggle">
+                            Select Order<span class="dropdown-arrow">▼</span>
+                        </button>
+                        <ul class="dropdown-menu" id="dropdownMenu">
+                            <li data-value="charFirst">Letters First</li>
+                            <li data-value="numFirst">Numbers First</li>
+                        </ul>
+                    </div>
+                    <p class="subtext">
+                        Order will default to letters first if no option
+                        selected
+                    </p>
+                    <button class="btn btn-primary" onclick="generateString()">
+                        Generate
+                    </button>
+                    <div
+                        id="result"
+                        class="result-box"
+                        style="display: none"
+                        onclick="copyToClipboard('result')"
+                        title="Click to copy"
+                    />
+                </div>
+            </div>
+
+            <div id="snackbar" class="snackbar">Text copied to clipboard!</div>
+        </main>
+
+        <!-- Footer placeholder -->
+        <div id="footer-container"></div>
+
+        <!-- Scripts -->
+        <script src="js/main.js"></script>
+        <script src="js/components.js"></script>
+    </body>
+</html>

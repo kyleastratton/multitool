@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Cas Converter | Multitool</title>
+        <link rel="stylesheet" href="css/main.css" />
+        <link rel="stylesheet" href="css/footer.css" />
+    </head>
+    <body>
+        <!-- Navbar placeholder -->
+        <div id="navbar-container"></div>
+
+        <!-- Main content -->
+        <main>
+            <div class="display-container">
+                <div class="display-card">
+                    <h2>Text Case Converter</h2>
+                    <h3>Text to convert</h3>
+                    <input
+                        class="input margin-bottom"
+                        type="text"
+                        id="textInput"
+                        placeholder="Enter text here"
+                    />
+                    <h3>Casing</h3>
+                    <div class="dropdown">
+                        <button class="dropdown-toggle" id="dropdownToggle">
+                            Select Casing <span class="dropdown-arrow">▼</span>
+                        </button>
+                        <ul class="dropdown-menu" id="dropdownMenu">
+                            <li data-value="title_case">Title Case</li>
+                            <li data-value="sentence">Sentence case</li>
+                            <li data-value="uppercase">UPPERCASE</li>
+                            <li data-value="lowercase">lowercase</li>
+                            <li data-value="alternating">aLtErNaTiNg cAsE</li>
+                            <li data-value="inverse">iNVERSE cASE</li>
+                            <li data-value="snake">snake_case</li>
+                            <li data-value="kebab">kebab-case</li>
+                            <li data-value="camel">camelCase</li>
+                            <li data-value="pascal">PascalCase</li>
+                            <li data-value="screaming_snake">
+                                SCREAMING_SNAKE_CASE
+                            </li>
+                            <li data-value="screaming_kebab">
+                                SCREAMING-KEBAB-CASE
+                            </li>
+                            <li data-value="train">Train-Case</li>
+                        </ul>
+                    </div>
+
+                    <p class="subtext">
+                        Casing will default to 'Title Case' if no option
+                        selected
+                    </p>
+
+                    <button class="btn btn-primary" onclick="convertText()">
+                        Convert
+                    </button>
+                    <div
+                        id="result"
+                        class="result-box"
+                        style="display: none"
+                        onclick="copyToClipboard('result')"
+                    />
+                </div>
+            </div>
+
+            <div id="snackbar" class="snackbar">Text copied to clipboard!</div>
+        </main>
+
+        <!-- Footer placeholder -->
+        <div id="footer-container"></div>
+
+        <!-- Scripts -->
+        <script src="js/main.js"></script>
+        <script src="js/components.js"></script>
+    </body>
+</html>

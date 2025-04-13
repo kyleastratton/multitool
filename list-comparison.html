@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>List Comparison | Multitool</title>
+        <link rel="stylesheet" href="css/main.css" />
+        <link rel="stylesheet" href="css/footer.css" />
+    </head>
+    <body>
+        <!-- Navbar placeholder -->
+        <div id="navbar-container"></div>
+
+        <!-- Main content -->
+        <main>
+            <div class="display-container">
+                <div class="display-card">
+                    <h2>List Comparator</h2>
+                    <h3 for="list1">List 1</h3>
+                    <textarea
+                        class="textarea margin-bottom"
+                        id="list1"
+                        rows="4"
+                        placeholder="Please insert a list (comma-separated)..."
+                    ></textarea>
+
+                    <h3 for="list2">List 2</h3>
+                    <textarea
+                        class="textarea margin-bottom"
+                        id="list2"
+                        rows="4"
+                        placeholder="Please insert a list (comma-separated)..."
+                    ></textarea>
+
+                    <div class="dropdown">
+                        <button class="dropdown-toggle" id="dropdownToggle">
+                            Select Comparison<span class="dropdown-arrow"
+                                >▼</span
+                            >
+                        </button>
+                        <ul class="dropdown-menu" id="dropdownMenu">
+                            <li data-value="differences">Differences</li>
+                            <li data-value="matches">Matches</li>
+                        </ul>
+                    </div>
+                    <p class="subtext">
+                        Comparison will default to differences if no option
+                        selected
+                    </p>
+
+                    <button class="btn btn-primary" onclick="compareLists()">
+                        Compare
+                    </button>
+
+                    <div id="result" class="result-box" style="display: none" />
+                </div>
+            </div>
+
+            <div id="snackbar" class="snackbar">Text copied to clipboard!</div>
+        </main>
+
+        <!-- Footer placeholder -->
+        <div id="footer-container"></div>
+
+        <!-- Scripts -->
+        <script src="js/main.js"></script>
+        <script src="js/components.js"></script>
+    </body>
+</html>
