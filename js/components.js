@@ -13,7 +13,34 @@ const navbarHTML = `
         </ul>
     </div>
 </nav>
+<div class="mobilenav">
+  <a href="index.html" class="active">Multitool</a>
+  <div id="myLinks">
+    <a href="data-generator.html">Data Generator</a>
+    <a href="case-converter.html">Case Converter</a>
+    <a href="character-generator.html">Character Generator</a>
+    <a href="list-comparison.html">List Comparison</a>
+    <a href="percentage-calculator.html">Percentage Calculator</a>
+    <a href="random-picker.html">Random Picker</a>
+    <a href="regex-string-generator.html">Regex String Generator</a>
+    <a href="string-replacer.html">String Replacer</a>
+  </div>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
 `;
+
+// mobile navbar
+
+function myFunction() {
+    var x = document.getElementById("myLinks");
+    if (x.style.display === "block") {
+        x.style.display = "none";
+    } else {
+        x.style.display = "block";
+    }
+}
 
 // Store the footer HTML in a variable
 const footerHTML = `

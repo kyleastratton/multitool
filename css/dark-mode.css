@@ -33,15 +33,53 @@ body.dark-mode .navbar-toggler-icon {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
+body.dark-mode .mobilenav {
+    background-color: #1a202c !important;
+    color: #D9D9D9;
+}
+
+body.dark-mode .mobilenav a.icon {
+    background: #1a202c;
+}
+
+body.dark-mode .features {
+    background-color: #1e293b;
+}
+
+body.dark-mode .services-overview {
+    background-color: #1e293b;
+}
+
+body.dark-mode .about-content {
+    background-color: #1e293b;
+}
+
+body.dark-mode .contact-section {
+    background-color: #1e293b;
+}
+
 /* Card components */
-body.dark-mode .feature-card, .display-card {
-    /* background-color: #1e1e1e; */
+body.dark-mode .feature-card {
     background-color: #2d3748;
+    color: #d9d9d9;
     border-color: #333;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
-body.dark-mode .input, .textarea {
+body.dark-mode .display-card {
+    background-color: #2d3748;
+    color: #d9d9d9;
+    border-color: #333;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .input {
+    background-color: #1e293b;
+    color: #d9d9d9;
+    border: 1px solid #d9d9d9;
+}
+
+body.dark-mode .textarea {
     background-color: #1e293b;
     color: #d9d9d9;
 }
@@ -57,7 +95,12 @@ body.dark-mode .card-footer {
     border-top-color: #333;
 }
 
-body.dark-mode .hero, .page-header {
+body.dark-mode .hero {
+    background-color: #1e293b;
+    color: #d9d9d9;
+}
+
+body.dark-mode .page-header {
     background-color: #1e293b;
     color: #d9d9d9;
 }
