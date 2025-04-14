@@ -131,6 +131,11 @@ p {
     height: 2rem;
 }
 
+.logo {
+    height: 160px;
+    width: 160px;
+}
+
 .card-link {
     text-decoration: none;
     color: inherit;
