@@ -118,7 +118,7 @@ h3 {
 }
 
 p {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 }
 
 .subtext {
@@ -564,11 +564,11 @@ section {
 .dropdown-toggle {
     width: 100%;
     padding: 10px;
-    background-color: var(--primary);
+    background-color: #F8F8F8;
     /* background-color: #343a40; */
     /* color: #f8f9fa; */
     /* border: 1px solid #495057; */
-    color: #fff;
+    color: #333;
     border: solid 1px #000;
     border-radius: 4px;
     cursor: pointer;
@@ -580,7 +580,7 @@ section {
     position: absolute;
     z-index: 999;
     width: 100%;
-    background-color: var(--primary);
+    background-color: #F8F8F8;
     /* background-color: #343a40; */
     border: 1px solid #495057;
     border-radius: 4px;
@@ -594,14 +594,14 @@ section {
 
 .dropdown-menu li {
     padding: 10px;
-    color: #fff;
+    color: #333;
     cursor: pointer;
     transition: background-color 0.2s ease;
 }
 
 .dropdown-menu li:hover {
     /* background-color: #495057; */
-    background-color: var(--primary);
+    color: var(--primary);
 }
 
 .dropdown-arrow {
