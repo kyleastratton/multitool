@@ -4,7 +4,7 @@
 const navbarHTML = `
 <nav class="navbar">
     <div class="container">
-        <a href="index.html" class="navbar-brand">Multitool</a>
+        <a href="index.html" id="navbar-brand" class="navbar-brand">Multitool</a>
         <ul class="navbar-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="services.html">Tools</a></li>
@@ -14,7 +14,7 @@ const navbarHTML = `
     </div>
 </nav>
 <div class="mobilenav">
-  <a href="index.html" class="active">Multitool</a>
+  <a href="index.html" id="navbar-brand" class="active">Multitool</a>
   <div id="myLinks">
     <a href="data-generator.html">Data Generator</a>
     <a href="case-converter.html">Case Converter</a>
@@ -34,12 +34,12 @@ const navbarHTML = `
 // mobile navbar
 
 function myFunction() {
-    var x = document.getElementById("myLinks");
-    if (x.style.display === "block") {
-        x.style.display = "none";
-    } else {
-        x.style.display = "block";
-    }
+  var x = document.getElementById("myLinks");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
 }
 
 // Store the footer HTML in a variable
@@ -124,24 +124,24 @@ const footerHTML = `
 
 // Function to inject navbar and footer
 function injectComponents() {
-    // Find the navbar and footer containers
-    const navbarContainer = document.getElementById("navbar-container");
-    const footerContainer = document.getElementById("footer-container");
+  // Find the navbar and footer containers
+  const navbarContainer = document.getElementById("navbar-container");
+  const footerContainer = document.getElementById("footer-container");
 
-    // Inject the HTML
-    if (navbarContainer) {
-        navbarContainer.innerHTML = navbarHTML;
-    }
+  // Inject the HTML
+  if (navbarContainer) {
+    navbarContainer.innerHTML = navbarHTML;
+  }
 
-    if (footerContainer) {
-        footerContainer.innerHTML = footerHTML;
-    }
+  if (footerContainer) {
+    footerContainer.innerHTML = footerHTML;
+  }
 }
 
 // Add screen reader only class for accessibility
 document.head.insertAdjacentHTML(
-    "beforeend",
-    `
+  "beforeend",
+  `
 <style>
 .sr-only {
     position: absolute;
