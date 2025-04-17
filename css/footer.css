@@ -1,9 +1,11 @@
 /* Footer Styles */
 footer {
     /* background-color: #1a202c; bg-gray-900 */
-    background-color: #e9e9e9;
+    /* background-color: #e9e9e9; */
+    background-color: #f1f0f3;
     padding: 3rem 1rem;
     width: 100vw;
+    border-top: 1px solid #333;
 }
 
 footer, .footer, footer a, footer p {
@@ -86,7 +88,7 @@ footer address {
 }
 
 footer .footer-bottom {
-    border-top: 1px solid #2d3748; /* border-gray-800 */
+    /* border-top: 1px solid #2d3748; border-gray-800 */
     margin-top: 3rem;
     padding-top: 2rem;
     text-align: center;
