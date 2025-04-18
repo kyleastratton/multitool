@@ -452,7 +452,7 @@ section, .hero, .features {
 
 /* Media Queries */
 @media (max-width: 768px) {
-    main {
+    .features, .display-container {
       padding: 1%;
     }
 

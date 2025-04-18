@@ -15,6 +15,7 @@ const navbarHTML = `
 </nav>
 <div class="mobilenav">
   <a href="index.html" id="navbar-brand" class="active">Multitool</a>
+  <div class="mobilenav-darkmode"></div>
   <div id="myLinks">
     <a href="data-generator.html">Data Generator</a>
     <a href="case-converter.html">Case Converter</a>
@@ -25,15 +26,14 @@ const navbarHTML = `
     <a href="regex-string-generator.html">Regex String Generator</a>
     <a href="string-replacer.html">String Replacer</a>
   </div>
-  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+  <a href="javascript:void(0);" class="icon" onclick="handleHamburgerMenu()">
     <i class="fa fa-bars"></i>
   </a>
 </div>
 `;
 
 // mobile navbar
-
-function myFunction() {
+function handleHamburgerMenu() {
   var x = document.getElementById("myLinks");
   if (x.style.display === "block") {
     x.style.display = "none";
