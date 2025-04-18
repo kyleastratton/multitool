@@ -2,34 +2,34 @@
 
 // Store the navbar HTML in a variable
 const navbarHTML = `
-<nav class="navbar">
-    <div class="container">
-        <a href="index.html" id="navbar-brand" class="navbar-brand">Multitool</a>
-        <ul class="navbar-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="services.html">Tools</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
+  <nav class="navbar">
+      <div class="container">
+          <a href="index.html" id="navbar-brand" class="navbar-brand">Multitool</a>
+          <ul class="navbar-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="services.html">Tools</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+          </ul>
+      </div>
+  </nav>
+  <nav class="mobilenav">
+    <a href="index.html" id="navbar-brand" class="active">Multitool</a>
+    <div id="myLinks">
+      <a href="data-generator.html">Data Generator</a>
+      <a href="case-converter.html">Case Converter</a>
+      <a href="character-generator.html">Character Generator</a>
+      <a href="number-generator.html">Number Generator</a>
+      <a href="list-comparison.html">List Comparison</a>
+      <a href="percentage-calculator.html">Percentage Calculator</a>
+      <a href="random-picker.html">Random Picker</a>
+      <a href="regex-string-generator.html">Regex String Generator</a>
+      <a href="string-replacer.html">String Replacer</a>
     </div>
-</nav>
-<div class="mobilenav">
-  <a href="index.html" id="navbar-brand" class="active">Multitool</a>
-  <div class="mobilenav-darkmode"></div>
-  <div id="myLinks">
-    <a href="data-generator.html">Data Generator</a>
-    <a href="case-converter.html">Case Converter</a>
-    <a href="character-generator.html">Character Generator</a>
-    <a href="list-comparison.html">List Comparison</a>
-    <a href="percentage-calculator.html">Percentage Calculator</a>
-    <a href="random-picker.html">Random Picker</a>
-    <a href="regex-string-generator.html">Regex String Generator</a>
-    <a href="string-replacer.html">String Replacer</a>
-  </div>
-  <a href="javascript:void(0);" class="icon" onclick="handleHamburgerMenu()">
-    <i class="fa fa-bars"></i>
-  </a>
-</div>
+    <a href="javascript:void(0);" class="icon" onclick="handleHamburgerMenu()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </nav>
 `;
 
 // mobile navbar

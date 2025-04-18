@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Random Number Picker | Multitool</title>
+        <link rel="stylesheet" href="css/main.css" />
+        <link rel="stylesheet" href="css/footer.css" />
+        <link rel="stylesheet" href="css/dark-mode.css" />
+        <link rel="icon" href="assets/favicon.svg" type="image/x-icon" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <!-- Scripts -->
+        <script src="js/main.js"></script>
+        <script src="js/components.js"></script>
+        <script src="js/dark-mode.js"></script>
+
+        <!-- Navbar placeholder -->
+        <div id="navbar-container"></div>
+
+        <!-- Main content -->
+        <main>
+            <div class="display-container">
+                <div class="display-card">
+                    <h2 style="text-align: center">Min Number</h2>
+                    <input
+                        class="input"
+                        type="text"
+                        id="minNum"
+                        placeholder="Please enter a min number..."
+                        value="1"
+                    />
+                    <br />
+                    <h2 style="text-align: center">Max Number</h2>
+                    <input
+                        class="input"
+                        type="text"
+                        id="maxNum"
+                        placeholder="Please enter a max number..."
+                        value="100"
+                    />
+                    <br />
+                    <button class="btn btn-primary" onclick="generateRandomNumber()">
+                        Pick Random Item
+                    </button>
+                    <div
+                        id="result"
+                        class="result-box"
+                        style="display: none"
+                        onclick="copyToClipboard('result')"
+                    />
+                </div>
+            </div>
+
+            <div id="snackbar" class="snackbar">Text copied to clipboard!</div>
+        </main>
+
+        <!-- Footer placeholder -->
+        <div id="footer-container"></div>
+    </body>
+</html>

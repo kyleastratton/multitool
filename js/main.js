@@ -1765,8 +1765,66 @@ function replaceString() {
 
     const regex = new RegExp(find, "g"); // global replace
     const replaced = inputStr.replace(regex, replace);
-    console.log(replaced);
     updateResult("result", `${replaced}`);
     document.getElementById("result").setAttribute("data-copy", replaced);
   });
+}
+
+//! Random number logic
+
+function generateRandomNumber() {
+  // Get values from input fields
+  const minInput = document.getElementById("minNum");
+  const maxInput = document.getElementById("maxNum");
+
+  // Convert to numbers and ensure they're valid
+  const min = Number(minInput.value);
+  const max = Number(maxInput.value);
+  console.log(min);
+
+  const isMinNull = !min || min === 0;
+  const isMaxNull = !min || min === 0;
+  console.log(isMinNull);
+
+  // Validate inputs
+  // if (isNaN(min) || isNaN(max)) {
+  //   updateResult("result", "Error: Please enter valid numbers.", true);
+  //   return;
+  // }
+
+  if (isMinNull && isMaxNull) {
+    updateResult(
+      "result",
+      "Error: Please enter valid min and max number.",
+      true
+    );
+    return;
+  }
+
+  if (isMinNull) {
+    updateResult("result", "Error: Please enter valid min number.", true);
+    return;
+  }
+
+  if (isMaxNull) {
+    updateResult("result", "Error: Please enter valid max number.", true);
+    return;
+  }
+
+  if (min >= max) {
+    updateResult(
+      "result",
+      "Error: Maximum must be greater than minimum.",
+      true
+    );
+    return;
+  }
+
+  // Generate random number between min and max (inclusive)
+  const result = Math.floor(Math.random() * (max - min + 1)) + min;
+
+  // Display the result
+  // document.getElementById('result').textContent = randomNumber;
+  updateResult("result", `${result}`);
+  document.getElementById("result").setAttribute("data-copy", result);
 }

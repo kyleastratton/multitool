@@ -3,13 +3,11 @@ window.addEventListener("load", function () {
   console.log("Night mode script running");
 
   // More flexible navbar selection - try multiple possible selectors
-  const navbarNav =
-    document.querySelector(".navbar-nav") ||
-    document.querySelector(".navbar ul") ||
-    document.querySelector("nav ul") ||
-    document.querySelector(".mobilenav-darkmode");
-
-  const mobilenav = document.querySelector(".mobilenav-darkmode");
+  const navbarNav = document.querySelector(".navbar-subcontainer");
+  // document.querySelector(".navbar-nav") ||
+  // document.querySelector(".navbar ul") ||
+  // document.querySelector("nav ul") ||
+  // document.querySelector(".mobilenav-darkmode");
 
   const darkModeButtonSVG = `<svg width="30" height="30">
         <path
@@ -83,7 +81,7 @@ window.addEventListener("load", function () {
         darkModeButton.innerHTML = lightModeButtonSVG;
         darkModeButton.classList.add("night-active");
       } else {
-        darkModeButton.innerHTML = "🌙"; // Moon emoji when in light mode
+        // darkModeButton.innerHTML = "🌙"; // Moon emoji when in light mode
         darkModeButton.innerHTML = darkModeButtonSVG;
         darkModeButton.classList.remove("night-active");
       }
@@ -96,7 +94,7 @@ window.addEventListener("load", function () {
     // Fallback: Create floating toggle button
     const floatingButton = document.createElement("button");
     floatingButton.id = "floating-night-mode-toggle";
-    floatingButton.innerHTML = "🌙";
+    floatingButton.innerHTML = darkModeButtonSVG;
     floatingButton.setAttribute("aria-label", "Toggle Night Mode");
 
     // Style the floating button
@@ -121,7 +119,7 @@ window.addEventListener("load", function () {
     const isDarkMode = localStorage.getItem("darkMode") === "true";
     if (isDarkMode) {
       document.body.classList.add("dark-mode");
-      floatingButton.innerHTML = "☀️";
+      floatingButton.innerHTML = darkModeButtonSVG;
       floatingButton.style.backgroundColor = "#333";
     }
 
@@ -133,10 +131,10 @@ window.addEventListener("load", function () {
       localStorage.setItem("darkMode", isDarkMode);
 
       if (isDarkMode) {
-        floatingButton.innerHTML = "☀️";
+        floatingButton.innerHTML = lightModeButtonSVG;
         floatingButton.style.backgroundColor = "#333";
       } else {
-        floatingButton.innerHTML = "🌙";
+        floatingButton.innerHTML = darkModeButtonSVG;
         floatingButton.style.backgroundColor = "white";
       }
     });
