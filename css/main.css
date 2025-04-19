@@ -163,6 +163,14 @@ body {
     margin-bottom: 1rem;
 }
 
+.margin-top {
+  margin-top: 2rem;
+}
+
+.margin-top--half {
+  margin-top: 1rem;
+}
+
 /* Typography */
 h1,
 h2,

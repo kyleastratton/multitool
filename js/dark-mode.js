@@ -1,6 +1,8 @@
+let isDarkMode = localStorage.getItem("darkMode") === "true";
+
 // Wait for full page load instead of just DOM content loaded
 window.addEventListener("load", function () {
-  console.log("Night mode script running");
+  console.log("dark mode script running");
 
   // More flexible navbar selection - try multiple possible selectors
   const navbarNav = document.querySelector(".navbar-subcontainer");
@@ -11,7 +13,7 @@ window.addEventListener("load", function () {
 
   const darkModeButtonSVG = `<svg width="30" height="30">
         <path
-            fill="currentColor"
+            fill="yellow"
             d="
             M 23, 5
             A 12 12 0 1 0 23, 25
@@ -50,52 +52,55 @@ window.addEventListener("load", function () {
     darkModeListItem.className = "nav-item ms-3";
 
     const darkModeButton = document.createElement("button");
-    darkModeButton.id = "night-mode-toggle";
+    darkModeButton.id = "dark-mode-toggle";
     darkModeButton.className = "btn btn-sm";
-    // darkModeButton.innerHTML = "🌙"; // Moon emoji for night mode toggle
+    // darkModeButton.innerHTML = "🌙"; // Moon emoji for dark mode toggle
     darkModeButton.innerHTML = darkModeButtonSVG;
-    darkModeButton.setAttribute("aria-label", "Toggle Night Mode");
+    darkModeButton.setAttribute("aria-label", "Toggle dark Mode");
 
     darkModeListItem.appendChild(darkModeButton);
     navbarNav.appendChild(darkModeListItem);
-    console.log("Night mode button added to navbar");
+    console.log("dark mode button added to navbar");
 
     // Apply saved dark mode preference
-    const isDarkMode = localStorage.getItem("darkMode") === "true";
+    // let isDarkMode = localStorage.getItem("darkMode") === "true";
     if (isDarkMode) {
       document.body.classList.add("dark-mode");
       // darkModeButton.innerHTML = "☀️"; // Sun emoji for day mode toggle
       darkModeButton.innerHTML = lightModeButtonSVG;
-      darkModeButton.classList.add("night-active");
+      darkModeButton.classList.add("dark-active");
     }
 
     // Add event listener for dark mode toggle
     darkModeButton.addEventListener("click", function () {
-      console.log("Night mode toggle clicked");
+      console.log("dark mode toggle clicked");
       document.body.classList.toggle("dark-mode");
-      const isDarkMode = document.body.classList.contains("dark-mode");
+      let isDarkMode = document.body.classList.contains("dark-mode");
       localStorage.setItem("darkMode", isDarkMode);
 
       if (isDarkMode) {
         // darkModeButton.innerHTML = "☀️"; // Sun emoji when in dark mode
         darkModeButton.innerHTML = lightModeButtonSVG;
-        darkModeButton.classList.add("night-active");
+        darkModeButton.classList.add("dark-active");
       } else {
         // darkModeButton.innerHTML = "🌙"; // Moon emoji when in light mode
         darkModeButton.innerHTML = darkModeButtonSVG;
-        darkModeButton.classList.remove("night-active");
+        darkModeButton.classList.remove("dark-active");
       }
     });
   } else {
-    console.error(
-      "Could not find navbar element. Night mode toggle not added."
-    );
+    console.error("Could not find navbar element. dark mode toggle not added.");
 
     // Fallback: Create floating toggle button
     const floatingButton = document.createElement("button");
-    floatingButton.id = "floating-night-mode-toggle";
-    floatingButton.innerHTML = darkModeButtonSVG;
-    floatingButton.setAttribute("aria-label", "Toggle Night Mode");
+    // const isDarkMode = localStorage.getItem("darkMode") === "true";
+    let isDarkMode = localStorage.getItem("darkMode") === "true";
+    const applyFloatingButton = isDarkMode
+      ? lightModeButtonSVG
+      : darkModeButtonSVG;
+    floatingButton.id = "floating-dark-mode-toggle";
+    floatingButton.innerHTML = applyFloatingButton;
+    floatingButton.setAttribute("aria-label", "Toggle dark Mode");
 
     // Style the floating button
     floatingButton.style.position = "fixed";
@@ -106,26 +111,26 @@ window.addEventListener("load", function () {
     floatingButton.style.height = "40px";
     floatingButton.style.borderRadius = "50%";
     floatingButton.style.border = "1px solid #ccc";
-    floatingButton.style.backgroundColor = "white";
+    floatingButton.style.backgroundColor = "#333";
     floatingButton.style.cursor = "pointer";
     floatingButton.style.display = "flex";
     floatingButton.style.alignItems = "center";
     floatingButton.style.justifyContent = "center";
 
     document.body.appendChild(floatingButton);
-    console.log("Added floating night mode button as fallback");
+    console.log("Added floating dark mode button as fallback");
 
-    // Apply saved night mode preference
-    const isDarkMode = localStorage.getItem("darkMode") === "true";
+    // Apply saved dark mode preference
+    // const isDarkMode = localStorage.getItem("darkMode") === "true";
     if (isDarkMode) {
       document.body.classList.add("dark-mode");
       floatingButton.innerHTML = darkModeButtonSVG;
       floatingButton.style.backgroundColor = "#333";
     }
 
-    // Add event listener for floating night mode toggle
+    // Add event listener for floating dark mode toggle
     floatingButton.addEventListener("click", function () {
-      console.log("Floating night mode toggle clicked");
+      console.log("Floating dark mode toggle clicked");
       document.body.classList.toggle("dark-mode");
       const isDarkMode = document.body.classList.contains("dark-mode");
       localStorage.setItem("darkMode", isDarkMode);
@@ -135,21 +140,26 @@ window.addEventListener("load", function () {
         floatingButton.style.backgroundColor = "#333";
       } else {
         floatingButton.innerHTML = darkModeButtonSVG;
-        floatingButton.style.backgroundColor = "white";
+        floatingButton.style.backgroundColor = "#333";
       }
     });
   }
 
   // Check if dark mode was already set before page load
+  let floatingDarkModeToggle = document.getElementById(
+    "floating-dark-mode-toggle"
+  );
   if (localStorage.getItem("darkMode") === "true") {
     document.body.classList.add("dark-mode");
+    floatingDarkModeToggle.innerHTML = lightModeButtonSVG;
   }
 });
 
 // Also handle the DOMContentLoaded event as a backup
 document.addEventListener("DOMContentLoaded", function () {
-  console.log("DOM Content Loaded - checking if night mode should be applied");
+  console.log("DOM Content Loaded - checking if dark mode should be applied");
   if (localStorage.getItem("darkMode") === "true") {
     document.body.classList.add("dark-mode");
+    floatingButton.innerHTML = lightModeButtonSVG;
   }
 });
