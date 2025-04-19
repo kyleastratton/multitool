@@ -92,13 +92,13 @@ const footerHTML = `
                 <h3>Contact Us</h3>
                 <address>
                     <!--
-                    <p>123 Innovation Street</p>
-                    <p>Tech City, TC 12345</p>
-                    <p>United States</p>
+                    <p>1/2 Main Street</p>
+                    <p>London</p>
+                    <p>T35T 1NG</p>
                     -->
                     <p>
                         <span class="font-semibold">Email:</span>
-                        <a href="mailto:kyle.stratton94@gmail.com">kyle.stratton94@gmail.com</a>
+                        <a href="mailto:kyle.stratton@example.com">kyle.stratton@example.com</a>
                     </p>
                     <!--
                     <p>
